@@ -10,7 +10,7 @@ This project mimics Instagram's ability to share and post pictures on an online 
 
 ## Below are links to Project Wiki:
 
-[API Routes]()
+[API Routes](https://github.com/avenida714/instacrumbz/wiki/API-ROUTES)
 
 [DB Schema](https://github.com/avenida714/instacrumbz/wiki/DB-SCHEMA)
 

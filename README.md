@@ -16,7 +16,7 @@ This project mimics Instagram's ability to share and post pictures on an online 
 
 [Features List]()
 
-[Redux State Shape]()
+[Redux State Shape](https://github.com/avenida714/instacrumbz/wiki/REDUX-STATE-SHAPE)
 
 
 ## Tech Stack: 

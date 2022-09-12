@@ -12,7 +12,7 @@ This project mimics Instagram's ability to share and post pictures on an online 
 
 [API Routes]()
 
-[DB Schema]()
+[DB Schema](https://github.com/avenida714/instacrumbz/wiki/DB-SCHEMA)
 
 [Features List]()
 

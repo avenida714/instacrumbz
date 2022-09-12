@@ -1,4 +1,4 @@
-# instacrumbz
+# InstaCrumbz
 ## Welcome to InstaCrumbz, a project clone that we made of Instagram!
 ## About InstaCrumbz 
 InstaCrumbz is a web application inspired by Instagram, with a little twist! 

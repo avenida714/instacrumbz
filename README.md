@@ -14,7 +14,7 @@ This project mimics Instagram's ability to share and post pictures on an online 
 
 [DB Schema](https://github.com/avenida714/instacrumbz/wiki/DB-SCHEMA)
 
-[Features List]()
+[Features List](https://github.com/avenida714/instacrumbz/wiki/FEATURES)
 
 [Redux State Shape](https://github.com/avenida714/instacrumbz/wiki/REDUX-STATE-SHAPE)
 

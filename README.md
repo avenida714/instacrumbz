@@ -47,7 +47,7 @@ Hosted On:
 npm i && npm i -D
 ```
 
-3. Create a .env file in the Backend folder and copy the contents below. Replace the **<<insert secret key here>>** with your **own** very secret key! 
+3. Create a .env file in the Backend folder and copy the contents below. Replace the **insert secret key here** with your **own** very secret key! 
 
 ```
 SECRET_KEY= <<INSERT_SECRET_KEY_HERE>>
@@ -77,7 +77,7 @@ npm i && npm i -D
 npm start
 ```
 
-7. You should now be able to see the web application in your browser when you navigate to localhost:<<port number>> (Your preferred port number)!
+7. You should now be able to see the web application in your browser when you navigate to localhost:**port number** (Your preferred port number)!
 
 ## Features Directory: 
 

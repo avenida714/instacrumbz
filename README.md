@@ -10,7 +10,7 @@ This project mimics Instagram's ability to share and post pictures on an online 
 
 [Click Here to interact with InstaCrumbz Live Site]()
 
-## Below are links to Project Wiki:
+## Links to Project Wiki:
 
 [API Routes](https://github.com/avenida714/instacrumbz/wiki/API-ROUTES)
 

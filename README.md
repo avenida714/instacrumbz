@@ -36,13 +36,13 @@ Hosted On: Heroku / Docker
 
 1. Clone the github repository to a file location of your choice, recommend using "Download ZIP" in the Code dropdown menu for this repository. 
 
-2. Run npm i && npm i -D in the Backend to install the appropriate Backend dependencies 
+2. Run **npm i && npm i -D** in the Backend to install the appropriate Backend dependencies: 
 
 ```
 npm i && npm i -D
 ```
 
-3. Create a .env file in the Backend folder and copy the contents below. Replace the <<insert secret key here>> with your own very secret key! 
+3. Create a .env file in the Backend folder and copy the contents below. Replace the **<<insert secret key here>>** with your **own** very secret key! 
 
 ```
 SECRET_KEY= <<INSERT_SECRET_KEY_HERE>>
@@ -50,7 +50,7 @@ DATABASE_URL=sqlite:///dev.db
 ```
 
 4. In the backend folder to initialize the database and run it in a virtual environment, first execute the command:
-pipenv shell. Then migrate / seed database and run the Flask application after succesfully seeding with the following commands: 
+**pipenv shell**. Then migrate / seed database and run the Flask application after succesfully seeding with the following commands: 
 
 ```
 pipenv shell
@@ -60,13 +60,13 @@ pipenv run flask db upgrade
 pipenv run flask run 
 ```
 
-5. Navigate to the Frontend folder and run npm i && npm i -D to install the appropriate Fackend dependencies
+5. Navigate to the Frontend folder and run **npm i && npm i -D** to install the appropriate Frontend dependencies:
 
 ```
 npm i && npm i -D
 ```
 
-6. Run npm start in the Frontend folder
+6. Run **npm start** in the Frontend folder:
 
 ```
 npm start

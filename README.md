@@ -1,6 +1,6 @@
 # Instacrumbz
-## Welcome to InstaCrumbz, a project clone that we made of Instagram!
-## About InstaCrumbz 
+## Welcome to Instacrumbz, a clone of Instagram made by Alec V., David T., Ray H. and Rudy N.!
+## About Our Web Application!
 InstaCrumbz is a full-stack web application inspired by Instagram, with a little twist! 
 Our application provides users the ability to post pictures of their finished meals, leave likes and add comments to said photos! 
 

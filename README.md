@@ -8,9 +8,9 @@ With Instacrumbz, upload images of your dirty dishes and half eaten meals, and s
 
 This project mimics Instagram's ability to share and post pictures on an online platform.
 
-[Click Here to interact with InstaCrumbz Live Site]()
+[Instacrumbz Live Site]()
 
-## Links to Project Wiki:
+## Project Wiki Links:
 
 [API Routes](https://github.com/avenida714/instacrumbz/wiki/API-ROUTES)
 

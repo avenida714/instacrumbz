@@ -23,10 +23,11 @@ class Post(db.Model):
 
 
     #relationships
-    user = db.relationship("User", back_populate="posts")
+    user = db.relationship("User", back_populates="posts")
 
     liked = db.relationship("User", secondary=likes)
 
+    comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
 
     #class methods
     def post_timeago(self):
@@ -48,4 +49,5 @@ class Post(db.Model):
             "owner_id": self.owner_id,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
+            "user": self.user.to_dict()
         }

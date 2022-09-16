@@ -6,7 +6,7 @@ from wtforms.fields import (
     BooleanField, SelectField, DateField, StringField, PasswordField, SubmitField, TextAreaField, TimeField, IntegerField, TextAreaField
 )
 
-#...
+#......
 class PostForm(FlaskForm):
     caption = TextAreaField("Caption")
     location = StringField("Location")

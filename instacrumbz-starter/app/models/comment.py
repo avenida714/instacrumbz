@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+import datetime, timeago
 
 
 class Comment(db.Model):
@@ -20,14 +21,24 @@ class Comment(db.Model):
 
 
     #relationships
+    user = db.relationship("User", back_populates="comments")
+
+    post = db.relationship('Post', back_populates="comments")
 
 
     #class methods
+    def comment_timeago(self):
+        date = datetime.now()
+        return timeago.format(self.created_at, date)
+
+
     def to_dict(self):
         return {
             "id": self.id,
             "comment": self.comment,
             "user_id": self.user_id,
             "post_id": self.post_id,
-            "created_at": self.created_at
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,
+            "user": self.user.to_dict()
         }

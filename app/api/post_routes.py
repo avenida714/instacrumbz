@@ -111,6 +111,25 @@ def edit_post(id):
         return jsonify(form.errors)
 
 
+#Delete a post 
+
+@post_routes.delete('/<int:id>')
+@login_required
+def delete_post(id):
+
+    
+    post = Post.query.get(id)
+    print('current_user.id******************** ', current_user.id)
+    print('Post.owner_id******************** ', post.owner_id)
+    if current_user.id == post.owner_id:
+        
+        db.session.delete(post)
+        db.session.commit()
+        return {'message': 'Successfully deleted'}
+    else:
+        return {'message': 'Unauthorized user', "statusCode": 403}
+
+
 
 # create a comment
 @post_routes.route("/<int:id>/comments", methods = ["POST"])

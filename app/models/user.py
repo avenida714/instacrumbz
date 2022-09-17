@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
 
     comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
 
-    liked_posts = db.relationship('Post', secondary=likes, back_populates='liked', cascade='all, delete-orphan')
+    liked_posts = db.relationship('Post', secondary=likes, back_populates='liked')
 
     #class methods
     @property

@@ -14,12 +14,8 @@ class Post(db.Model):
     location = db.Column(db.String(255))
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    created_at = db.Column(
-        db.DateTime, server_default=func.now(), nullable=False
-    )
-    updated_at = db.Column(
-        db.DateTime, server_default=func.now(), onupdate=func.now, nullable=False
-    )
+    created_at = db.Column(db.DateTime, server_default=func.now())
+    updated_at = db.Column(db.DateTime, onupdate=func.now())
 
 
     #relationships

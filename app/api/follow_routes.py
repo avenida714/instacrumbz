@@ -19,7 +19,7 @@ def follow_user(id):
 
     # user is already following user
     else:
-        return
+        return {"message": "You are already following this user", "statusCode": 403}
 
 
 @follow_routes.route('/unfollow/<int:id>')
@@ -36,4 +36,4 @@ def unfollow_user(id):
 
     # you aren't a follower
     else:
-        return
+        return {"message": "You are currently not a follower", "statusCode": 403}

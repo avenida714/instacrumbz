@@ -18,7 +18,7 @@ post_routes = Blueprint('post', __name__)
 def get_all_post():
     all_posts = Post.query.all()
 
-    # print("current_user.id **************************", current_user)
+    print("current_user.id **************************!!!", current_user)
     all_post_json = [post.to_dict() for post in all_posts]
     return {"posts": all_post_json}
 

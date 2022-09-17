@@ -13,10 +13,10 @@ def profile_page(userId):
   res = {
     'profile': userprofile.to_dict()
   }
-
   return res
 
 @profile_route.route('/edit/<int:userId>', methods=['PUT'])
+@login_required
 def editProfile(userId):
   editForm = editProfileForm()
   userprofile = User.query.get(userId)

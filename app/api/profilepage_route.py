@@ -15,7 +15,7 @@ def profile_page(userId):
 
   return res
 
-@profile_route.route('/edit/<userId>')
+@profile_route.route('/edit/<userId>', methods=['PUT'])
 def editProfile(userId):
   editForm = editProfileForm()
 

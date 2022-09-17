@@ -10,7 +10,6 @@ def seed_users():
         name='Demo',
         bio='Im Demo',
         gender='Robot',
-        cellphone='5109114200',
         profile_img='img.jpeg',
         password='password'
         )
@@ -20,7 +19,6 @@ def seed_users():
         name='Marnie',
         bio='Im Marnie',
         gender='Female',
-        cellphone='5109114201',
         profile_img='img.jpeg',
         password='password'
         )
@@ -30,7 +28,6 @@ def seed_users():
         name='Bobbie',
         bio='Im bobbie',
         gender='Male',
-        cellphone='5109114202',
         profile_img='img.jpeg',
         password='password'
         )

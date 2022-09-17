@@ -4,19 +4,19 @@ from app.models import db, Post
 # Adds demo posts, you can add other posts here if you want
 def seed_posts():
     post1 = Post(
-        preview_img="preview.jpg",
+        image_url="preview.jpg",
         caption="Good food",
         location="USA",
         owner_id=1
     )
     post2 = Post(
-        preview_img="preview.jpg",
+        image_url="preview.jpg",
         caption="Good food 2",
         location="USA",
         owner_id=1
     )
     post3 = Post(
-        preview_img="preview.jpg",
+        image_url="preview.jpg",
         caption="Good food 3",
         location="USA",
         owner_id=1

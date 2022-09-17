@@ -9,7 +9,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    preview_img = db.Column(db.String(255), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
     caption = db.Column(db.String(255))
     location = db.Column(db.String(255))
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

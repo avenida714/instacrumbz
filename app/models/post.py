@@ -25,7 +25,7 @@ class Post(db.Model):
     #relationships
     user = db.relationship("User", back_populates="posts")
 
-    liked = db.relationship("User", secondary=likes)
+    liked = db.relationship("User", secondary=likes, back_populates='liked_posts')
 
     comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
 

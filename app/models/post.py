@@ -9,7 +9,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    preview_img = db.Column(db.String(255), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
     caption = db.Column(db.String(255))
     location = db.Column(db.String(255))
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -25,7 +25,7 @@ class Post(db.Model):
     #relationships
     user = db.relationship("User", back_populates="posts")
 
-    liked = db.relationship("User", secondary=likes)
+    liked = db.relationship("User", secondary=likes, back_populates='liked_posts')
 
     comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
 

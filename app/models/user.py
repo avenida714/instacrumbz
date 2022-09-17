@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50), nullable=False)
     bio = db.Column(db.String(500))
     gender = db.Column(db.String(50))
-    cellphone = db.Column(db.Integer)
+    cellphone = db.Column(db.String)
     profile_img = db.Column(db.String(255))
 
 

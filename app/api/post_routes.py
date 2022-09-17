@@ -132,25 +132,28 @@ def delete_post(id):
 
 
 # create a comment
-@post_routes.route("/<int:id>/comments", methods = ["POST"])
+@post_routes.route("/post/<int:id>/comment-new", methods = ["POST"])
+@login_required
 def create_comment(id):
     form = CommentForm()
-    userId = form.data['userId']
-    postId = form.data['postId']
-    comment = form.data['comment']
+    user_id = current_user.id
+    print("user_id**************", user_id)
+    # user_id = form.data['user_id']
+    # post_id = form.data['post_id']
+    # comment = form.data['comment']
+    post = Post.query.get_or_404(id)
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    if current_user.id == userId and form.validate_on_submit():
+    if form.validate_on_submit():
         comment = Comment(
-            userId = userId,
-            postId = postId,
-            comment = comment
+        user_id = user_id,
+        post_id = post.id,
+        comment = form.data['comment']
         )
-
-        Post.query.get(id)
-        comment.post = postId
 
         db.session.add(comment)
         db.session.commit()
-        return comment.to_dict
+        return comment.to_dict()
     else:
         raise Exception("Unauthorized user")
+

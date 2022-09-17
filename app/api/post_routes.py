@@ -7,14 +7,15 @@ from ..models.post import Post
 from ..forms.post_form import PostForm
 from ..models.user import User
 from ..models.db import db
-
+from ..models.comment import Comment
+from ..forms.comment_form import CommentForm
 
 post_routes = Blueprint('post', __name__)
 
 
 # Get all post
 @post_routes.route("/all")
-# @login_required
+@login_required
 def get_all_post():
     all_posts = Post.query.all()
 
@@ -26,7 +27,7 @@ def get_all_post():
 
 # Get all post of the current user
 @post_routes.route("/current")
-# @login_required
+@login_required
 def get_current_post():
     current_posts = Post.query.filter(Post.owner_id == current_user.id).order_by(Post.created_at.desc()).all()
     current_posts_json = [current_post.to_dict() for current_post in current_posts]
@@ -35,8 +36,8 @@ def get_current_post():
 
 
 #get one post
-@post_routes.route('/<id>')
-# @login_required
+@post_routes.route('/<int:id>')
+@login_required
 def get_one_post(id):
      post = Post.query.get(id)
      return post.to_dict()
@@ -45,10 +46,10 @@ def get_one_post(id):
 
 #get all post by user id
 @post_routes.route('/users/<int:id>')
-# @login_required
+@login_required
 def get_posts_by_id(id):
     all_posts_by_id = Post.query.filter(Post.owner_id == id).order_by(Post.created_at.desc()).all()
-    all_posts_by_id_json = [post.to_dict() for post in all_posts_by_id_json]
+    all_posts_by_id_json = [post.to_dict() for post in all_posts_by_id]
     return {"posts": all_posts_by_id_json}
 
 
@@ -57,9 +58,9 @@ def get_posts_by_id(id):
 
 
 # CREATE A POST
+@post_routes.route('/posts/new-post', methods=['POST'])
+@login_required
 
-# @login_required
-@post_routes.route('/new-post', methods=['POST'])
 def create_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -68,8 +69,7 @@ def create_post():
             image_url = form.data['image_url'],
             caption = form.data['caption'],
             location = form.data['location'],
-            owner_id = current_user.id,
-
+            owner_id = current_user.id
         )
         db.session.add(new_post)
         db.session.commit()
@@ -81,3 +81,57 @@ def create_post():
 
     else:
         return jsonify(form.errors)
+
+# Update a post
+@post_routes.route('/posts/<int:id>/edit', methods=['PUT'])
+@login_required
+def edit_post(id):
+    form = PostForm()
+    new_post = Post.query.get_or_404(id)
+    # print("current_user********************begining", current_user.id)
+    if current_user.id != new_post.id:
+        return {"message": "You don't have authorization to update", "statusCode": 403}
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        # print("form.data***********************", form.data)
+        new_post.image_url = form.data['image_url']
+        new_post.caption = form.data['caption']
+        new_post.location = form.data['location']
+        
+        
+        db.session.commit()
+        # print("new_post********************", new_post.to_dict())
+        # print("new_post********************", new_post)
+
+        return  new_post.to_dict()
+
+    else:
+        return jsonify(form.errors)
+
+
+
+# create a comment
+@post_routes.route("/<int:id>/comments", methods = ["POST"])
+def create_comment(id):
+    form = CommentForm()
+    userId = form.data['userId']
+    postId = form.data['postId']
+    comment = form.data['comment']
+
+    if current_user.id == userId and form.validate_on_submit():
+        comment = Comment(
+            userId = userId,
+            postId = postId,
+            comment = comment
+        )
+
+        Post.query.get(id)
+        comment.post = postId
+
+        db.session.add(comment)
+        db.session.commit()
+        return comment.to_dict
+    else:
+        raise Exception("Unauthorized user")

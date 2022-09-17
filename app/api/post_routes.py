@@ -12,17 +12,48 @@ from ..models.db import db
 post_routes = Blueprint('post', __name__)
 
 
-# Get all post on the profile page of the current user
+# Get all post
 @post_routes.route("/all")
 # @login_required
 def get_all_post():
-    # all_posts = Post.query.filter(Post.owner_id == current_user.id).order_by(Post.created_at.desc()).all()
     all_posts = Post.query.all()
 
-    print("current_user.id **************************", current_user)
+    # print("current_user.id **************************", current_user)
     all_post_json = [post.to_dict() for post in all_posts]
-    # print("all_post_json**************", all_post_json)
     return {"posts": all_post_json}
+
+
+
+# Get all post of the current user
+@post_routes.route("/current")
+# @login_required
+def get_current_post():
+    current_posts = Post.query.filter(Post.owner_id == current_user.id).order_by(Post.created_at.desc()).all()
+    current_posts_json = [current_post.to_dict() for current_post in current_posts]
+    return {"current_posts": current_posts_json}
+
+
+
+#get one post
+@post_routes.route('/<id>')
+# @login_required
+def get_one_post(id):
+     post = Post.query.get(id)
+     return post.to_dict()
+
+
+
+#get all post by user id
+@post_routes.route('/users/<int:id>')
+# @login_required
+def get_posts_by_id(id):
+    all_posts_by_id = Post.query.filter(Post.owner_id == id).order_by(Post.created_at.desc()).all()
+    all_posts_by_id_json = [post.to_dict() for post in all_posts_by_id_json]
+    return {"posts": all_posts_by_id_json}
+
+
+
+
 
 
 # CREATE A POST

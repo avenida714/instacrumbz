@@ -7,4 +7,5 @@ class editProfileForm(FlaskForm):
   bio = StringField("Bio")
   email = StringField("Email", validators=[DataRequired()])
   gender = StringField("Gender")
+  name = StringField("name")
   profile_img = StringField("Profile Image URL")

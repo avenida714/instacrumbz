@@ -4,8 +4,8 @@ from app.forms.editProfile_form import editProfileForm
 from flask_login import login_required, current_user
 
 
+#GET PROFILE
 profile_route = Blueprint('profile', __name__, url_prefix='/profile')
-
 @profile_route.route('/<int:userId>')
 def profile_page(userId):
   userprofile = User.query.get(userId)
@@ -14,6 +14,7 @@ def profile_page(userId):
   }
   return res
 
+#EDIT PROFILE
 @profile_route.route('/edit/<int:userId>', methods=['PUT'])
 @login_required
 def editProfile(userId):
@@ -25,6 +26,10 @@ def editProfile(userId):
   print("------")
   print(userId)
   print("-------")
+  #check if profile exist / throws 404
+  if not userprofile:
+    return {'message': 'Profile does not exist', "statusCode": 404}
+  #check if logged in user is profile owner / throw 403
   if userId == current_user.id:
     username = editForm.data['username']
     bio = editForm.data['bio']

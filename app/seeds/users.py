@@ -14,7 +14,7 @@ def seed_users():
         password='password'
         )
     marnie = User(
-        username='marnie',
+        username='Marnie',
         email='marnie@aa.io',
         name='Marnie',
         bio='Im Marnie',
@@ -23,18 +23,59 @@ def seed_users():
         password='password'
         )
     bobbie = User(
-        username='bobbie',
+        username='Bobbie',
         email='bobbie@aa.io',
         name='Bobbie',
-        bio='Im bobbie',
+        bio='Im Bobbie',
+        gender='Male',
+        profile_img='img.jpeg',
+        password='password'
+        )
+    david = User(
+        username='David',
+        email='david@aa.io',
+        name='David Ting',
+        bio='Hi, Im David Ting',
+        gender='Male',
+        profile_img='img.jpeg',
+        password='password'
+        )
+    alec = User(
+        username='Alec',
+        email='alec@aa.io',
+        name='Alec Venida',
+        bio='Hi, Im Alec Venida',
+        gender='Male',
+        profile_img='img.jpeg',
+        password='password'
+        )
+    ray = User(
+        username='Ray',
+        email='ray@aa.io',
+        name='Ray Henry',
+        bio='Hi, Im Ray Henry',
+        gender='Male',
+        profile_img='img.jpeg',
+        password='password'
+        )
+    rudy = User(
+        username='Rudy',
+        email='rudy@aa.io',
+        name='Rudy Nguyen',
+        bio='Hi, Im Rudy Nguyen',
         gender='Male',
         profile_img='img.jpeg',
         password='password'
         )
 
+
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(david)
+    db.session.add(alec)
+    db.session.add(ray)
+    db.session.add(rudy)
 
     db.session.commit()
 

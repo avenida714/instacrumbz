@@ -5,8 +5,9 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -50,21 +51,30 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
         <label>Email</label>
         <input
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+      <div>
+        <label>Name</label>
+        <input
+          type='text'
+          name='name'
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        ></input>
+      </div>
+      <div>
+        <label>User Name</label>
+        <input
+          type='text'
+          name='username'
+          onChange={updateUsername}
+          value={username}
         ></input>
       </div>
       <div>

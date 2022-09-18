@@ -42,21 +42,25 @@ Hosted On:
 
 1. Clone the github repository to a file location of your choice, recommend using "Download ZIP" in the Code dropdown menu for this repository. 
 
-2. Run **npm i && npm i -D** in the Backend to install the appropriate Backend dependencies: 
+2. Run **pipenv install -r requirements.txt** in the app directory to install the appropriate dependencies: 
 
 ```
-npm i && npm i -D
+pipenv install -r requirements.txt
 ```
 
-3. Create a .env file in the Backend folder and copy the contents below. Replace the **insert secret key here** with your **own** very secret key! 
+While those dependencies are installing, you may also open up a seperate integrated terminal, and ** npm install ** the appropriate dependencies to the react-app folder. 
+```
+npm install 
+```
+
+3. Create a .env file in the root of the **app** folder and copy the contents below. Replace the **insert secret key here** with your **own** very secret key! 
 
 ```
 SECRET_KEY= <<INSERT_SECRET_KEY_HERE>>
 DATABASE_URL=sqlite:///dev.db
 ```
 
-4. In the backend folder to initialize the database and run it in a virtual environment, first execute the command:
-**pipenv shell**. Then migrate / seed database and run the Flask application after succesfully seeding with the following commands: 
+4. While still in the **app** folder, get into your pipenv, migrate your database, seed your database, and run your Flask app:
 
 ```
 pipenv shell
@@ -66,19 +70,13 @@ pipenv run flask db upgrade
 pipenv run flask run 
 ```
 
-5. Navigate to the Frontend folder and run **npm i && npm i -D** to install the appropriate Frontend dependencies:
-
-```
-npm i && npm i -D
-```
-
 6. Run **npm start** in the Frontend folder:
 
 ```
 npm start
 ```
 
-7. You should now be able to see the web application in your browser when you navigate to localhost:**port number** (Your preferred port number)!
+7. You should now be able to see the web application in your browser when you navigate to localhost!
 
 ## Features Directory: 
 

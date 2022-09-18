@@ -1,7 +1,8 @@
-from flask import Blueprint, jsonify, redirect
+from flask import Blueprint, jsonify, redirect, request
 from flask_login import login_required, current_user
-from app.models import db, User, Comment
+from app.models import db, User, Comment, Post
 from ..forms.comment_form import CommentForm
+
 
 
 comment_routes = Blueprint('comments', __name__)
@@ -13,6 +14,8 @@ comment_routes = Blueprint('comments', __name__)
 def delete_comment(id):
 
     comment = Comment.query.get_or_404(id) # special query method that finds it, or returns a 404
+
+    print("this is the comment ------>", comment)
 
     if current_user.id == comment.user_id:
 
@@ -27,22 +30,26 @@ def delete_comment(id):
 @login_required
 def edit_comment(id):
 
-    comment = Comment.query.get_or_404(id)
+    edited_comment = Comment.query.get(id)
+    post = Post.query.get(id)
 
     form = CommentForm()
     user_id = current_user.id
 
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("edited comment and user id ----->", edited_comment.user_id, current_user.id)
 
-    if form.validate_on_submit():
-        comment = Comment(
-        user_id = user_id,
-        post_id = post.id,
-        comment = form.data['comment']
-        )
 
-        db.session.add(comment)
+
+    # if form.validate_on_submit() and
+    if current_user.id == edited_comment.user_id:
+        print("THIS IS THE DATA FROM FORM:", form.data)
+
+        # edited_comment.user_id = user_id
+        # edited_comment.post_id = post.id
+        edited_comment.comment = form.data['comment']
+
         db.session.commit()
-        return comment.to_dict()
+        return edited_comment.to_dict()
     else:
-        raise Exception("Unauthorized user")
+        return {'message': 'Unauthorized user', "statusCode": 403}

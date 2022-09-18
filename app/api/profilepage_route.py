@@ -4,8 +4,10 @@ from app.forms.editProfile_form import editProfileForm
 from flask_login import login_required, current_user
 
 
+profile_route = Blueprint('profile', __name__)
+
+
 #GET PROFILE
-profile_route = Blueprint('profile', __name__, url_prefix='/profile')
 @profile_route.route('/<int:userId>')
 def profile_page(userId):
   userprofile = User.query.get(userId)
@@ -13,6 +15,7 @@ def profile_page(userId):
     'profile': userprofile.to_dict()
   }
   return res
+
 
 #EDIT PROFILE
 @profile_route.route('/edit/<int:userId>', methods=['PUT'])

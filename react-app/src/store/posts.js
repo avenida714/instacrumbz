@@ -48,10 +48,10 @@ export const createAPost = () => async (dispatch) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            image_url,
-            caption,
-            location,
-            owner_id
+            // image_url,
+            // caption,
+            // location,
+            // owner_id
         })
     });
     if (response.ok) {

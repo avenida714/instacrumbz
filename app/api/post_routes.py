@@ -13,7 +13,7 @@ from ..forms.comment_form import CommentForm
 post_routes = Blueprint('post', __name__)
 
 
-# Get all post
+# Get ALL Post
 @post_routes.route("/all")
 @login_required
 def get_all_post():
@@ -27,9 +27,7 @@ def get_all_post():
         return {'message': 'Unauthorized user', "statusCode": 403}
 
 
-
-
-# Get all post of the current user
+# Get ALL Post of the Current User
 @post_routes.route("/current")
 @login_required
 def get_current_post():
@@ -38,8 +36,7 @@ def get_current_post():
     return {"current_posts": current_posts_json}
 
 
-
-#get one post
+# Get One Post
 @post_routes.route('/<int:id>')
 @login_required
 def get_one_post(id):
@@ -47,9 +44,8 @@ def get_one_post(id):
      return post.to_dict()
 
 
-
-#get all post by user id
-@post_routes.route('/users/<int:id>')
+# Get ALL Post by User Id
+@post_routes.route('/user/<int:id>')
 @login_required
 def get_posts_by_id(id):
     all_posts_by_id = Post.query.filter(Post.owner_id == id).order_by(Post.created_at.desc()).all()
@@ -57,12 +53,8 @@ def get_posts_by_id(id):
     return {"posts": all_posts_by_id_json}
 
 
-
-
-
-
 # CREATE A POST
-@post_routes.route('/posts/new-post', methods=['POST'])
+@post_routes.route('/new_post', methods=['POST'])
 @login_required
 
 def create_post():
@@ -87,7 +79,7 @@ def create_post():
         return jsonify(form.errors)
 
 # Update a post
-@post_routes.route('/posts/<int:id>/edit', methods=['PUT'])
+@post_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_post(id):
     form = PostForm()
@@ -136,7 +128,7 @@ def delete_post(id):
 
 
 # create a comment
-@post_routes.route("/post/<int:id>/comment-new", methods = ["POST"])
+@post_routes.route("/<int:id>/new_comment", methods = ["POST"])
 @login_required
 def create_comment(id):
     form = CommentForm()
@@ -164,11 +156,10 @@ def create_comment(id):
 
 
 # get all comment for post id
-@post_routes.route('/comment/<int:post_id>')
+@post_routes.route('/<int:post_id>/all_comments')
 @login_required
 def get_all_comment(post_id):
     all_comment = Comment.query.filter(Comment.post_id == post_id).all()
     print("*****************************all_comment ", all_comment)
     all_comment_json = [comment.to_dict() for comment in all_comment]
     return {"comments": all_comment_json}
-

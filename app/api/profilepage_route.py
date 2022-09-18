@@ -1,5 +1,4 @@
-import profile
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import db, User
 from app.forms.editProfile_form import editProfileForm
 from flask_login import login_required, current_user
@@ -19,6 +18,7 @@ def profile_page(userId):
 @login_required
 def editProfile(userId):
   editForm = editProfileForm()
+  editForm['csrf_token'].data = request.cookies['csrf_token']
   userprofile = User.query.get(userId)
   print("-------")
   print(current_user.id)

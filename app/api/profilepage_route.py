@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, User
+from app.models import db, User, Post
 from app.forms.editProfile_form import editProfileForm
 from flask_login import login_required, current_user
 
@@ -8,11 +8,17 @@ profile_route = Blueprint('profile', __name__)
 
 
 #GET PROFILE
+profile_route = Blueprint('profile', __name__)
 @profile_route.route('/<int:userId>')
 def profile_page(userId):
   userprofile = User.query.get(userId)
+  profile = [userprofile.to_dict()]
+  allposts = Post.query.filter(Post.owner_id == userId).all()
+  posts = [post.to_dict() for post in allposts]
+
   res = {
-    'profile': userprofile.to_dict()
+    'profile': profile,
+    'posts': posts
   }
   return res
 

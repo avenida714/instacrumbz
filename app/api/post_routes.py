@@ -79,7 +79,7 @@ def create_post():
         return jsonify(form.errors)
 
 # Update a post
-@post_routes.route('/<int:id>/edit', methods=['PUT'])
+@post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_post(id):
     form = PostForm()
@@ -161,3 +161,19 @@ def get_all_comment(post_id):
     print("*****************************all_comment ", all_comment)
     all_comment_json = [comment.to_dict() for comment in all_comment]
     return {"comments": all_comment_json}
+
+
+@post_routes.route('/<int:id>/post_likes')
+@login_required
+def like_unlike_a_post(post_id):
+
+    post = Post.query.get_or_404(post_id)
+
+    if current_user not in post.likes:
+        post.likes.append(current_user)
+        db.session.commit()
+    else:
+        post.likes.remove(current_user)
+        db.session.commit()
+
+    return {'post': post.to_dict()}

@@ -20,7 +20,8 @@ def seed_users():
         bio='Im Marnie',
         gender='Female',
         profile_img='img.jpeg',
-        password='password'
+        password='password',
+        followers=[demo]
         )
     bobbie = User(
         username='Bobbie',
@@ -29,7 +30,8 @@ def seed_users():
         bio='Im Bobbie',
         gender='Male',
         profile_img='img.jpeg',
-        password='password'
+        password='password',
+        followers=[demo, marnie]
         )
     david = User(
         username='David',
@@ -38,7 +40,8 @@ def seed_users():
         bio='Hi, Im David Ting',
         gender='Male',
         profile_img='img.jpeg',
-        password='password'
+        password='password',
+        followers=[demo, marnie, bobbie]
         )
     alec = User(
         username='Alec',
@@ -47,7 +50,8 @@ def seed_users():
         bio='Hi, Im Alec Venida',
         gender='Male',
         profile_img='img.jpeg',
-        password='password'
+        password='password',
+        followers=[marnie, bobbie, david]
         )
     ray = User(
         username='Ray',
@@ -56,7 +60,8 @@ def seed_users():
         bio='Hi, Im Ray Henry',
         gender='Male',
         profile_img='img.jpeg',
-        password='password'
+        password='password',
+        followers=[marnie, bobbie, david, alec]
         )
     rudy = User(
         username='Rudy',
@@ -65,7 +70,8 @@ def seed_users():
         bio='Hi, Im Rudy Nguyen',
         gender='Male',
         profile_img='img.jpeg',
-        password='password'
+        password='password',
+        followers=[marnie, bobbie, david, alec, ray]
         )
 
 
@@ -76,6 +82,7 @@ def seed_users():
     db.session.add(alec)
     db.session.add(ray)
     db.session.add(rudy)
+
 
     db.session.commit()
 

@@ -157,3 +157,12 @@ def create_comment(id):
     else:
         raise Exception("Unauthorized user")
 
+
+# get all comment for post id
+@post_routes.route('/comment/<int:post_id>')
+@login_required
+def get_all_comment(post_id):
+    all_comment = Comment.query.filter(Comment.post_id == post_id).all()
+    print("*****************************all_comment ", all_comment)
+    all_comment_json = [comment.to_dict() for comment in all_comment]
+    return {"comments": all_comment_json}

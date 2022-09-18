@@ -8,7 +8,6 @@ profile_route = Blueprint('profile', __name__)
 
 
 #GET PROFILE
-profile_route = Blueprint('profile', __name__)
 @profile_route.route('/<int:userId>')
 def profile_page(userId):
   userprofile = User.query.get(userId)
@@ -24,7 +23,7 @@ def profile_page(userId):
 
 
 #EDIT PROFILE
-@profile_route.route('/edit/<int:userId>', methods=['PUT'])
+@profile_route.route('/<int:userId>', methods=['PUT'])
 @login_required
 def editProfile(userId):
   editForm = editProfileForm()

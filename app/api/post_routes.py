@@ -85,7 +85,7 @@ def edit_post(id):
     form = PostForm()
     new_post = Post.query.get_or_404(id)
     # print("current_user********************begining", current_user.id)
-    if current_user.id != new_post.id:
+    if current_user.id != new_post.owner_id:
         return {"message": "You don't have authorization to update", "statusCode": 403}
 
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -108,7 +108,6 @@ def edit_post(id):
 
 
 #Delete a post
-
 @post_routes.delete('/<int:id>')
 @login_required
 def delete_post(id):
@@ -126,8 +125,7 @@ def delete_post(id):
         return {'message': 'Unauthorized user', "statusCode": 403}
 
 
-
-# create a comment
+# Create A Comment
 @post_routes.route("/<int:id>/new_comment", methods = ["POST"])
 @login_required
 def create_comment(id):

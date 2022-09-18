@@ -12,12 +12,8 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
-    created_at = db.Column(
-        db.DateTime, server_default=func.now(), nullable=False
-    )
-    updated_at = db.Column(
-        db.DateTime, server_default=func.now(), onupdate=func.now, nullable=False
-    )
+    created_at = db.Column(db.DateTime, server_default=func.now())
+    updated_at = db.Column(db.DateTime, onupdate=func.now)
 
 
     #relationships

@@ -30,26 +30,27 @@ def delete_comment(id):
 @login_required
 def edit_comment(id):
 
-    edited_comment = Comment.query.get(id)
+ 
     post = Post.query.get(id)
 
     form = CommentForm()
-    user_id = current_user.id
-
+    edited_comment = Comment.query.get_or_404(id)
+    # userid = current_user.id
+    # print("edited_comment*******************************", edited_comment)
+    if current_user.id != edited_comment.user_id:
+        return {"message": "You don't have authorization to update", "statusCode": 403}
+    
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("edited comment and user id ----->", edited_comment.user_id, current_user.id)
 
 
-
-    # if form.validate_on_submit() and
-    if current_user.id == edited_comment.user_id:
-        print("THIS IS THE DATA FROM FORM:", form.data)
-
-        # edited_comment.user_id = user_id
+    if form.validate_on_submit():
+        print("form.data**********************************", form.data)
+        # edited_comment.user_id = current_user.id
         # edited_comment.post_id = post.id
         edited_comment.comment = form.data['comment']
 
+        print("*********************************: ", edited_comment.to_dict())
         db.session.commit()
         return edited_comment.to_dict()
-    else:
-        return {'message': 'Unauthorized user', "statusCode": 403}
+    # else:
+    #     return {'message': 'Unauthorized user', "statusCode": 403}

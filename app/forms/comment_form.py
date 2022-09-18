@@ -9,5 +9,5 @@ from wtforms.fields import (
 class CommentForm(FlaskForm):
     comment = TextAreaField("Comment", validators=[DataRequired(),
         validators.Length( min=1, max=2000, message='Comment must be between 1 and 2000 characters')])
-    user_id = IntegerField("UserId", validators=[DataRequired()]),
-    post_id = IntegerField("PostId", validators=[DataRequired()])
+    user_id = IntegerField("UserId")
+    post_id = IntegerField("PostId")

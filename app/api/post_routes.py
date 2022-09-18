@@ -17,11 +17,15 @@ post_routes = Blueprint('post', __name__)
 @post_routes.route("/all")
 @login_required
 def get_all_post():
-    all_posts = Post.query.all()
+    if current_user:
+        all_posts = Post.query.all()
 
-    print("current_user.id **************************!!!", current_user)
-    all_post_json = [post.to_dict() for post in all_posts]
-    return {"posts": all_post_json}
+        print("current_user.id **************************!!!", current_user)
+        all_post_json = [post.to_dict() for post in all_posts]
+        return {"posts": all_post_json}
+    else:
+        return {'message': 'Unauthorized user', "statusCode": 403}
+
 
 
 
@@ -99,8 +103,8 @@ def edit_post(id):
         new_post.image_url = form.data['image_url']
         new_post.caption = form.data['caption']
         new_post.location = form.data['location']
-        
-        
+
+
         db.session.commit()
         # print("new_post********************", new_post.to_dict())
         # print("new_post********************", new_post)
@@ -111,18 +115,18 @@ def edit_post(id):
         return jsonify(form.errors)
 
 
-#Delete a post 
+#Delete a post
 
 @post_routes.delete('/<int:id>')
 @login_required
 def delete_post(id):
 
-    
+
     post = Post.query.get(id)
     print('current_user.id******************** ', current_user.id)
     print('Post.owner_id******************** ', post.owner_id)
     if current_user.id == post.owner_id:
-        
+
         db.session.delete(post)
         db.session.commit()
         return {'message': 'Successfully deleted'}
@@ -158,6 +162,7 @@ def create_comment(id):
         raise Exception("Unauthorized user")
 
 
+
 # get all comment for post id
 @post_routes.route('/comment/<int:post_id>')
 @login_required
@@ -166,3 +171,4 @@ def get_all_comment(post_id):
     print("*****************************all_comment ", all_comment)
     all_comment_json = [comment.to_dict() for comment in all_comment]
     return {"comments": all_comment_json}
+

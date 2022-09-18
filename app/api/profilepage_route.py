@@ -30,12 +30,14 @@ def editProfile(userId):
     bio = editForm.data['bio']
     email = editForm.data['email']
     gender = editForm.data['gender']
+    name = editForm.data['name']
     profileimage = editForm.data['profile_img']
 
     userprofile.username = username
     userprofile.bio = bio
     userprofile.email = email
     userprofile.gender = gender
+    userprofile.name = name
     userprofile.profileimage = profileimage
 
     db.session.commit()

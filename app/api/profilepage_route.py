@@ -21,11 +21,6 @@ def editProfile(userId):
   editForm = editProfileForm()
   editForm['csrf_token'].data = request.cookies['csrf_token']
   userprofile = User.query.get(userId)
-  print("-------")
-  print(current_user.id)
-  print("------")
-  print(userId)
-  print("-------")
   #check if profile exist / throws 404
   if not userprofile:
     return {'message': 'Profile does not exist', "statusCode": 404}

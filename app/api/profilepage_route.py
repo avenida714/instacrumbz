@@ -52,3 +52,20 @@ def editProfile(userId):
     return userprofile.to_dict()
   else:
     return {'message': 'Unauthorized user', "statusCode": 403}
+
+
+# # Follow and Unfollow Profile Feature
+# @profile_route.route('/<int:id>/profile_follows')
+# @login_required
+# def follow_unfollow_profile(id):
+
+#     user = User.query.get_or_404(id)
+
+#     if current_user not in user.followers:
+#         user.followers.append(current_user)
+#         db.session.commit()
+#     else:
+#         user.followers.remove(current_user)
+#         db.session.commit()
+
+#     return {'user': user.to_dict()}

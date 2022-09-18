@@ -40,4 +40,5 @@ def editProfile(userId):
 
     db.session.commit()
     return userprofile.to_dict()
-  raise Exception("test error")
+  else:
+    return {'message': 'Unauthorized user', "statusCode": 403}

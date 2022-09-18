@@ -52,5 +52,5 @@ def edit_comment(id):
         print("*********************************: ", edited_comment.to_dict())
         db.session.commit()
         return edited_comment.to_dict()
-    # else:
-    #     return {'message': 'Unauthorized user', "statusCode": 403}
+    else:
+        return {'message': 'Unauthorized user', "statusCode": 403}

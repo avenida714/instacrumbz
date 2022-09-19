@@ -13,6 +13,8 @@ import UserProfilePage from './components/ProfilePage';
 
 import { LiveFeedPage } from './components/LiveFeedPage';
 import { CurrentUserPage } from './components/UsersPostCard';
+import SinglePost from './components/SinglePost';
+
 
 
 
@@ -35,18 +37,23 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
+
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
         <ProtectedRoute path='/profile/:userId' exact={true} >
           <UserProfilePage />
         </ProtectedRoute>
@@ -57,6 +64,10 @@ function App() {
 
         <ProtectedRoute path='/current' exact={true} >
           <CurrentUserPage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/post/:postId' exact={true} >
+          <SinglePost />
         </ProtectedRoute>
 
       </Switch>

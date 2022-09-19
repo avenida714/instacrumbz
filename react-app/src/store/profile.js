@@ -6,14 +6,14 @@ const EDIT_USERPROFILE = 'userprofile/EDIT_USERPROFILE';
 const loadProfile = (userId) => {
   return {
     type: LOAD_USERPROFILE,
-    payload: userId
+    userId
   }
 }
 
 const editProfile = (userId) => {
   return {
     type: EDIT_USERPROFILE,
-    payload: userId
+    userId
   }
 }
 
@@ -49,10 +49,10 @@ const userProfileReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case LOAD_USERPROFILE:
-      newState = action.payload;
-      return newState;
+      newState = action.userId;
+      return {...newState};
     case EDIT_USERPROFILE:
-      newState = action.payload;
+      newState = action.userId;
       return newState;
     default:
       return state;

@@ -23,7 +23,7 @@
 }
 
 .icon-div {
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   max-height: 100%;
   display: flex;
   justify-content: space-between;
@@ -41,7 +41,7 @@
 }
 
 .photo-div-inner {
-  border: 2px solid red;
+  /* border: 2px solid red; */
 
   max-height: 100%;
   display: flex;
@@ -49,7 +49,7 @@
 
 }
 .photo-div-outer {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   max-height: 100%;
   display: flex;
   align-items: center;

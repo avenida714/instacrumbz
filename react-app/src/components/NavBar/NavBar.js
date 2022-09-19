@@ -10,13 +10,18 @@ import {TbSquarePlus} from 'react-icons/tb'
 import {FaRegCompass,FaRegPaperPlane } from 'react-icons/fa'
 import {TiHeartOutline} from 'react-icons/ti'
 
-import {ReactComponent as Compass } from "./compass-icon.png"
+
+import logo from './instacrumbz-logo.png'
+// import compass from './svgexport-20.jpg'
 
 const NavBar = () => {
   return (
     <nav className="NavBar-Outermost">
       <div className="NavBar-Div">
 
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <img src={logo} alt='logo'></img>
+            </NavLink>
 
           <NavLink to='/' exact={true} activeClassName='active'>
             <MdHomeFilled />
@@ -31,7 +36,8 @@ const NavBar = () => {
           </NavLink>
 
           <NavLink to='/' exact={true} activeClassName='active'>
-            <FaRegCompass />
+            {/* <img src={compass} alt='compass'></img> */}
+            <FaRegCompass/>
           </NavLink>
 
           <NavLink to='/' exact={true} activeClassName='active'>

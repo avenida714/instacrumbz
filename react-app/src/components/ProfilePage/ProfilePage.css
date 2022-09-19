@@ -1,1 +1,28 @@
+.mainProfileContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-left: 15%;
+  margin-right: 15%;
+  border: 1px solid red;
+}
 
+.innerProfileContainer{
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.profileInfoContainer {
+  border: 1px solid red
+}
+
+.profilePic {
+  border: 1px solid red
+}
+
+.profileDetails {
+  border: 1px solid red
+}

@@ -11,7 +11,7 @@ const UserProfilePage = () => {
   const userPosts = useSelector((state) => state.profile.posts);
   const profile = useSelector((state) => state.profile.profile);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("here=====",profile)
+  console.log("here=====",userPosts)
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
@@ -26,15 +26,14 @@ const UserProfilePage = () => {
         <div className='innerProfileContainer'>
             {profile.map((profile)=>{
               return(
-                <div>
-                  <h1>{profile.name}</h1>
-                  <div>
+                <div className='profileInfoContainer' key={profile.id}>
+                  <div className='profilePic'><img src={profile.profile_img}></img></div>
+                  <div className='profileDetails'>
+                    <h1>{profile.name}</h1>
                     <span>{userPosts.length} posts </span>
                     <span>{profile.followers.length} followers</span>
                     <span> {profile.following.length} following</span>
-
                   </div>
-
                   <div>{profile.bio}</div>
                 </div>
               )
@@ -44,7 +43,7 @@ const UserProfilePage = () => {
         <div className='userPostContainer'>
             {userPosts.map((posts)=>{
               return (
-                <div className='eachUserPost'>
+                <div className='eachUserPost' key={posts.id} >
                   <div>{posts.caption}</div>
                 </div>
               )

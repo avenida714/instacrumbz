@@ -10,8 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import UserProfilePage from './components/ProfilePage';
 
-
-import { LiveFeedPage } from './components/LiveFeedPage';
+import LiveFeedPage from './components/LiveFeedPage';
 import { CurrentUserPage } from './components/UsersPostCard';
 import SinglePost from './components/SinglePost';
 import LoginFormModal from './components/LoginFormModal';

@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams, useHistory } from "react-router-dom";
 import { editUserProfile, loadUserProfile } from "../../store/profile";
 
-
 const EditProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   let { userId } = useParams();
   userId = Number(userId);
+  const sessionUser = useSelector((state) => state.session.user);
   const profile = useSelector((state) => state.session.user);
-  console.log("here-------", profile)
+  console.log("here-------", profile);
 
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
@@ -32,13 +32,13 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (profile.id) {
-      setIsLoaded(true)
-      setName(profile.name)
-      setBio(profile.bio)
-      setGender(profile.gender)
-      setProfileImage(profile.profile_img)
+      setIsLoaded(true);
+      setName(profile.name);
+      setBio(profile.bio);
+      setGender(profile.gender);
+      setProfileImage(profile.profile_img);
     }
-  }, [profile])
+  }, [profile]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,14 +50,13 @@ const EditProfile = () => {
       profileImage: profileImage,
     };
 
-    if (submitSuccess) {
-      return <Redirect to={`/profile/${userId}`} />;
-    }
 
 
     return dispatch(editUserProfile(userId, data))
-      .then(async(res) => {
-        setSubmitSuccess(true)
+      .then(async (res) => {
+        setSubmitSuccess(true);
+        let path = `/profile/${userId}/`;
+        history.push(path);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -65,18 +64,19 @@ const EditProfile = () => {
           if (data.errors) {
             setErrors(data.errors);
           } else if (data.message) {
-            setErrors([data.message])
+            setErrors([data.message]);
           }
         }
       });
   };
 
+
   if (isLoaded) {
     return (
       <div className="editProfileContainer">
-        <form className='profileEdit' onSubmit={handleSubmit}>
+        <form className="profileEdit" onSubmit={handleSubmit}>
           <ul>
-            {errors.map((error,idx) => (
+            {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
@@ -96,7 +96,7 @@ const EditProfile = () => {
               placeholder="Bio"
               value={bio}
               onChange={updateBio}
-              />
+            />
           </label>
           <label>
             <span>Gender:</span>
@@ -105,7 +105,7 @@ const EditProfile = () => {
               placeholder="Gender"
               value={gender}
               onChange={updateGender}
-              />
+            />
           </label>
           <label>
             <span>Profile Image:</span>
@@ -114,13 +114,10 @@ const EditProfile = () => {
               placeholder="Profile Image URL"
               value={profileImage}
               onChange={updateProfileImage}
-              />
+            />
           </label>
           <div className="editProfileButton">
-            <button
-              className="backButton"
-              onClick={history.goBack}
-            >
+            <button className="backButton" onClick={history.goBack}>
               Go Back
             </button>
             <button className="editProfileButton" type="submit">
@@ -129,10 +126,10 @@ const EditProfile = () => {
           </div>
         </form>
       </div>
-    )
+    );
   } else {
-    return <div>Loading... </div>
+    return <div>Loading... </div>;
   }
 };
 
-export default EditProfile
+export default EditProfile;

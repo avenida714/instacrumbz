@@ -13,19 +13,21 @@
   justify-content: center;
   border: 1px solid red;
   width: 100%;
+  /* border-bottom: 1px solid rgb(216, 203, 203); */
 }
 
 .profileInfoContainer {
   display: flex;
   border: 1px solid red;
   margin-bottom: 60px;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .profilePic > img {
   height:150px;
   width: 150px;
   margin-right: 100px;
+  margin-left: 10px;
   border-radius: 50%;
   border: 1px solid red
 }
@@ -33,4 +35,13 @@
 .profileDetails {
   border: 1px solid red;
   font-family: 'Roboto', sans-serif;
+  padding: 10px
+}
+
+.profileDetails > span {
+  font-weight: 500;
+}
+
+.profileBio {
+  margin-top: 10px;
 }

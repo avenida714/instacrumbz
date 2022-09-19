@@ -16,13 +16,21 @@
 }
 
 .profileInfoContainer {
-  border: 1px solid red
+  display: flex;
+  border: 1px solid red;
+  margin-bottom: 60px;
+  margin-top: 60px;
 }
 
-.profilePic {
+.profilePic > img {
+  height:150px;
+  width: 150px;
+  margin-right: 100px;
+  border-radius: 50%;
   border: 1px solid red
 }
 
 .profileDetails {
-  border: 1px solid red
+  border: 1px solid red;
+  font-family: 'Roboto', sans-serif;
 }

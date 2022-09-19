@@ -27,14 +27,14 @@ const UserProfilePage = () => {
             {profile.map((profile)=>{
               return(
                 <div className='profileInfoContainer' key={profile.id}>
-                  <div className='profilePic'><img src={profile.profile_img}></img></div>
+                  <div className='profilePic'><img src='https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png'></img></div>
                   <div className='profileDetails'>
                     <h1>{profile.name}</h1>
                     <span>{userPosts.length} posts </span>
                     <span>{profile.followers.length} followers</span>
                     <span> {profile.following.length} following</span>
+                    <div>{profile.bio}</div>
                   </div>
-                  <div>{profile.bio}</div>
                 </div>
               )
             })}

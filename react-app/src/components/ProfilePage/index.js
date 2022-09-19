@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
 import "./ProfilePage.css";
 
 const UserProfilePage = () => {
+  const history = useHistory();
   let { userId } = useParams();
   userId = Number(userId);
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const userPosts = useSelector((state) => state.profile.posts);
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
@@ -23,6 +25,16 @@ const UserProfilePage = () => {
         setFindAProfileStatus(res.status);
       });
   }, [dispatch]);
+
+  const handleEditProfile = (e, userId) => {
+    e.preventDefault();
+    let path = `/profile/edit/${userId}`;
+    history.push(path);
+  };
+
+  const hideButton = {
+    display: "none",
+  };
 
   if (isLoaded) {
     if (findAProfileStatus === 200) {
@@ -40,7 +52,12 @@ const UserProfilePage = () => {
                       <div className="profileDetails">
                         <div className="profileDetailHeader">
                           <h2 className="profileUserName">{profile.name}</h2>
-                          <button>edit profile</button>
+                          {sessionUser && profile.id === sessionUser.id ? (
+                            // add style:{hideButton} when i need to hide button for spot owner after presentation
+                            <button onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>
+                          ) : (
+                            <button style={hideButton} onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>
+                          )}
                         </div>
                         <span>{userPosts.length}</span> posts
                         <span> {profile.followers.length}</span> followers

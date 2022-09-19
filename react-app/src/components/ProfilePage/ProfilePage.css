@@ -18,7 +18,7 @@
 
 .profileInfoContainer {
   display: flex;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-bottom: 60px;
   margin-left: 10px;
   margin-top: 20px;
@@ -31,6 +31,7 @@
 
 .profileUserName {
   margin-right: 2rem;
+  font-weight: 400;
 }
 
 .profileDetailHeader > button {
@@ -50,7 +51,7 @@
 }
 
 .profileDetails {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: 'Roboto';
   width: 100%;
   padding: 10px

@@ -1,0 +1,21 @@
+.outter-div-pc {
+    height: 800px;
+    width: 600px;
+    border: 1px red solid;
+}
+
+
+.post-card-img-container {
+    vertical-align: bottom;
+    height: 500px;
+    width: 600px;
+    border: 1px black solid
+}
+
+
+.post-card-img {
+    object-fit: cover;
+    vertical-align: bottom;
+    height: 100% !important;
+    width: 100% !important;
+}

@@ -1,1 +1,10 @@
 /* TODO Add site wide styles */
+.outter-most-wrapper {
+    max-width: 100%;
+}
+
+.live-feed-display {
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}

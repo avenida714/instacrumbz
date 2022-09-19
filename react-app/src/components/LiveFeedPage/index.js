@@ -26,7 +26,7 @@ export const LiveFeedPage  = () => {
     <div>
      {posts.map((post) => (
       <div key={post.id}>
-        THIS IS THE CARD
+       [--------------------------------------]
         <div>
           Captions:{post.caption}
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -18,12 +18,17 @@ import LoginFormModal from './components/LoginFormModal';
 
 
 
+
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
+  const user = useSelector(state => state.session.user)
+  const history = useHistory()
+
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -33,22 +38,16 @@ function App() {
     return null;
   }
 
-  return (
+
+
+  return user ? (
     <BrowserRouter>
+
       <NavBar />
       <Switch>
 
-        <Route path='/login' exact={true}>
-          {/* <LoginForm /> */}
-          <LoginFormModal />
-        </Route>
-
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId' exact={true} >
@@ -73,7 +72,21 @@ function App() {
 
       </Switch>
     </BrowserRouter>
-  );
+  ) :
+    <BrowserRouter>
+      <Switch>
+        <Route path='/login' exact={true}>
+          <LoginForm />
+        </Route>
+
+        <Route path='/sign-up' exact={true}>
+          <SignUpForm />
+        </Route>
+        
+      </Switch>
+    </BrowserRouter>
+
+
 }
 
 export default App;

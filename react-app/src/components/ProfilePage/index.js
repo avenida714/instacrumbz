@@ -53,7 +53,6 @@ const UserProfilePage = () => {
                         <div className="profileDetailHeader">
                           <h2 className="profileUserName">{profile.name}</h2>
                           {sessionUser && profile.id === sessionUser.id ? (
-                            // add style:{hideButton} when i need to hide button for spot owner after presentation
                             <button onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>
                           ) : (
                             <button style={hideButton} onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>

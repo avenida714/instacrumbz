@@ -4,44 +4,44 @@ from app.models import db, Post
 # Adds demo posts, you can add other posts here if you want
 def seed_posts():
     post1 = Post(
-        image_url="preview.jpg",
-        caption="Demo User Post 1",
-        location="USA",
+        image_url="https://lovechicliving.co.uk/wp-content/uploads/2014/11/Dirty-dishes.jpg",
+        caption="Peas and thank you! - DUP1",
+        location="Grandma's",
         owner_id=1
     )
     post2 = Post(
-        image_url="preview.jpg",
-        caption="Demo User Post 2",
+        image_url="https://c2.staticflickr.com/6/5241/5255943248_665bd55501_b.jpg",
+        caption="Winner Winner Chicken Dinner! - DUP2",
         location="USA",
         owner_id=1
     )
     post3 = Post(
-        image_url="preview.jpg",
-        caption="Demo User Post 3",
+        image_url="https://thumbor.thedailymeal.com/eChHs6UmjIXEmt_uLgTcVIEtH8g=/840x565/https://www.thedailymeal.com/sites/default/files/2018/06/20/20_Not_finished_food_on_plate_istock_edit.jpg",
+        caption="Mom's Spaghetti, knees weak arms are heavy... DUP3",
         location="USA",
         owner_id=1
     )
     post4 = Post(
-        image_url="preview.jpg",
-        caption="David Test Post 1",
+        image_url="https://brghealth.com/brg/wp-content/uploads/2014/08/Dinner-plate-fork-knife-finished-eating.jpg",
+        caption="Criss-cross, not apple sauce? - David1",
         location="USA",
         owner_id=4
     )
     post5 = Post(
-        image_url="preview.jpg",
-        caption="Alec Test Post 1",
+        image_url="http://images.fineartamerica.com/images-medium-large/crumbs-in-white-plate-sami-sarkis.jpg",
+        caption="Crumbs, crumbs, crumbs! - Alec1",
         location="USA",
         owner_id=5
     )
     post6 = Post(
-        image_url="preview.jpg",
-        caption="Ray Test Post 1",
+        image_url="https://images.mygoodtimes.in/wp-content/uploads/2020/02/18063505/leftover-food.jpg",
+        caption="Seconds? - Ray1",
         location="USA",
         owner_id=6
     )
     post7 = Post(
-        image_url="preview.jpg",
-        caption="Rudy Test Post 1",
+        image_url="https://i.guim.co.uk/img/media/c4c4f854ac721bc932b9b4463f87cb20451e3c11/0_220_5616_3370/master/5616.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=60a375ac2327f5e438b789e0b9cbfa61",
+        caption="Charcuterie, anyone? - Rudy1",
         location="USA",
         owner_id=7
     )

@@ -4,18 +4,21 @@
 }
 
 .NavBar-Outermost {
-  border: 3px solid red;
+  /* border: 3px solid red; */
   height: 65px;
   width: 100%;
   position: fixed;
   display: flex;
+  border-bottom: 1px #d4d1d1 solid;
   justify-content: space-between;
 
 }
 
 .logo {
-  border: 3px solid red;
+  /* border: 3px solid red; */
   max-height: 90%;
+
+  background: transparent !important;
 
 }
 

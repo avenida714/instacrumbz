@@ -37,7 +37,10 @@ const UserProfilePage = () => {
                       <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png"></img>
                     </div>
                     <div className="profileDetails">
-                      <h2>{profile.name}</h2>
+                      <div className="profileDetailHeader">
+                        <h2 className="profileUserName">{profile.name}</h2>
+                        <button>edit profile</button>
+                      </div>
                       <span>{userPosts.length}</span> posts
                       <span> {profile.followers.length}</span> followers
                       <span> {profile.following.length} </span> following
@@ -50,7 +53,7 @@ const UserProfilePage = () => {
               <div>Profile not found</div>
             )}
           </div>
-          
+
           <div className="userPostContainer">
             {userPosts && userPosts.length ? (
               userPosts.map((posts) => {

@@ -3,14 +3,14 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 2rem;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 20%;
+  margin-right: 20%;
   border: 1px solid red;
+  background-color: rgb(249, 249, 249);
 }
 
 .innerProfileContainer{
   display: flex;
-  justify-content: center;
   border: 1px solid red;
   width: 100%;
   /* border-bottom: 1px solid rgb(216, 203, 203); */
@@ -20,7 +20,23 @@
   display: flex;
   border: 1px solid red;
   margin-bottom: 60px;
+  margin-left: 10px;
   margin-top: 20px;
+  width: 90%;
+}
+
+.profileDetailHeader {
+  display: flex;
+}
+
+.profileUserName {
+  margin-right: 2rem;
+}
+
+.profileDetailHeader > button {
+  height: 45px;
+  width: 80px;
+  align-self: center;
 }
 
 .profilePic > img {
@@ -30,11 +46,13 @@
   margin-left: 10px;
   border-radius: 50%;
   border: 1px solid red
+
 }
 
 .profileDetails {
   border: 1px solid red;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
+  width: 100%;
   padding: 10px
 }
 

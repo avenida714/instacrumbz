@@ -37,13 +37,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-
         <Route path='/login' exact={true}>
           {/* <LoginForm /> */}
           <LoginFormModal />
         </Route>
+
+      <NavBar />
+      <Switch>
+
 
         <Route path='/sign-up' exact={true}>
           <SignUpForm />

@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import UserProfilePage from './components/ProfilePage';
 
 
 import { LiveFeedPage } from './components/LiveFeedPage';
@@ -42,6 +43,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/:userId' exact={true} >
+          <UserProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <LiveFeedPage />

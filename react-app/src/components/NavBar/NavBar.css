@@ -7,7 +7,7 @@
   /* border: 3px solid red; */
   height: 65px;
   width: 100%;
-  position: fixed;
+  position: relative;
   display: flex;
   border-bottom: 1px #d4d1d1 solid;
   justify-content: space-between;

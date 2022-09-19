@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { editUserProfile, loadUserProfile } from "../../store/profile";
+import './EditProfile.css'
 
 const EditProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   let { userId } = useParams();
   userId = Number(userId);
-  const sessionUser = useSelector((state) => state.session.user);
   const profile = useSelector((state) => state.session.user);
   console.log("here-------", profile);
 

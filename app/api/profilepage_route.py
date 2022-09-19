@@ -14,7 +14,7 @@ def profile_page(userId):
   profile = [userprofile.to_dict()]
   allposts = Post.query.filter(Post.owner_id == userId).all()
   posts = [post.to_dict() for post in allposts]
-
+  print("_---------------------", allposts)
   res = {
     'profile': profile,
     'posts': posts

@@ -7,17 +7,21 @@ const UserProfilePage = () => {
   let { userId } = useParams();
   userId = Number(userId);
   const dispatch = useDispatch()
-  const currentUser = useSelector(state => state.profile);
+  const currentUser = useSelector(state => state.session.user);
+
+  const profile = useSelector(state => state.profile);
+  const userProfile = Object.values(profile)
   console.log("here----")
-  console.log(currentUser)
+  console.log("=======" , currentUser)
+
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
   }, [dispatch])
 
   return (
-    <div>
-     <h1>test</h1>
+    <div className='mainProfileContainer'>
+        <h1>{currentUser.email}</h1>
     </div>
   )
 }

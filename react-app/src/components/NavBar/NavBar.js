@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import LogoutButton from "../auth/LogoutButton";
 
@@ -19,12 +19,26 @@ const NavBar = () => {
 
   const userLoggedIn = useSelector(state => state.session.user);
 
+  const urlLocation = useLocation()
+  const pathName = urlLocation.pathname
+
+  console.log('this is the pathname **************',pathName)
+
   const [homeButtonActive, setHomeButtonActive] = useState();
   const [plusButtonActive, setPlusButtonActive] = useState();
   const [compassButtonActive, setCompassButtonActive] = useState();
   const [heartButtonActive, setHeartButtonActive] = useState();
 
 
+
+
+  // useEffect(() => {
+  //   if urlLocation
+
+  //   return () => {
+  //     second
+  //   }
+  // }, [homeButtonActive, plusButtonActive, compassButtonActive, heartButtonActive])
 
 
 

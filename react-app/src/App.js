@@ -14,6 +14,7 @@ import UserProfilePage from './components/ProfilePage';
 import { LiveFeedPage } from './components/LiveFeedPage';
 import { CurrentUserPage } from './components/UsersPostCard';
 import SinglePost from './components/SinglePost';
+import LoginFormModal from './components/LoginFormModal';
 
 
 
@@ -39,7 +40,8 @@ function App() {
       <Switch>
 
         <Route path='/login' exact={true}>
-          <LoginForm />
+          {/* <LoginForm /> */}
+          <LoginFormModal />
         </Route>
 
         <Route path='/sign-up' exact={true}>

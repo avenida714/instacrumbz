@@ -75,13 +75,13 @@ def seed_users():
         )
 
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.add(david)
-    db.session.add(alec)
-    db.session.add(ray)
-    db.session.add(rudy)
+    db.session.add(demo) #1
+    db.session.add(marnie) #2
+    db.session.add(bobbie) #3
+    db.session.add(david) #4
+    db.session.add(alec) #5
+    db.session.add(ray) #6
+    db.session.add(rudy) #7
 
 
     db.session.commit()

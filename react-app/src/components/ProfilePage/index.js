@@ -8,8 +8,10 @@ const UserProfilePage = () => {
   let { userId } = useParams();
   userId = Number(userId);
   const dispatch = useDispatch()
+  const userPosts = useSelector((state) => state.profile.posts);
   const profile = useSelector((state) => state.profile.profile);
   const [isLoaded, setIsLoaded] = useState(false);
+  console.log("here=====",userPosts)
 
 
 
@@ -26,9 +28,20 @@ const UserProfilePage = () => {
         <div className='innerProfileContainer'>
             {profile.map((profile)=>{
               return(
-                <h1>{profile.name}</h1>
+                <div>
+                  <h1>{profile.name}</h1>
+                  <div>{profile.bio}</div>
+                </div>
               )
             })}
+        </div>
+        <div className='userPostContainer'>
+
+            {/* {userPosts.map((posts)=>{
+              return (
+
+              )
+            })} */}
         </div>
       </div>
     )

@@ -11,10 +11,12 @@ function SinglePost() {
     const post = useSelector(state => state.posts[postId])
     // const likes = useSelector(state => state.posts[postId].likes)
     // console.log("*******************post", post)
-   const currentUser = useSelector(state => state.session.user)
-   const viewedUser = useSelector(state => state.posts)
-  
-   console.log("*******************viewedUser", viewedUser)
+//    const currentUser = useSelector(state => state.session.user)
+//    const viewedUserObj = useSelector(state => state.posts)
+//    const viewedUser = Object.values(viewedUserObj)
+//    const username = viewedUser.map((user) => user.user.username)
+
+//    console.log("*******************username", username)
 
     useEffect(() => {
         dispatch(getOnePostById(postId))

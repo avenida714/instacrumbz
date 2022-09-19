@@ -12,11 +12,11 @@ export const CurrentUserPage  = () => {
 
   
     const postObj = useSelector(state => state.posts)
-    console.log("***********THIS IS THE POST OBJECT *************", postObj)
+    // console.log("***********THIS IS THE POST OBJECT *************", postObj)
   
     const posts = Object.values(postObj)
   
-    console.log("***********THIS IS OBJECT.values(postObj)*************", posts)
+    // console.log("***********THIS IS OBJECT.values(postObj)*************", posts)
    
     useEffect(() => {
     dispatch(loadCurrUserPosts())

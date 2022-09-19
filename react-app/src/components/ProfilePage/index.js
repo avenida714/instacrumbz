@@ -12,7 +12,7 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("here=====", userPosts);
+  console.log("here=====", profile);
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))

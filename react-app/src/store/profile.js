@@ -26,13 +26,11 @@ export const loadUserProfile = (userId) => async (dispatch) => {
   };
 };
 
-export const editUserProfile = (profile, userId) => async (dispatch) => {
-  const res = await fetch(`/api/profile/${userId}`, {
-    method: 'PUT',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(profile)
+export const editUserProfile = (userId, profile) => async (dispatch) => {
+  const res = await fetch(`/api/profile/edit/${userId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(profile),
   });
   if (res.ok) {
     const editedUserProfile = await res.json();

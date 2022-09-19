@@ -14,6 +14,7 @@ import LiveFeedPage from './components/LiveFeedPage';
 import { CurrentUserPage } from './components/UsersPostCard';
 import SinglePost from './components/SinglePost';
 import LoginFormModal from './components/LoginFormModal';
+import EditProfile from './components/EditProfile';
 
 
 
@@ -57,6 +58,10 @@ function App() {
 
         <ProtectedRoute path='/profile/:userId' exact={true} >
           <UserProfilePage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/profile/edit/:userId' exact={true} >
+          <EditProfile />
         </ProtectedRoute>
 
         <ProtectedRoute path='/' exact={true} >

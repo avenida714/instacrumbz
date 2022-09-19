@@ -23,7 +23,7 @@ def profile_page(userId):
 
 
 #EDIT PROFILE
-@profile_route.route('/<int:userId>', methods=['PUT'])
+@profile_route.route('/edit/<int:userId>', methods=['PUT'])
 @login_required
 def editProfile(userId):
   editForm = editProfileForm()
@@ -34,18 +34,18 @@ def editProfile(userId):
     return {'message': 'Profile does not exist', "statusCode": 404}
   #check if logged in user is profile owner / throw 403
   if userId == current_user.id:
-    username = editForm.data['username']
-    bio = editForm.data['bio']
-    email = editForm.data['email']
-    gender = editForm.data['gender']
+    # username = editForm.data['username']
     name = editForm.data['name']
+    bio = editForm.data['bio']
+    # email = editForm.data['email']
+    gender = editForm.data['gender']
     profileimage = editForm.data['profile_img']
 
-    userprofile.username = username
-    userprofile.bio = bio
-    userprofile.email = email
-    userprofile.gender = gender
+    # userprofile.username = username
     userprofile.name = name
+    userprofile.bio = bio
+    # userprofile.email = email
+    userprofile.gender = gender
     userprofile.profileimage = profileimage
 
     db.session.commit()

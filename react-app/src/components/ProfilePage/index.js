@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
 import "./ProfilePage.css";
 
 const UserProfilePage = () => {
+  const history = useHistory();
   let { userId } = useParams();
   userId = Number(userId);
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const userPosts = useSelector((state) => state.profile.posts);
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("here=====", userPosts);
+  console.log("here=====", profile);
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
@@ -24,48 +26,65 @@ const UserProfilePage = () => {
       });
   }, [dispatch]);
 
+  const handleEditProfile = (e, userId) => {
+    e.preventDefault();
+    let path = `/profile/edit/${userId}`;
+    history.push(path);
+  };
+
+  const hideButton = {
+    display: "none",
+  };
+
   if (isLoaded) {
     if (findAProfileStatus === 200) {
       return (
-        <div className="mainProfileContainer">
-          <div className="innerProfileContainer">
-            {profile ? (
-              profile.map((profile) => {
-                return (
-                  <div className="profileInfoContainer" key={profile.id}>
-                    <div className="profilePic">
-                      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png"></img>
-                    </div>
-                    <div className="profileDetails">
-                      <div className="profileDetailHeader">
-                        <h2 className="profileUserName">{profile.name}</h2>
-                        <button>edit profile</button>
+        <div className="outter-most-wrapper ">
+          <div className="mainProfileContainer">
+            <div className="innerProfileContainer">
+              {profile ? (
+                profile.map((profile) => {
+                  return (
+                    <div className="profileInfoContainer" key={profile.id}>
+                      <div className="profilePic">
+                        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png"></img>
                       </div>
-                      <span>{userPosts.length}</span> posts
-                      <span> {profile.followers.length}</span> followers
-                      <span> {profile.following.length} </span> following
-                      <div className="profileBio">{profile.bio}</div>
+                      <div className="profileDetails">
+                        <div className="profileDetailHeader">
+                          <h2 className="profileUserName">{profile.name}</h2>
+                          {sessionUser && profile.id === sessionUser.id ? (
+                            // add style:{hideButton} when i need to hide button for spot owner after presentation
+                            <button onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>
+                          ) : (
+                            <button style={hideButton} onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>
+                          )}
+                        </div>
+                        <span>{userPosts.length}</span> posts
+                        <span> {profile.followers.length}</span> followers
+                        <span> {profile.following.length} </span> following
+                        <div className="profileBio">{profile.bio}</div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div>Profile not found</div>
-            )}
-          </div>
+                  );
+                })
+              ) : (
+                <div>Profile not found</div>
+              )}
+            </div>
 
-          <div className="userPostContainer">
-            {userPosts && userPosts.length ? (
-              userPosts.map((posts) => {
-                return (
-                  <div className="eachUserPost" key={posts.id}>
-                    <div>{posts.caption}</div>
-                  </div>
-                );
-              })
-            ) : (
-              <div>no posts</div>
-            )}
+            <div className="userPostContainer">
+              {userPosts && userPosts.length ? (
+                userPosts.map((posts) => {
+                  return (
+                    <div className="eachUserPost" key={posts.id}>
+                      <img className='profileimg' src={posts.image_url}></img>
+                    </div>
+                  );
+                })
+              ) : (
+                <div>no posts</div>
+              )}
+            </div>
           </div>
         </div>
       );

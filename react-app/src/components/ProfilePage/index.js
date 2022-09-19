@@ -27,45 +27,47 @@ const UserProfilePage = () => {
   if (isLoaded) {
     if (findAProfileStatus === 200) {
       return (
-        <div className="mainProfileContainer">
-          <div className="innerProfileContainer">
-            {profile ? (
-              profile.map((profile) => {
-                return (
-                  <div className="profileInfoContainer" key={profile.id}>
-                    <div className="profilePic">
-                      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png"></img>
-                    </div>
-                    <div className="profileDetails">
-                      <div className="profileDetailHeader">
-                        <h2 className="profileUserName">{profile.name}</h2>
-                        <button>edit profile</button>
+        <div className="outter-most-wrapper ">
+          <div className="mainProfileContainer">
+            <div className="innerProfileContainer">
+              {profile ? (
+                profile.map((profile) => {
+                  return (
+                    <div className="profileInfoContainer" key={profile.id}>
+                      <div className="profilePic">
+                        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png"></img>
                       </div>
-                      <span>{userPosts.length}</span> posts
-                      <span> {profile.followers.length}</span> followers
-                      <span> {profile.following.length} </span> following
-                      <div className="profileBio">{profile.bio}</div>
+                      <div className="profileDetails">
+                        <div className="profileDetailHeader">
+                          <h2 className="profileUserName">{profile.name}</h2>
+                          <button>edit profile</button>
+                        </div>
+                        <span>{userPosts.length}</span> posts
+                        <span> {profile.followers.length}</span> followers
+                        <span> {profile.following.length} </span> following
+                        <div className="profileBio">{profile.bio}</div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div>Profile not found</div>
-            )}
-          </div>
+                  );
+                })
+              ) : (
+                <div>Profile not found</div>
+              )}
+            </div>
 
-          <div className="userPostContainer">
-            {userPosts && userPosts.length ? (
-              userPosts.map((posts) => {
-                return (
-                  <div className="eachUserPost" key={posts.id}>
-                    <div>{posts.caption}</div>
-                  </div>
-                );
-              })
-            ) : (
-              <div>no posts</div>
-            )}
+            <div className="userPostContainer">
+              {userPosts && userPosts.length ? (
+                userPosts.map((posts) => {
+                  return (
+                    <div className="eachUserPost" key={posts.id}>
+                      <img className='profileimg' src={posts.image_url}></img>
+                    </div>
+                  );
+                })
+              ) : (
+                <div>no posts</div>
+              )}
+            </div>
           </div>
         </div>
       );

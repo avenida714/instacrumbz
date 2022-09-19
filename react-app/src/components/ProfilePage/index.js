@@ -12,7 +12,7 @@ const UserProfilePage = () => {
   const profile = useSelector(state => state.profile);
   const userProfile = Object.values(profile)
   console.log("here----")
-  console.log("=======" , currentUser)
+  console.log("=======" , userProfile[1])
 
 
   useEffect(() => {
@@ -21,7 +21,9 @@ const UserProfilePage = () => {
 
   return (
     <div className='mainProfileContainer'>
+        <h1>{currentUser.username}</h1>
         <h1>{currentUser.email}</h1>
+        <h1>{currentUser.bio}</h1>
     </div>
   )
 }

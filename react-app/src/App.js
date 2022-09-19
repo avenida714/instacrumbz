@@ -12,6 +12,9 @@ import UserProfilePage from './components/ProfilePage';
 
 
 import { LiveFeedPage } from './components/LiveFeedPage';
+import { CurrentUserPage } from './components/UsersPostCard';
+
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,9 +50,15 @@ function App() {
         <ProtectedRoute path='/profile/:userId' exact={true} >
           <UserProfilePage />
         </ProtectedRoute>
+
         <ProtectedRoute path='/' exact={true} >
           <LiveFeedPage />
         </ProtectedRoute>
+
+        <ProtectedRoute path='/current' exact={true} >
+          <CurrentUserPage />
+        </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 //Types:
 const CREATE_POST = 'posts/createPost';
-const READ_POST = 'posts/readPost'; // get single post action type
+const READ_ONE_POST = 'posts/readPost'; // get single post action type
 const UPDATE_POST = 'posts/updatePost';
 const DELETE_POST = 'posts/deletePost';
 const LOAD_ALL_POSTS = 'posts/loadPosts'; // get all posts action type maybe can be used for load posts and load all post curr user
@@ -15,30 +15,31 @@ const actionCreatePost = (post) => {
         post
     }
 }
-const actionReadPost = () => {
+const actionReadPost = (post) => {
     return {
-        type: READ_POST,
-        //payload here
+        type: READ_ONE_POST,
+        post
     }
 }
-const actionUpdatePost = () => {
+const actionUpdatePost = (post) => {
     return {
         type: UPDATE_POST,
-        //payload here
+        post
     }
 }
-const actionDeletePost = () => {
+const actionDeletePost = (postId) => {
     return {
         type: DELETE_POST,
-        //payload here
+        postId
     }
 }
-const actionLoadPosts = () => {
+const actionLoadPosts = (posts) => {
     return {
         type: LOAD_ALL_POSTS,
-        //payload here
+        posts
     }
 }
+
 
 
 //Thunks:
@@ -110,6 +111,7 @@ export const getAllPosts = () => async (dispatch) => {
     const response = await fetch(`/api/posts/all`)
     if (response.ok) {
         const data = await response.json()
+        console.log("***********THIS IS THE DATA.POSTS *************",data.posts)
         dispatch(actionLoadPosts(data.posts)) //revist
         return data;
     }
@@ -157,21 +159,33 @@ const initialState = {};
 
 //Reducer:
 const postsReducer = (state = initialState, action) => {
+    let newState = {}
     switch (action.type) {
         case CREATE_POST: {
-            return
+            newState = {...state}
+            newState[action.post.id] = action.post
+            return newState
         }
-        case READ_POST: {
-            return
+        case READ_ONE_POST: {
+            newState = {...state}
+            newState[action.post.id] = action.post
+            return newState
         }
         case UPDATE_POST: {
-            return
+            newState = {...state}
+            newState[action.post.id] = action.post
+            return newState
         }
         case DELETE_POST: {
-            return
+            newState = {...state}
+            delete newState[action.postId]
+            return newState
         }
         case LOAD_ALL_POSTS: {
-            return
+            action.posts.forEach((post) => {
+                newState[post.id] = post
+            })
+            return newState;
         }
         default:
             return state;

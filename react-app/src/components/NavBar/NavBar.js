@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import LogoutButton from "../auth/LogoutButton";
@@ -11,8 +11,23 @@ import { FaRegCompass, FaRegPaperPlane } from "react-icons/fa";
 import { TiHeartOutline } from "react-icons/ti";
 import logo from "./instacrumbz-logo.png";
 import compass from './svgexport-20.jpg'
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+
+
+
+  const userLoggedIn = useSelector(state => state.session.user);
+
+  const [homeButtonActive, setHomeButtonActive] = useState();
+  const [plusButtonActive, setPlusButtonActive] = useState();
+  const [compassButtonActive, setCompassButtonActive] = useState();
+  const [heartButtonActive, setHeartButtonActive] = useState();
+
+
+
+
+
   return (
     <div className="NavBar-Div">
       <nav className="NavBar-Outermost">
@@ -46,14 +61,14 @@ const NavBar = () => {
 
           <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <TiHeartOutline />
-          </NavLink>
-        </div>
 
-        <div className="photo-div-outer">
+          </NavLink>
           <div className="photo-div-inner">
             <img src={compass} alt="profile" className="Profile-Photo"></img>
           </div>
         </div>
+
+
 
 
         {/* <NavLink to="/login" exact={true} activeClassName="active">

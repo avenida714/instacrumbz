@@ -10,7 +10,7 @@ import {TbSquarePlus} from 'react-icons/tb'
 import {FaRegCompass,FaRegPaperPlane } from 'react-icons/fa'
 import {TiHeartOutline} from 'react-icons/ti'
 
-
+import {ReactComponent as Compass } from "./compass-icon.png"
 
 const NavBar = () => {
   return (
@@ -31,7 +31,7 @@ const NavBar = () => {
           </NavLink>
 
           <NavLink to='/' exact={true} activeClassName='active'>
-            <FaRegCompass/>
+            <FaRegCompass />
           </NavLink>
 
           <NavLink to='/' exact={true} activeClassName='active'>

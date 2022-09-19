@@ -1,0 +1,14 @@
+.NavBar-Outermost {
+  border: 3px solid red;
+  height: 65px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+
+}
+
+.logo {
+  border: 3px solid red;
+  max-height: 150px;
+
+}

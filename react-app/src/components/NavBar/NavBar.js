@@ -1,26 +1,27 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 import LogoutButton from '../auth/LogoutButton';
 
-import {MdHomeFilled} from 'react-icons/md'
-import {  } from "react-icons/io";
+import './NavBar.css'
 
+import {MdHomeFilled} from 'react-icons/md'
 import {TbSquarePlus} from 'react-icons/tb'
 import {FaRegCompass,FaRegPaperPlane } from 'react-icons/fa'
 import {TiHeartOutline} from 'react-icons/ti'
-
-
 import logo from './instacrumbz-logo.png'
 // import compass from './svgexport-20.jpg'
+
+
 
 const NavBar = () => {
   return (
     <nav className="NavBar-Outermost">
       <div className="NavBar-Div">
-
+        <div
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img src={logo} alt='logo'></img>
+            <img src={logo} alt='logo' className="logo"></img>
             </NavLink>
 
           <NavLink to='/' exact={true} activeClassName='active'>

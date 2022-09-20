@@ -15,10 +15,7 @@ import SinglePost from '../SinglePost';
 function SinglePostModal( { post }) {
 
   const [showModal, setShowModal] = useState(false);
-  // const dispatch = useDispatch()
-  // const history = useHistory()
 
-  // const params = useParams()
 
 
 
@@ -46,4 +43,10 @@ this goes into profile page map of userPosts
             <SinglePostModal post={post} />
           </div>
 
+
+
+
+
+
+          onClick={<ViewPostModal post={post}
 */

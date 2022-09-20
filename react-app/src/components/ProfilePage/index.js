@@ -90,9 +90,9 @@ const UserProfilePage = () => {
                     <>
                     <div className="eachUserPost" key={post.id}>
                       <img className='profileimg' src={post.image_url} alt="post"></img>
-                      <div key={post.id}>
+
                         <SinglePostModal post={post} />
-                      </div>
+
                     </div>
                     </>
                   );

@@ -1,0 +1,26 @@
+.live-feed-display {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(249, 249, 249);
+    gap: 15px;
+    max-width: 55%;
+    margin-left: auto;
+    /* margin-right: auto; */
+    padding-top: 33px;
+    border: 1px black solid;
+
+}
+
+
+.live-feed-follows {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(249, 249, 249);
+    gap: 15px;
+    max-width: 55%;
+    /* margin-left: auto; */
+    margin-right: auto;
+    padding-top: 33px;
+    height: 300px;
+    border: 1px black solid;
+}

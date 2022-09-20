@@ -14,7 +14,6 @@ def profile_page(userId):
   profile = [userprofile.to_dict()]
   allposts = Post.query.filter(Post.owner_id == userId).all()
   posts = [post.to_dict() for post in allposts]
-  print("_---------------------", allposts)
   res = {
     'profile': profile,
     'posts': posts
@@ -34,38 +33,19 @@ def editProfile(userId):
     return {'message': 'Profile does not exist', "statusCode": 404}
   #check if logged in user is profile owner / throw 403
   if userId == current_user.id:
-    # username = editForm.data['username']
     name = editForm.data['name']
     bio = editForm.data['bio']
-    # email = editForm.data['email']
     gender = editForm.data['gender']
-    profileimage = editForm.data['profile_img']
+    profile_img = editForm.data['profile_img']
 
-    # userprofile.username = username
+
     userprofile.name = name
     userprofile.bio = bio
-    # userprofile.email = email
     userprofile.gender = gender
-    userprofile.profileimage = profileimage
+    userprofile.profile_img = profile_img
 
     db.session.commit()
     return userprofile.to_dict()
   else:
     return {'message': 'Unauthorized user', "statusCode": 403}
 
-
-# # Follow and Unfollow Profile Feature
-# @profile_route.route('/<int:id>/profile_follows')
-# @login_required
-# def follow_unfollow_profile(id):
-
-#     user = User.query.get_or_404(id)
-
-#     if current_user not in user.followers:
-#         user.followers.append(current_user)
-#         db.session.commit()
-#     else:
-#         user.followers.remove(current_user)
-#         db.session.commit()
-
-#     return {'user': user.to_dict()}

@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { editUserProfile, loadUserProfile } from "../../store/profile";
-import './EditProfile.css'
+import "./EditProfile.css";
 
 const EditProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   let { userId } = useParams();
   userId = Number(userId);
-  const profile = useSelector((state) => state.session.user);
-  console.log("here-------", profile);
+  const profile = useSelector((state) => {
+    console.log("STATE");
+    console.log(state);
+    if (state.profile.profile) {
+      return state.profile.profile[0];
+    }
+    return state.profile;
+  });
 
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
@@ -32,6 +38,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (profile.id) {
+      console.log("HERE");
       setIsLoaded(true);
       setName(profile.name);
       setBio(profile.bio);
@@ -47,10 +54,8 @@ const EditProfile = () => {
       name: name,
       bio: bio,
       gender: gender,
-      profileImage: profileImage,
+      profile_img: profileImage,
     };
-
-
 
     return dispatch(editUserProfile(userId, data))
       .then(async (res) => {
@@ -69,7 +74,6 @@ const EditProfile = () => {
         }
       });
   };
-
 
   if (isLoaded) {
     return (

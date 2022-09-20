@@ -13,12 +13,12 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const followUser = () => ({
+const followUser = (user) => ({
   type: FOLLOW_USER,
   user
 })
 
-const unfollowUser = () => ({
+const unfollowUser = (user) => ({
   type: UNFOLLOW_USER,
   user
 })
@@ -110,7 +110,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 }
 
 export const userFollow = (userId) => async (dispatch) => {
-  const res = await fetch(`/api/followers/follow/${userId}`, {
+  const res = await fetch(`/api/followers/profile_follows/${userId}`, {
     method: 'PUT',
     headers: { "Content-Type": "application/json" },
   });
@@ -122,31 +122,31 @@ export const userFollow = (userId) => async (dispatch) => {
 }
 
 export const userUnfollow = (userId) => async (dispatch) => {
-  const res = await fetch(`/api/followers/unfollow/${userId}`, {
+  const res = await fetch(`/api/followers/profile_follows/${userId}`, {
     method: 'PUT',
     headers: { "Content-Type": "application/json" },
   });
   if (res.ok){
     const data = await res.json()
-    dispatch(followUser(data))
+    dispatch(unfollowUser(data))
     return data
   }
 }
 
 export default function reducer(state = initialState, action) {
-  let newState = {};
+  let newState = {...state};
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
     case FOLLOW_USER:
-      newState = {...state}
+      // newState = {...state}
       newState.user.followers.push(action.user)
       return newState
     case UNFOLLOW_USER:
-      newState = {...state}
-      const index = newState.user.followers.findIndex(user = user.id === action.user.id)
+      // newState = {...state}
+      const index = newState.user.followers.findIndex(user => user.id === action.user.id)
       newState.user.followers.splice(index,1)
       return newState
     default:

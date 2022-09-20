@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
+import ToggleFollow from "../FollowButton";
 import "./ProfilePage.css";
 
 const UserProfilePage = () => {
@@ -14,7 +15,14 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("here=====", profile);
+
+  // const sessionUsersFollowers = sessionUser.followers;
+  // let sessionFollowId;
+  // sessionUsersFollowers.forEach((follower) => {
+  //   let sessionUserFollowerId = follower[0];
+  //   sessionUserFollowerId = sessionFollowId;
+  // });
+  // console.log("here-----", sessionFollowId);
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
@@ -46,6 +54,7 @@ const UserProfilePage = () => {
                 profile.map((profile) => {
                   return (
                     <div className="profileInfoContainer" key={profile.id}>
+                      <ToggleFollow profile={profile} />
                       <div className="profilePic">
                         <img src={profile.profile_img}></img>
                       </div>
@@ -53,9 +62,20 @@ const UserProfilePage = () => {
                         <div className="profileDetailHeader">
                           <h2 className="profileUserName">{profile.name}</h2>
                           {sessionUser && profile.id === sessionUser.id ? (
-                            <button className='editProfile' onClick={(e) => handleEditProfile(e, profile.id)}>Edit profile</button>
+                            <button
+                              className="editProfile"
+                              onClick={(e) => handleEditProfile(e, profile.id)}
+                            >
+                              Edit profile
+                            </button>
                           ) : (
-                            <button style={hideButton} className='editProfileButton' onClick={(e) => handleEditProfile(e, profile.id)}>edit profile</button>
+                            <button
+                              style={hideButton}
+                              className="editProfileButton"
+                              onClick={(e) => handleEditProfile(e, profile.id)}
+                            >
+                              edit profile
+                            </button>
                           )}
                         </div>
                         <span>{userPosts.length}</span> posts
@@ -76,7 +96,7 @@ const UserProfilePage = () => {
                 userPosts.map((posts) => {
                   return (
                     <div className="eachUserPost" key={posts.id}>
-                      <img className='profileimg' src={posts.image_url}></img>
+                      <img className="profileimg" src={posts.image_url}></img>
                     </div>
                   );
                 })

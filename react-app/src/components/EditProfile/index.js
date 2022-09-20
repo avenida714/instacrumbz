@@ -117,7 +117,7 @@ const EditProfile = () => {
               type="text"
               placeholder="Profile Image URL"
               value={profileImage}
-              onChange={(e) => setProfileImage(e.target.value)}
+              onChange={updateProfileImage}
             />
           </label>
           <div className="editProfileButton">

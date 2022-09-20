@@ -1,0 +1,63 @@
+* {
+  background-color: rgb(249, 249, 249);
+
+}
+
+.NavBar-Outermost {
+  /* border: 3px solid red; */
+  height: 65px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  border-bottom: 1px #d4d1d1 solid;
+  justify-content: space-between;
+
+}
+
+.logo {
+  /* border: 3px solid red; */
+  max-height: 90%;
+
+  background: transparent !important;
+
+}
+
+.icon-div {
+  /* border: 3px solid blue; */
+  max-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+
+}
+
+.icon {
+  font-size:45px;
+  color:black;
+  margin: 5px;
+
+
+}
+
+.photo-div-inner {
+  /* border: 2px solid red; */
+
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+
+}
+.photo-div-outer {
+  /* border: 2px solid green; */
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+
+}
+
+.Profile-Photo {
+  border-radius: 50%;
+  /* border: 2px solid red; */
+  height: 60px;
+}

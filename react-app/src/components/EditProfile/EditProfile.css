@@ -1,0 +1,11 @@
+.editProfileContainer {
+  display: flex;
+  justify-content: center;
+  width: 35%;;
+  margin: auto;
+  margin-top: 10%;
+  padding:40px;
+  border: 2px double rgb(216, 203, 203);
+  border-radius: 20px;
+  margin-top: 20%;
+}

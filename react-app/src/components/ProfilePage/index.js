@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
+
+//modal
+import ViewPostModal from "../ViewPostModal";
+
+//
+
 import "./ProfilePage.css";
+import SinglePostModal from "../ViewPostModal/SinglePostModal";
+
+
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -14,7 +23,10 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("here=====", profile);
+  // console.log("here=====", profile);
+
+
+  console.log("user posts here ------------------************", userPosts)
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
@@ -73,11 +85,16 @@ const UserProfilePage = () => {
 
             <div className="userPostContainer">
               {userPosts && userPosts.length ? (
-                userPosts.map((posts) => {
+                userPosts.map((post) => {
                   return (
-                    <div className="eachUserPost" key={posts.id}>
-                      <img className='profileimg' src={posts.image_url}></img>
+                    <>
+                    <div className="eachUserPost" key={post.id}>
+                      <img className='profileimg' src={post.image_url} alt="post"></img>
+                      <div key={post.id}>
+                        <SinglePostModal post={post} />
+                      </div>
                     </div>
+                    </>
                   );
                 })
               ) : (

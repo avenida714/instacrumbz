@@ -39,7 +39,7 @@ const UserProfilePage = () => {
   if (isLoaded) {
     if (findAProfileStatus === 200) {
       return (
-        <div className="outter-most-wrapper ">
+        <div className="workingonthis">
           <div className="mainProfileContainer">
             <div className="innerProfileContainer">
               {profile ? (
@@ -47,7 +47,7 @@ const UserProfilePage = () => {
                   return (
                     <div className="profileInfoContainer" key={profile.id}>
                       <div className="profilePic">
-                        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/143.png"></img>
+                        <img src={profile.profile_img}></img>
                       </div>
                       <div className="profileDetails">
                         <div className="profileDetailHeader">

@@ -1,29 +1,29 @@
 //Types:
-const LOAD_USERPROFILE = 'userprofile/LOAD_USERPROFILE';
-const EDIT_USERPROFILE = 'userprofile/EDIT_USERPROFILE';
+const LOAD_USERPROFILE = "userprofile/LOAD_USERPROFILE";
+const EDIT_USERPROFILE = "userprofile/EDIT_USERPROFILE";
 
 //Action Creators:
 const loadProfile = (userId) => {
   return {
     type: LOAD_USERPROFILE,
-    userId
-  }
-}
+    userId,
+  };
+};
 
 const editProfile = (userId) => {
   return {
     type: EDIT_USERPROFILE,
-    userId
-  }
-}
+    userId,
+  };
+};
 
 //Thunks:
 export const loadUserProfile = (userId) => async (dispatch) => {
   const res = await fetch(`/api/profile/${userId}`);
   if (res.ok) {
     const profile = await res.json();
-    dispatch(loadProfile(profile))
-  };
+    dispatch(loadProfile(profile));
+  }
 };
 
 export const editUserProfile = (userId, profile) => async (dispatch) => {
@@ -36,7 +36,7 @@ export const editUserProfile = (userId, profile) => async (dispatch) => {
     const editedUserProfile = await res.json();
     dispatch(editProfile(editedUserProfile));
     return editedUserProfile;
-  };
+  }
 };
 
 //Initial State:
@@ -48,13 +48,14 @@ const userProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_USERPROFILE:
       newState = action.userId;
-      return {...newState};
+      return { ...newState };
     case EDIT_USERPROFILE:
+      console.log(action);
       newState = action.userId;
-      return newState;
+      return { ...newState };
     default:
       return state;
-  };
+  }
 };
 
 export default userProfileReducer;

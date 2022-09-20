@@ -5,7 +5,7 @@ const UPDATE_POST = 'posts/updatePost';
 const DELETE_POST = 'posts/deletePost';
 const LOAD_ALL_POSTS = 'posts/loadPosts'; // get all posts action type maybe can be used for load posts and load all post curr user
 
-const LIKE_POST = 'posts/likePost'; 
+const LIKE_POST = 'posts/likePost';
 const UNLIKE_POST = 'posts/unlikePost';
 
 //Action Creators:
@@ -43,7 +43,7 @@ const actionLoadPosts = (posts) => {
 
 
 //Thunks:
-//TO-DO: example thunk      V -> new post form data goes here from component
+//TO-DO: example thunk      V -> new post form data goes here from component  ***
 export const createAPost = ( ) => async (dispatch) => {
     const response = await fetch('/api/posts/new_post', {
         method: 'POST',

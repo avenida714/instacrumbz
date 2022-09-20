@@ -13,7 +13,7 @@
   display: flex;
   /* border: 1px solid red; */
   width: 100%;
-  border-bottom: 1px solid rgb(216, 203, 203);
+  /* border-bottom: 1px solid rgb(216, 203, 203); */
 }
 
 .profileInfoContainer {
@@ -68,18 +68,21 @@
 .userPostContainer {
   display: flex;
   flex-direction: row;
+  position: relative;
   justify-content: center;
   gap: 10px;
   margin-top: 5%;
   margin-bottom: 5%;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 2%;
+  margin-right: 9%;
   height: 1000px;
+  border-top: 1px solid rgb(216, 203, 203);
 }
 
 .eachUserPost {
-  height: 300px;
-  width: 300px;
+  padding-top: 20px;
+  height: 280px;
+  width: 280px;
 }
 
 .profileimg{

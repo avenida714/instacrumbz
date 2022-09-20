@@ -18,7 +18,8 @@ post_routes = Blueprint('post', __name__)
 @login_required
 def get_all_post():
     if current_user:
-        all_posts = Post.query.all()
+        all_posts = Post.query.order_by(Post.created_at.desc()).all()
+        print("all posts **************************!!!", all_posts)
 
         print("current_user.id **************************!!!", current_user)
         all_post_json = [post.to_dict() for post in all_posts]

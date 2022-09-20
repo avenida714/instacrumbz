@@ -1,43 +1,61 @@
-* {
-  background-color: rgb(249, 249, 249);
+/* * {
+  background-color: white;
+} */
 
+.navbar-wrapper {
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 60;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
 }
 
-.NavBar-Outermost {
-  /* border: 3px solid red; */
-  height: 65px;
-  width: 100%;
-  position: relative;
+.navbar-inner {
+  align-items: center;
+  box-sizing: border-box;
   display: flex;
-  border-bottom: 1px #d4d1d1 solid;
+  flex-direction: row;
+  flex-shrink: 0;
+  height: 60px;
   justify-content: space-between;
+  max-width: 1100px;
+  padding: 0 20px;
+  width: 100%;
+  z-index: 10;
+}
 
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+  scale: 0.5;
 }
 
 .logo {
   /* border: 3px solid red; */
-  max-height: 70%;
-
+  max-height: 90%;
   background: transparent !important;
-
 }
 
 .icon-div {
   /* border: 3px solid blue; */
   max-height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  width: 300px;
-
+  gap: 15px;
+  width: 350px;
 }
 
 .icon {
-  font-size:34px;
+  font-size: 30px;
   color:black;
   margin: 5px;
-
-
 }
 
 .photo-div-inner {
@@ -60,4 +78,10 @@
   border-radius: 50%;
   /* border: 2px solid red; */
   height: 60px;
+}
+
+.profile-icon {
+  height: 30px !important;
+  width: 30px !important;
+  cursor: pointer;
 }

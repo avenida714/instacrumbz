@@ -4,6 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 
 import "./NavBar.css";
+import "../../index.css"
 
 import { MdHomeFilled } from "react-icons/md";
 import { TbSquarePlus } from "react-icons/tb";
@@ -12,6 +13,7 @@ import { TiHeartOutline } from "react-icons/ti";
 import logo from "./instacrumbz-logo.png";
 import compass from './svgexport-20.jpg'
 import { useSelector } from "react-redux";
+import ProfileIcon from "./ProfileIcon";
 
 const NavBar = () => {
 
@@ -43,47 +45,47 @@ const NavBar = () => {
 
 
   return (
-    <div className="NavBar-Div">
-      <nav className="NavBar-Outermost">
-        <div></div>
+    <div className="navbar-wrapper">
 
-        <NavLink to="/" exact={true} activeClassName="active">
-          <img src={logo} alt="logo" className="logo"></img>
-        </NavLink>
+      <div className="navbar-inner">
 
-        <div className="Search-Bar">
-          SEARCH BAR
+        <div className="logo-container">
+          <NavLink to="/" exact={true} activeClassName="active">
+            <img src={logo} alt="logo" className="logo"></img>
+          </NavLink>
         </div>
+
+        {/* <div className="Search-Bar">
+          SEARCH BAR
+        </div> */}
 
         <div className="icon-div">
           <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <MdHomeFilled />
           </NavLink>
 
-          <NavLink to="/" exact={true} activeClassName="active" className="icon">
+          {/* <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <FaRegPaperPlane />
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <TbSquarePlus />
           </NavLink>
 
-          <NavLink to="/" exact={true} activeClassName="active" className="icon">
-            {/* <img src={compass} alt='compass'></img> */}
+          {/* <NavLink to="/" exact={true} activeClassName="active" className="icon">
+            <img src={compass} alt='compass'></img>
             <FaRegCompass />
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <TiHeartOutline />
-
           </NavLink>
-          <div className="photo-div-inner">
+
+          {/* <div className="photo-div-inner">
             <img src={compass} alt="profile" className="Profile-Photo"></img>
-          </div>
+          </div> */}
+          <ProfileIcon userLoggedIn={ userLoggedIn }/>
         </div>
-
-
-
 
         {/* <NavLink to="/login" exact={true} activeClassName="active">
           Login
@@ -97,8 +99,8 @@ const NavBar = () => {
           Users
         </NavLink> */}
 
-        <LogoutButton />
-      </nav>
+        {/* <LogoutButton /> */}
+      </div>
     </div>
   );
 };

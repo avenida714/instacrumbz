@@ -1,15 +1,45 @@
 .outter-div-pc {
     height: 800px;
-    width: 600px;
-    border: 1px red solid;
+    width: 470px;
+    border-radius: 8px;
+    border: 1px lightgray solid;
+    background-color: white;
 }
 
+.header-pc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin: 12px;
+}
+
+.user-icon-pc {
+    display: flex;
+    align-items: center;
+    height: 33px;
+    width: 33px;
+    border-radius: 1px black solid;
+}
+
+.user-img {
+    object-fit: cover;
+    vertical-align: bottom;
+    border-radius: 50%;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.header-info {
+    display: flex;
+    flex-direction: column;
+
+}
 
 .post-card-img-container {
     vertical-align: bottom;
     height: 500px;
-    width: 600px;
-    border: 1px black solid
+    width: 100%;
 }
 
 
@@ -18,4 +48,29 @@
     vertical-align: bottom;
     height: 100% !important;
     width: 100% !important;
+}
+
+.heart-pc {
+    font-size: 30px;
+    margin-top: 12px;
+    margin-left: 12px;
+}
+:target {
+    color: red;
+}
+
+.caption-pc {
+    margin-left: 12px;
+}
+
+.comment-display-pc {
+    height: 100px;
+    vertical-align: baseline;
+    border: 1px red solid;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.leave-comment-pc {
+
 }

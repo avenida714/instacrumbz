@@ -4,9 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 
 import { getAllPosts } from '../../store/posts';
 // import RudyComponent from PostCard
-import PostCard from '../PostCard';
 import './LiveFeedPage.css'
 import '../../index.css'
+import PostCard from '../PostCard';
+import FollowsList from '../FollowsList';
 
 const LiveFeedPage  = () => {
 
@@ -19,9 +20,13 @@ const LiveFeedPage  = () => {
   const posts = Object.values(postObj)
   // console.log("***********THIS IS OBJECT.values(postObj)*************", posts)
 
+  const currUser = useSelector(state => state.session.user);
+
   const displayPosts = posts.map((post) => (
     <PostCard key={post.id} post={ post } />
   ));
+
+  // const displayFollows = User.follows.map();
 
   useEffect(() => {
     dispatch(getAllPosts())
@@ -32,6 +37,9 @@ const LiveFeedPage  = () => {
     <div className='outter-most-wrapper'>
       <div className='live-feed-display' /* container for comments */ >
         { displayPosts }
+      </div>
+      <div className='live-feed-follows'>
+        <FollowsList currUser={ currUser }/>
       </div>
     </div>
   )

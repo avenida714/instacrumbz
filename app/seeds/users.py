@@ -10,7 +10,7 @@ def seed_users():
         name='Demo',
         bio='Im Demo',
         gender='Robot',
-        profile_img='img.jpeg',
+        profile_img='https://i.pinimg.com/originals/6a/b6/68/6ab668f8c2341f45c8f2d183bbcc8332.jpg',
         password='password'
         )
     marnie = User(
@@ -19,7 +19,7 @@ def seed_users():
         name='Marnie',
         bio='Im Marnie',
         gender='Female',
-        profile_img='img.jpeg',
+        profile_img='https://cdnb.artstation.com/p/assets/images/images/020/071/433/large/joshua-carreras-marge-simpson-posted-to-x.jpg?1566245506',
         password='password',
         followers=[demo]
         )
@@ -29,7 +29,7 @@ def seed_users():
         name='Bobbie',
         bio='Im Bobbie',
         gender='Male',
-        profile_img='img.jpeg',
+        profile_img='https://cdnb.artstation.com/p/assets/images/images/035/287/409/large/nathan-renoir-javier-bart-simpson-fanart-final.jpg?1614602553',
         password='password',
         followers=[demo, marnie]
         )
@@ -39,7 +39,7 @@ def seed_users():
         name='David Ting',
         bio='Hi, Im David Ting',
         gender='Male',
-        profile_img='img.jpeg',
+        profile_img='https://static.wikia.nocookie.net/monster/images/9/95/Charizard.png/revision/latest?cb=20170708221247',
         password='password',
         followers=[demo, marnie, bobbie]
         )
@@ -49,7 +49,7 @@ def seed_users():
         name='Alec Venida',
         bio='Hi, Im Alec Venida',
         gender='Male',
-        profile_img='img.jpeg',
+        profile_img='https://static.pokemonpets.com/images/monsters-images-800-800/115-Kangaskhan.webp',
         password='password',
         followers=[marnie, bobbie, david]
         )
@@ -59,7 +59,7 @@ def seed_users():
         name='Ray Henry',
         bio='Hi, Im Ray Henry',
         gender='Male',
-        profile_img='img.jpeg',
+        profile_img='https://staticc.sportskeeda.com/editor/2022/06/25cd1-16557699256455.png',
         password='password',
         followers=[marnie, bobbie, david, alec]
         )
@@ -69,7 +69,7 @@ def seed_users():
         name='Rudy Nguyen',
         bio='Hi, Im Rudy Nguyen',
         gender='Male',
-        profile_img='img.jpeg',
+        profile_img='https://assets.pokemon.com/assets/cms2/img/pokedex/full/149.png',
         password='password',
         followers=[marnie, bobbie, david, alec, ray]
         )

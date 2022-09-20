@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TiHeartOutline } from "react-icons/ti";
+import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
 // import createComment from "../../store/comment"
@@ -9,7 +10,8 @@ import '../../index.css'
 const PostCard = ({ post, currUser }) => {
 
     const dispatch = useDispatch();
-
+    const history = useHistory();
+    
     const [ comment, setComment ] = useState('');
     const [ errors, setErrors ] = useState('');
 
@@ -33,6 +35,11 @@ const PostCard = ({ post, currUser }) => {
         setComment("");
 
     };
+    
+    const usersProfilePage = () => {
+        let path = `/profile/${post.owner_id}`;
+        history.push(path);
+    };
 
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
@@ -40,7 +47,7 @@ const PostCard = ({ post, currUser }) => {
                 <div className="user-icon-pc">
                     <img className="img circle" src={ post.user.profile_img }/>
                 </div>
-                <div className="header-info">
+                <div onClick={usersProfilePage} className="header-info">
                     <div>{ post.user.username }</div>
                     <div>{ post.location }</div>
                 </div>

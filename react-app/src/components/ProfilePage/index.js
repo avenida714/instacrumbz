@@ -36,7 +36,7 @@ const UserProfilePage = () => {
       .catch(async (res) => {
         setFindAProfileStatus(res.status);
       });
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();

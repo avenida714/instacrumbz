@@ -4,6 +4,7 @@
 
 .navbar-wrapper {
   align-items: center;
+  justify-content: center;
   background-color: white;
   border-bottom: 1px solid lightgray;
   box-sizing: border-box;
@@ -47,7 +48,7 @@
   max-height: 100%;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  /* align-items: center; */
   gap: 15px;
   width: 350px;
 }
@@ -84,4 +85,11 @@
   height: 30px !important;
   width: 30px !important;
   cursor: pointer;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
 }

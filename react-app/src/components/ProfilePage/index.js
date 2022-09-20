@@ -32,7 +32,7 @@ const UserProfilePage = () => {
       .catch(async (res) => {
         setFindAProfileStatus(res.status);
       });
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();
@@ -77,6 +77,7 @@ const UserProfilePage = () => {
                             </button>
                             && <ToggleFollow profile={profile} />
                           )}
+
                         </div>
                         <span>{userPosts.length}</span> posts
                         <span> {profile.followers.length}</span> followers

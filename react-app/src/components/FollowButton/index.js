@@ -53,7 +53,7 @@ const ToggleFollow = (profile) => {
     }
       setUserIsFollowing(false);
   };
-  console.log(profile.id)
+  console.log("here------", profile.followers)
   if (sessionUser.username === profile.username) {
     return (
       <div>

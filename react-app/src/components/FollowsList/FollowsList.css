@@ -1,4 +1,51 @@
-.follows-outer-div {
-    width: 470px;
-    border: 2px solid green;
+.follows-outer-container {
+    display: flex;
+    flex-direction: column;
+    width: 325px;
+    height: 600px;
+    /* border: 1px solid lightgray; */
+    border-radius: 8px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.user-follow-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin: 10px;
+}
+
+.user-img-fp {
+    width: 45px;
+    height: 45px;
+}
+
+.suggestions-divider {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.our-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 7px;
+}
+
+.lightgray {
+    color: lightgray;
+}
+
+.darkgray {
+    color: darkgray;
+}
+
+.link {
+    text-decoration: none;
 }

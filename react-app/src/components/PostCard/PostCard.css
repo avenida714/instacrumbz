@@ -3,7 +3,7 @@
     width: 470px;
     border-radius: 8px;
     border: 1px lightgray solid;
-    background-color: white;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .header-pc {
@@ -22,14 +22,6 @@
     border-radius: 1px black solid;
 }
 
-.user-img {
-    object-fit: cover;
-    vertical-align: bottom;
-    border-radius: 50%;
-    height: 100% !important;
-    width: 100% !important;
-}
-
 .header-info {
     display: flex;
     flex-direction: column;
@@ -40,14 +32,6 @@
     vertical-align: bottom;
     height: 500px;
     width: 100%;
-}
-
-
-.post-card-img {
-    object-fit: cover;
-    vertical-align: bottom;
-    height: 100% !important;
-    width: 100% !important;
 }
 
 .heart-pc {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 
 import { getAllPosts } from '../../store/posts';
 // import RudyComponent from PostCard
@@ -10,7 +10,7 @@ import PostCard from '../PostCard';
 import FollowsList from '../FollowsList';
 
 const LiveFeedPage  = () => {
-
+  const history = useHistory()
   const dispatch = useDispatch()
   const [ isLoaded, setIsLoaded ] = useState(false);
 
@@ -21,6 +21,7 @@ const LiveFeedPage  = () => {
   // console.log("***********THIS IS OBJECT.values(postObj)*************", posts)
 
   const currUser = useSelector(state => state.session.user);
+  console.log("***********THIS IS currUser*************", currUser)
 
   const displayPosts = posts.map((post) => (
     <PostCard key={post.id} post={ post } />
@@ -33,6 +34,7 @@ const LiveFeedPage  = () => {
     .then(() => setIsLoaded(true))
   }, [dispatch]);
 
+
   return isLoaded && (
     <div className='outter-most-wrapper'>
       <div className='live-feed-display' /* container for comments */ >
@@ -42,7 +44,7 @@ const LiveFeedPage  = () => {
         <FollowsList currUser={ currUser }/>
       </div>
     </div>
-  )
+  ) 
 };
 
 export default LiveFeedPage;

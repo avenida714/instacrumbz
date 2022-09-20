@@ -24,12 +24,12 @@ const NavBar = () => {
   const urlLocation = useLocation()
   const pathName = urlLocation.pathname
 
-  console.log('this is the pathname **************',pathName)
+  // console.log('this is the pathname *************',pathName)
 
-  const [homeButtonActive, setHomeButtonActive] = useState();
-  const [plusButtonActive, setPlusButtonActive] = useState();
-  const [compassButtonActive, setCompassButtonActive] = useState();
-  const [heartButtonActive, setHeartButtonActive] = useState();
+  // const [homeButtonActive, setHomeButtonActive] = useState();
+  // const [plusButtonActive, setPlusButtonActive] = useState();
+  // const [compassButtonActive, setCompassButtonActive] = useState();
+  // const [heartButtonActive, setHeartButtonActive] = useState();
 
 
 

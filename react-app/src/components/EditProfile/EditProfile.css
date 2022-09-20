@@ -1,11 +1,78 @@
 .editProfileContainer {
   display: flex;
   justify-content: center;
-  width: 35%;;
+  width: 40% ;
+  min-width: 70%;
   margin: auto;
   margin-top: 10%;
   padding:40px;
   border: 2px double rgb(216, 203, 203);
   border-radius: 20px;
-  margin-top: 20%;
+}
+
+.editProfileFormContainer{
+  width: 35%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.profilePreview {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 4%;
+}
+
+.profilePreviewName {
+  font-size: 18px;
+  font-family: 'Roboto';
+}
+
+.profilePreviewBio {
+  font-family: 'Roboto';
+  font-style: italic;
+}
+
+.profilePicEdit {
+  height: 300px;
+  width: 300px;
+  margin-left: 25px;
+  margin-right: 15px;
+  border-radius: 50%;
+}
+
+.profileEdit > label > input {
+  font-size: 16px;
+  padding-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  width: 350px;
+  border: 2px double rgb(216, 203, 203);
+  border-radius: 20px;
+}
+
+.profileEdit > label {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  padding: 5px;
+}
+
+.profileEdit span {
+  font-size: 15px;
+  width: 12%;
+}
+
+.editProfileButton {
+  display: flex;
+  justify-content: center;
+}
+
+.editProfileButton > button {
+  border-radius: 2%;
+  font-family: 'Roboto';
+  width: 100px;
+  border-color: rgb(216, 203, 203);
+  border-style: solid ;
+  border-width: 1px;
+  margin: 10px;
+  width: 120px;
 }

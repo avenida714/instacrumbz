@@ -78,57 +78,64 @@ const EditProfile = () => {
   if (isLoaded) {
     return (
       <div className="editProfileContainer">
-        <form className="profileEdit" onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-          <label>
-            <span>Name:</span>
-            <input
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={updateName}
-            />
-          </label>
-          <label>
-            <span>Bio:</span>
-            <input
-              type="text"
-              placeholder="Bio"
-              value={bio}
-              onChange={updateBio}
-            />
-          </label>
-          <label>
-            <span>Gender:</span>
-            <input
-              type="text"
-              placeholder="Gender"
-              value={gender}
-              onChange={updateGender}
-            />
-          </label>
-          <label>
-            <span>Profile Image:</span>
-            <input
-              type="text"
-              placeholder="Profile Image URL"
-              value={profileImage}
-              onChange={updateProfileImage}
-            />
-          </label>
-          <div className="editProfileButton">
-            <button className="backButton" onClick={history.goBack}>
-              Go Back
-            </button>
-            <button className="editProfileButton" type="submit">
-              Edit Profile
-            </button>
-          </div>
-        </form>
+        <div className="profilePreview">
+          <img className="profilePicEdit" src={profileImage}></img>
+          <div className="profilePreviewName">{name}</div>
+          <div className="profilePreviewBio">"{bio}"</div>
+        </div>
+        <div className="editProfileFormContainer">
+          <form className="profileEdit" onSubmit={handleSubmit}>
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+            <label>
+              <span>Name:</span>
+              <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={updateName}
+              />
+            </label>
+            <label>
+              <span>Bio:</span>
+              <input
+                type="text"
+                placeholder="Bio"
+                value={bio}
+                onChange={updateBio}
+              />
+            </label>
+            <label>
+              <span>Gender:</span>
+              <input
+                type="text"
+                placeholder="Gender"
+                value={gender}
+                onChange={updateGender}
+              />
+            </label>
+            <label>
+              <span>Profile Image:</span>
+              <input
+                type="text"
+                placeholder="Profile Image URL"
+                value={profileImage}
+                onChange={updateProfileImage}
+              />
+            </label>
+            <div className="editProfileButton">
+              <button className="backButton" onClick={history.goBack}>
+                Go Back
+              </button>
+              <button className="editProfileButton" type="submit">
+                Edit Profile
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   } else {

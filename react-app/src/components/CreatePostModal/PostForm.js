@@ -17,10 +17,10 @@ const PostForm = ({ post, formType }) => {
     const [location, setLocation] = useState(post.location || "")
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    
 
 
-    
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
@@ -40,12 +40,12 @@ const PostForm = ({ post, formType }) => {
 
       if (formType === "Create Post") {
         const newPost = await dispatch(createAPost(post))
-  
+
         if (newPost) history.push(`/profile/${user.id}`);
-  
-  
-       
-  
+
+
+
+
       } else {
         dispatch(updateAPost(post))
         history.push(`/posts/${post.id}/edit`);
@@ -61,7 +61,7 @@ const PostForm = ({ post, formType }) => {
     };
 
 
-    
+
   useEffect(() => {
         let errors = [];
         if (!image_url.length) {
@@ -75,7 +75,7 @@ const PostForm = ({ post, formType }) => {
         }
 
         setValidationErrors(errors);
-      
+
     }, [image_url, caption, location])
 
 
@@ -130,7 +130,7 @@ const PostForm = ({ post, formType }) => {
             <input className="Create_spot_button" type="submit" value={formType} />
          </form>
     </div>
-    
+
     )
 }
 

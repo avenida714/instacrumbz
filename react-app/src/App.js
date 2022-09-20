@@ -16,11 +16,10 @@ import { CurrentUserPage } from './components/UsersPostCard';
 import SinglePost from './components/SinglePost';
 import LoginFormModal from './components/LoginFormModal';
 import EditProfile from './components/EditProfile';
-import CreatePostForm from './components/PostForm/CreatePostForm';
-import EditPostForm from './components/PostForm/EditPostForm';
-
-
-
+// import CreatePostForm from './components/PostForm/CreatePostForm';
+// import EditPostForm from './components/PostForm/EditPostForm';
+import CreatePostForm from './components/CreatePostModal/CreatePostForm';
+import EditPostForm from './components/CreatePostModal/EditPostForm';
 
 
 
@@ -86,11 +85,11 @@ function App() {
       </Switch>
     </BrowserRouter>
   ) :
-    
+
     <BrowserRouter>
     <Redirect to='/login' />
       <Switch>
-       
+
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -98,7 +97,7 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        
+
       </Switch>
     </BrowserRouter>
 

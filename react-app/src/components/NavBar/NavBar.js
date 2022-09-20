@@ -15,6 +15,8 @@ import compass from './svgexport-20.jpg'
 import { useSelector } from "react-redux";
 import ProfileIcon from "./ProfileIcon";
 
+import CreatePostModal from "../CreatePostModal";
+
 const NavBar = () => {
 
 
@@ -55,10 +57,6 @@ const NavBar = () => {
           </NavLink>
         </div>
 
-        {/* <div className="Search-Bar">
-          SEARCH BAR
-        </div> */}
-
         <div className="icon-div">
           <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <MdHomeFilled />
@@ -68,38 +66,19 @@ const NavBar = () => {
             <FaRegPaperPlane />
           </NavLink> */}
 
-          <NavLink to="/" exact={true} activeClassName="active" className="icon">
-            <TbSquarePlus />
-          </NavLink>
-
           {/* <NavLink to="/" exact={true} activeClassName="active" className="icon">
-            <img src={compass} alt='compass'></img>
-            <FaRegCompass />
+            <TbSquarePlus />
           </NavLink> */}
+          <CreatePostModal />
 
           <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <TiHeartOutline />
           </NavLink>
-
-          {/* <div className="photo-div-inner">
-            <img src={compass} alt="profile" className="Profile-Photo"></img>
-          </div> */}
-          <ProfileIcon userLoggedIn={ userLoggedIn }/>
+          <div className="center">
+            <ProfileIcon userLoggedIn={ userLoggedIn }/>
+          </div>
         </div>
 
-        {/* <NavLink to="/login" exact={true} activeClassName="active">
-          Login
-        </NavLink>
-
-        <NavLink to="/sign-up" exact={true} activeClassName="active">
-          Sign Up
-        </NavLink>
-
-        <NavLink to="/users" exact={true} activeClassName="active">
-          Users
-        </NavLink> */}
-
-        {/* <LogoutButton /> */}
       </div>
     </div>
   );

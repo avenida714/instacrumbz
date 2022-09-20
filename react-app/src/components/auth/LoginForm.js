@@ -106,6 +106,7 @@ const LoginForm = () => {
                         </div>
                     </div>
                 </div>
+                
                 <footer className='login_footer'>© 2022 Instacrumbz from Alec, Rudy, Ray, David</footer>
 
             </form>

@@ -14,26 +14,26 @@ const FollowsList = ({ currUser }) => {
         },
         {
             name: 'Alec Venida',
-            pic: '',
+            pic: 'https://cdn.discordapp.com/attachments/1018992914304598116/1021828249329864725/photo_of_alec.jpeg',
             linkedIn: 'https://www.linkedin.com/in/alec-venida-66793979',
             gitHubLink: 'https://github.com/avenida714'
         },
         {
             name: 'Ray Henry',
-            pic: '',
-            linkedIn: '',
+            pic: 'https://media-exp1.licdn.com/dms/image/C5603AQGtB9-vlmW5fQ/profile-displayphoto-shrink_400_400/0/1647476258056?e=1669248000&v=beta&t=Z-g_YAIlnqs9vWygsFnMvuE8qLaHDjWzmP3787XF6EE',
+            linkedIn: 'https://www.linkedin.com/in/ray-charles-henry/',
             gitHubLink: 'https://github.com/RayC206'
         },
         {
             name: 'Rudy Nguyen',
-            pic: '',
+            pic: 'https://scontent-lax3-1.xx.fbcdn.net/v/t31.18172-8/26172278_1726421197388276_2617151693209782959_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_ohc=SPIfJJTpf8IAX-UfAWO&_nc_ht=scontent-lax3-1.xx&oh=00_AT9iBjPTNdx1Qkd8P7M0Kai5IZvchnNgYdkKHoYSvRlP7g&oe=634F3519',
             linkedIn: 'https://www.linkedin.com/in/rudy-nguyen-454b0a242/',
             gitHubLink: 'https://github.com/rudyn2010'
         }
     ];
 
     const displayDevs = developers.map((dev) => (
-        <div className='user-follow-header'>
+        <div key={dev.name} className='user-follow-header'>
             <div className='user-img-fp'>
                 <img className="img circle" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
             </div>

@@ -7,6 +7,8 @@ import '../../index.css'
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post }) => {
 
+    console.log("************comments***************", post.comments)
+
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
             <div className="header-pc" >
@@ -29,7 +31,7 @@ const PostCard = ({ post }) => {
                 <div>{ post.caption }</div>
             </div>
             <div className="comment-display-pc">
-                Comment's go here!
+                { post.comments }
             </div>
             <div className="leave-comment-pc" /* comment text area */ >
             </div>

@@ -2,8 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
+
 import ToggleFollow from "../FollowButton";
+
+
+//modal
+import ViewPostModal from "../ViewPostModal";
+
+
 import "./ProfilePage.css";
+
+
+
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -16,13 +26,6 @@ const UserProfilePage = () => {
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // const sessionUsersFollowers = sessionUser.followers;
-  // let sessionFollowId;
-  // sessionUsersFollowers.forEach((follower) => {
-  //   let sessionUserFollowerId = follower[0];
-  //   sessionUserFollowerId = sessionFollowId;
-  // });
-  // console.log("here-----", sessionFollowId);
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
@@ -94,11 +97,16 @@ const UserProfilePage = () => {
 
             <div className="userPostContainer">
               {userPosts && userPosts.length ? (
-                userPosts.map((posts) => {
+                userPosts.map((post) => {
                   return (
-                    <div className="eachUserPost" key={posts.id}>
-                      <img className="profileimg" src={posts.image_url}></img>
+                    <>
+                    <div className="eachUserPost" key={post.id}>
+                      <img className='profileimg' src={post.image_url} alt="post"></img>
+
+                        <ViewPostModal post={post} />
+
                     </div>
+                    </>
                   );
                 })
               ) : (

@@ -1,11 +1,18 @@
 import { TiHeartOutline } from "react-icons/ti";
-// import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
 
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post }) => {
+    const history = useHistory();
+
+    const usersProfilePage = () => {
+        let path = `/profile/${post.owner_id}`;
+        history.push(path);
+      };
+
 
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
@@ -13,7 +20,7 @@ const PostCard = ({ post }) => {
                 <div className="user-icon-pc">
                     <img className="img circle" src={ post.user.profile_img }/>
                 </div>
-                <div className="header-info">
+                <div onClick={usersProfilePage} className="header-info">
                     <div>{ post.user.username }</div>
                     <div>{ post.location }</div>
                 </div>

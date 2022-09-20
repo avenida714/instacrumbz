@@ -26,7 +26,10 @@
 .header-info {
     display: flex;
     flex-direction: column;
+}
 
+.header-info:hover {
+    cursor: pointer;
 }
 
 .post-card-img-container {

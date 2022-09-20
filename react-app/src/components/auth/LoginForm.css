@@ -1,5 +1,6 @@
 @import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
 
+
 .splash_image {
     width: 250px;
     height: 500px;
@@ -40,7 +41,7 @@
 .login_second_container {
     border: 1px solid rgba(139, 139, 135, 0.6);
     padding: 80px 30px
- 
+
 }
 
 .outter_container {
@@ -65,7 +66,7 @@
     height: 30px;
     border-radius: 3px;
     border: 1px solid lightgray;
-   
+
 }
 
 .Instacrumbz_logo{

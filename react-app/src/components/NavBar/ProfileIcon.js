@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory} from "react-router-dom";
 import { logout } from "../../store/session";
 import "./ProfileIcon.css"
 import "../../index.css"
 
 function ProfileIcon ({ userLoggedIn }) {
-
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const sessionUser = useSelector((state) => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -23,7 +22,6 @@ function ProfileIcon ({ userLoggedIn }) {
     const closeMenu = () => {
       setShowMenu(false);
     };
-
     document.addEventListener('click', closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
@@ -38,14 +36,12 @@ function ProfileIcon ({ userLoggedIn }) {
   return (
       <div className="profile-icon" onClick={openMenu}>
             <img className="img circle" src={ userLoggedIn?.profile_img } />
-
-
       {showMenu && (
         <div className="profile-dropdown">
           <div className="dropdown-content">
               <div className="welcome-dropdown"> Welcome, { userLoggedIn.name }</div>
             <div className="linkhighlight-dropdown">
-              <NavLink className="your-text-dropdown" to="">
+              <NavLink className="your-text-dropdown" to={`/profile/${sessionUser.id}`} >
                 Profile
               </NavLink>
             </div>

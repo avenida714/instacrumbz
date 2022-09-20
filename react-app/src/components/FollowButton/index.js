@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { useParams, useHistory } from "react-router-dom";
-import { userFollow, userUnfollow } from "../../store/session";
 import { loadUserProfile } from "../../store/profile";
+import { userFollow, userUnfollow } from "../../store/session";
+import './FollowButton.css'
 
 const ToggleFollow = (profile) => {
   profile = profile.profile;
@@ -24,7 +24,6 @@ const ToggleFollow = (profile) => {
       console.log("FOLLOWER");
       console.log(follower);
       let followerId = follower[0];
-      test = followerId
       console.log(followerId);
       if (sessionUser.id === followerId) {
         setUserIsFollowing(true);
@@ -35,23 +34,38 @@ const ToggleFollow = (profile) => {
 
   const followProfile = async (e) => {
     e.preventDefault();
-    dispatch(userFollow(profile.id))
-    setUserIsFollowing(true);
+    let followUser = await dispatch(userFollow(profile.id))
+    if (followUser){
+      if (followUser.user.username === profile.username || sessionUser.username === profile.username) {
+        dispatch(loadUserProfile(profile.id))
+      }
+    }
+      setUserIsFollowing(true)
   };
 
   const unfollowProfile = async (e) => {
     e.preventDefault();
-    dispatch(userUnfollow(profile.id))
-    setUserIsFollowing(true);
+    let unfollowUser = await dispatch(userUnfollow(profile.id))
+    if (unfollowUser){
+      if (unfollowUser.user.username === profile.username || sessionUser.username === profile.username) {
+        dispatch(loadUserProfile(profile.id))
+      }
+    }
+      setUserIsFollowing(false);
   };
+  console.log(profile.id)
+  if (sessionUser.username === profile.username) {
+    return (
+      <div>
+        <button className='followButton' onClick={followProfile}></button>
+      </div>
+    );
+  } else {
+    return (
+      <button className="unfollowButton" onClick={unfollowProfile}></button>
 
-
-  return (
-    <div>
-      <button onClick={followProfile}></button>
-      <button onClick={unfollowProfile}></button>
-    </div>
-  );
+    )
+  }
 };
 
 export default ToggleFollow;

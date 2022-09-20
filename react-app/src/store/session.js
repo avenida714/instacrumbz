@@ -141,14 +141,12 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null }
     case FOLLOW_USER:
-      // newState = {...state}
       newState.user.followers.push(action.user)
-      return newState
+      return {...newState}
     case UNFOLLOW_USER:
-      // newState = {...state}
       const index = newState.user.followers.findIndex(user => user.id === action.user.id)
       newState.user.followers.splice(index,1)
-      return newState
+      return {...newState}
     default:
       return state;
   }

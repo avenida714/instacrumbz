@@ -54,7 +54,6 @@ const UserProfilePage = () => {
                 profile.map((profile) => {
                   return (
                     <div className="profileInfoContainer" key={profile.id}>
-                      <ToggleFollow profile={profile} />
                       <div className="profilePic">
                         <img src={profile.profile_img}></img>
                       </div>
@@ -63,19 +62,20 @@ const UserProfilePage = () => {
                           <h2 className="profileUserName">{profile.name}</h2>
                           {sessionUser && profile.id === sessionUser.id ? (
                             <button
-                              className="editProfile"
-                              onClick={(e) => handleEditProfile(e, profile.id)}
+                            className="editProfile"
+                            onClick={(e) => handleEditProfile(e, profile.id)}
                             >
                               Edit profile
                             </button>
                           ) : (
                             <button
-                              style={hideButton}
-                              className="editProfileButton"
-                              onClick={(e) => handleEditProfile(e, profile.id)}
+                            style={hideButton}
+                            className="editProfileButton"
+                            onClick={(e) => handleEditProfile(e, profile.id)}
                             >
                               edit profile
                             </button>
+                            && <ToggleFollow profile={profile} />
                           )}
                         </div>
                         <span>{userPosts.length}</span> posts

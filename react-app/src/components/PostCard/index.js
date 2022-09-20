@@ -17,10 +17,10 @@ const PostCard = ({ post }) => {
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
             <div className="header-pc" >
-                <div className="user-icon-pc">
+                <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img className="img circle" src={ post.user.profile_img }/>
                 </div>
-                <div onClick={usersProfilePage} className="header-info">
+                <div className="header-info">
                     <div>{ post.user.username }</div>
                     <div>{ post.location }</div>
                 </div>

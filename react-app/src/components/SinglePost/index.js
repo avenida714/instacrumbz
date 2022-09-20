@@ -5,10 +5,10 @@ import { getOnePostById } from '../../store/posts';
 
 
 
-function SinglePost() {
+function SinglePost({post}) {
     const { postId } = useParams();
     const dispatch = useDispatch();
-    const post = useSelector(state => state.posts[postId])
+    // const post = useSelector(state => state.posts[postId])
     // const likes = useSelector(state => state.posts[postId].likes)
     // console.log("*******************post", post)
 //    const currentUser = useSelector(state => state.session.user)
@@ -18,9 +18,10 @@ function SinglePost() {
 
 //    console.log("*******************username", username)
 
-    useEffect(() => {
-        dispatch(getOnePostById(postId))
-        }, [dispatch]) // put likes in useEffect dependency array
+    // useEffect(() => {
+    //     dispatch(getOnePostById(postId))
+    //     }, [dispatch])
+         // put likes in useEffect dependency array
 // TO-DO: add like to this and import the comment component
     if (post) {
 

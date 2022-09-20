@@ -43,8 +43,10 @@ const actionLoadPosts = (posts) => {
 
 
 //Thunks:
+
 //TO-DO: example thunk      V -> new post form data goes here from component
 export const createAPost = (newPostInfo) => async (dispatch) => {
+
     const response = await fetch('/api/posts/new_post', {
         method: 'POST',
         headers: {

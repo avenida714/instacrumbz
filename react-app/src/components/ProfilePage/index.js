@@ -9,7 +9,7 @@ import ViewPostModal from "../ViewPostModal";
 //
 
 import "./ProfilePage.css";
-import SinglePostModal from "../ViewPostModal/SinglePostModal";
+// import SinglePostModal from "../ViewPostModal/SinglePostModal";
 
 
 
@@ -91,7 +91,7 @@ const UserProfilePage = () => {
                     <div className="eachUserPost" key={post.id}>
                       <img className='profileimg' src={post.image_url} alt="post"></img>
 
-                        <SinglePostModal post={post} />
+                        <ViewPostModal post={post} />
 
                     </div>
                     </>

@@ -17,8 +17,6 @@ function SinglePostModal( { post }) {
   const [showModal, setShowModal] = useState(false);
 
 
-
-
   return (
     <div>
       <button className="post-modal" onClick={() => setShowModal(true)}>

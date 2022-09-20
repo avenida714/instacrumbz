@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
+import SinglePost from '../SinglePost';
 import SinglePostModal from './SinglePostModal';
 
 function ViewPostModal({post}) {
@@ -10,7 +11,7 @@ function ViewPostModal({post}) {
       <button onClick={() => setShowModal(true)}></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SinglePostModal post={post}/>
+          <SinglePost post={post}/>
         </Modal>
       )}
     </>

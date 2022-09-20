@@ -1,13 +1,38 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { TiHeartOutline } from "react-icons/ti";
-// import { useSelector } from "react-redux";
 import "./PostCard.css"
 import '../../index.css'
-
+// import createComment from "../../store/comment"
 
 //TO-DO: Rudy finish Post Card
-const PostCard = ({ post }) => {
+const PostCard = ({ post, currUser }) => {
 
-    console.log("************comments***************", post.comments)
+    const dispatch = useDispatch();
+
+    const [ comment, setComment ] = useState('');
+    const [ errors, setErrors ] = useState('');
+
+    useEffect(() => {
+        let errors = [];
+        if (comment.length > 2000) errors.push('Comment should be less than 2000 characters!')
+        if (comment === "") errors.push('Please leave a comment!')
+        errors = setErrors(errors)
+    }, [ comment ]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let newComment = {
+            comment: comment,
+            user_id: currUser.id,
+            post_id: post.id
+        };
+
+        // dispatch(createComment(newComment));
+        setComment("");
+
+    };
 
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
@@ -31,9 +56,14 @@ const PostCard = ({ post }) => {
                 <div>{ post.caption }</div>
             </div>
             <div className="comment-display-pc">
-                { post.comments }
+                { post.comments.map((comment) => (
+                        <div key={comment.id}> { comment.comment } </div>
+                    ))
+                }
             </div>
             <div className="leave-comment-pc" /* comment text area */ >
+                <>
+                </>
             </div>
         </div>
     )

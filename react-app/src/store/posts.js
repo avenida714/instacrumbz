@@ -5,7 +5,7 @@ const UPDATE_POST = 'posts/updatePost';
 const DELETE_POST = 'posts/deletePost';
 const LOAD_ALL_POSTS = 'posts/loadPosts'; // get all posts action type maybe can be used for load posts and load all post curr user
 
-const LIKE_POST = 'posts/likePost'; 
+const LIKE_POST = 'posts/likePost';
 const UNLIKE_POST = 'posts/unlikePost';
 
 //Action Creators:
@@ -115,6 +115,7 @@ export const getAllPosts = () => async (dispatch) => {
         dispatch(actionLoadPosts(data.posts)) //revist
         return data;
     }
+    return response
 }
 
 

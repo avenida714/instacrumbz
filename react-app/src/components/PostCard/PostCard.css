@@ -23,14 +23,15 @@
     border-radius: 1px black solid;
 }
 
+.user-icon-pc:hover {
+    cursor: pointer;
+}
+
 .header-info {
     display: flex;
     flex-direction: column;
 }
 
-.header-info:hover {
-    cursor: pointer;
-}
 
 .post-card-img-container {
     vertical-align: bottom;

@@ -45,5 +45,7 @@ class Post(db.Model):
             "owner_id": self.owner_id,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            "user": self.user.to_dict()
+            "user": self.user.to_dict(),
+            "likes": len(self.liked),
+            "comments": [c.to_dict() for c in self.comments]
         }

@@ -43,14 +43,16 @@ const actionLoadPosts = (posts) => {
 
 
 //Thunks:
-//TO-DO: example thunk      V -> new post form data goes here from component  ***
-export const createAPost = ( ) => async (dispatch) => {
+
+//TO-DO: example thunk      V -> new post form data goes here from component
+export const createAPost = (newPostInfo) => async (dispatch) => {
+
     const response = await fetch('/api/posts/new_post', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(/* form data */)
+        body: JSON.stringify(newPostInfo)
     });
     if (response.ok) {
         const post = await response.json();
@@ -115,6 +117,7 @@ export const getAllPosts = () => async (dispatch) => {
         dispatch(actionLoadPosts(data.posts)) //revist
         return data;
     }
+    return response
 }
 
 

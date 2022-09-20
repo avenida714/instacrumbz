@@ -76,14 +76,24 @@ def seed_users():
 
 
     db.session.add(demo) #1
+    db.session.commit()
+
     db.session.add(marnie) #2
+    db.session.commit()
+
     db.session.add(bobbie) #3
+    db.session.commit()
+
     db.session.add(david) #4
+    db.session.commit()
+
     db.session.add(alec) #5
+    db.session.commit()
+
     db.session.add(ray) #6
+    db.session.commit()
+
     db.session.add(rudy) #7
-
-
     db.session.commit()
 
 

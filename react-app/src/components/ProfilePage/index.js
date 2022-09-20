@@ -39,7 +39,7 @@ const UserProfilePage = () => {
   if (isLoaded) {
     if (findAProfileStatus === 200) {
       return (
-        <div className="workingonthis">
+        <div className="profile-page-outer-most-wrapper">
           <div className="mainProfileContainer">
             <div className="innerProfileContainer">
               {profile ? (

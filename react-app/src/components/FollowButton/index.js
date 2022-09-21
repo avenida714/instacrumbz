@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { loadUserProfile } from "../../store/profile";
 import { userFollow, userUnfollow } from "../../store/session";
-import './FollowButton.css'
+import "./FollowButton.css";
 
 const ToggleFollow = (profile) => {
   profile = profile.profile;
@@ -34,38 +34,46 @@ const ToggleFollow = (profile) => {
 
   const followProfile = async (e) => {
     e.preventDefault();
-    let followUser = await dispatch(userFollow(profile.id))
-    if (followUser){
-      if (followUser.user.username === profile.username || sessionUser.username === profile.username) {
-        dispatch(loadUserProfile(profile.id))
+    let followUser = await dispatch(userFollow(profile.id));
+    if (followUser) {
+      if (
+        followUser.user.username === profile.username ||
+        sessionUser.username === profile.username
+      ) {
+        dispatch(loadUserProfile(profile.id));
       }
     }
-      setUserIsFollowing(true)
+    setUserIsFollowing(true);
   };
 
   const unfollowProfile = async (e) => {
     e.preventDefault();
-    let unfollowUser = await dispatch(userUnfollow(profile.id))
-    if (unfollowUser){
-      if (unfollowUser.user.username === profile.username || sessionUser.username === profile.username) {
-        dispatch(loadUserProfile(profile.id))
+    let unfollowUser = await dispatch(userUnfollow(profile.id));
+    if (unfollowUser) {
+      if (
+        unfollowUser.user.username === profile.username ||
+        sessionUser.username === profile.username
+      ) {
+        dispatch(loadUserProfile(profile.id));
       }
     }
-      setUserIsFollowing(false);
+    setUserIsFollowing(false);
   };
-  console.log("here------", profile.followers)
-  if (sessionUser.username === profile.username) {
-    return (
-      <div>
-        <button className='followButton' onClick={followProfile}></button>
-      </div>
-    );
-  } else {
-    return (
-      <button className="unfollowButton" onClick={unfollowProfile}></button>
-
-    )
-  }
+  console.log("here------", profile.followers);
+  // if (sessionUser.username === profile.username) {
+  return (
+    <div>
+      {userIsFollowing ? (
+        <button className="unfollowButton" onClick={unfollowProfile}>
+          Unfollow
+        </button>
+      ) : (
+        <button className="followButton" onClick={followProfile}>
+          Follow
+        </button>
+      )}
+    </div>
+  );
 };
 
 export default ToggleFollow;

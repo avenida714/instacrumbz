@@ -36,8 +36,9 @@
 .profilePic > img {
   height:150px;
   width: 150px;
-  margin-right: 100px;
+  margin-right: 85px;
   margin-left: 10px;
+  margin-top: 15px;
   border-radius: 50%;
   /* border: 1px solid red */
 
@@ -53,7 +54,21 @@
 .profileDetails > span {
   font-weight: 500;
 }
+.profileDetailSpan {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+.postSpan{
+  margin-right: 30px;
+}
+.followerSpan {
+  margin-right: 30px;
+}
 
+.followingSpan{
+  margin-right: 30px;
+}
 .profileBio {
   margin-top: 10px;
 }

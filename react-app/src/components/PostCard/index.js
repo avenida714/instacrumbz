@@ -4,7 +4,7 @@ import { TiHeartOutline } from "react-icons/ti";
 import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
-// import createComment from "../../store/comment"
+import { createComment } from "../../store/comment"
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post, currUser }) => {
@@ -15,6 +15,11 @@ const PostCard = ({ post, currUser }) => {
     const [ comment, setComment ] = useState('');
     const [ errors, setErrors ] = useState('');
     const [ isDisabled, setIsDisabled ] = useState(false)
+
+    const targetpost = useSelector(state => state.posts)
+
+    let id = post.id
+
 
     useEffect(() => {
         let errors = [];
@@ -29,10 +34,10 @@ const PostCard = ({ post, currUser }) => {
         let newComment = {
             comment: comment,
             user_id: currUser.id,
-            post_id: post.id
+            post_id: id
         };
 
-        // dispatch(createComment(newComment));
+        dispatch(createComment(newComment));
         setComment("");
 
     };
@@ -74,7 +79,13 @@ const PostCard = ({ post, currUser }) => {
             </div>
             <div className="leave-comment-pc" /* comment text area */ >
                 <form className="comment-form" onSubmit={handleSubmit}>
-                    <input type="text" className="comment-area" placeholder="Add a comment..." value={ comment }/>
+                    <input
+                        type="text"
+                        className="comment-area"
+                        placeholder="Add a comment..."
+                        value={ comment }
+                        onChange = {(e) => setComment(e.target.value)}
+                    />
                     <button className="post-comment" disabled={ isDisabled }>Post</button>
                 </form>
             </div>

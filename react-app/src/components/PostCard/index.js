@@ -11,9 +11,10 @@ const PostCard = ({ post, currUser }) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    
+
     const [ comment, setComment ] = useState('');
     const [ errors, setErrors ] = useState('');
+    const [ isDisabled, setIsDisabled ] = useState(false)
 
     useEffect(() => {
         let errors = [];
@@ -35,7 +36,7 @@ const PostCard = ({ post, currUser }) => {
         setComment("");
 
     };
-    
+
     const usersProfilePage = () => {
         let path = `/profile/${post.owner_id}`;
         history.push(path);
@@ -52,14 +53,17 @@ const PostCard = ({ post, currUser }) => {
                     <div>{ post.location }</div>
                 </div>
             </div>
-            <div className="post-card-img-container" /* image display container */ >
+            <div className="post-card-img-container padding" /* image display container */ >
                 <img className="img" src={ post?.image_url } />
             </div>
-            <div>
+            <div className="likes padding">
                 <TiHeartOutline className="heart-pc" />
+                <div className="likes-count">
+                    {post?.likes || "0"} likes
+                </div>
             </div>
             <div className="caption-pc" /* caption container */ >
-                <div>{ post.user.username }</div>
+                <div className="bold">{ post.user.username }</div>
                 <div>{ post.caption }</div>
             </div>
             <div className="comment-display-pc">
@@ -69,8 +73,10 @@ const PostCard = ({ post, currUser }) => {
                 }
             </div>
             <div className="leave-comment-pc" /* comment text area */ >
-                <>
-                </>
+                <form className="comment-form" onSubmit={handleSubmit}>
+                    <input type="text" className="comment-area" placeholder="Add a comment..." value={ comment }/>
+                    <button className="post-comment" disabled={ isDisabled }>Post</button>
+                </form>
             </div>
         </div>
     )

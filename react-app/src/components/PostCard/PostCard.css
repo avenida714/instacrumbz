@@ -41,25 +41,73 @@
 
 .heart-pc {
     font-size: 30px;
-    margin-top: 12px;
+    /* margin-top: 12px; */
     margin-left: 12px;
-}
-:target {
-    color: red;
 }
 
 .caption-pc {
     margin-left: 12px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .comment-display-pc {
+    padding-top: 5px;
+    margin-top: 5px;
     height: 100px;
     vertical-align: baseline;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     margin-left: 12px;
     margin-right: 12px;
+    overflow-y: auto;
 }
 
 .leave-comment-pc {
+    margin-left: 12px;
+    margin-top: 5px;
+    width: auto;
+}
 
+.comment-form {
+    background-color: white;
+}
+
+.comment-area {
+    width: 400px;
+    border: none;
+    background-color: white;
+}
+
+textarea{
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.post-comment:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.post-comment:enabled {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.likes{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.likes-count {
+    font-size: large;
+}
+
+.padding{
+    margin-bottom: 10px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import LogoutButton from "../auth/LogoutButton";
 
@@ -52,9 +52,8 @@ const NavBar = () => {
       <div className="navbar-inner">
 
         <div className="logo-container">
-          <NavLink to="/" exact={true} activeClassName="active">
-            <img src={logo} alt="logo" className="logo"></img>
-          </NavLink>
+          {/* <img src={logo} alt="logo" className="logo"></img> */}
+          <Link to="/" exact= { true } className="text-logo"> Instacrumbz </Link>
         </div>
 
         <div className="icon-div">

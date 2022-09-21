@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
 import ToggleFollow from "../FollowButton";
 import Followers from "./FollowersModal/index";
+import Following from "./FollowingModal";
 
 //modal
 // import ViewPostModal from "../ViewPostModal";
@@ -25,6 +26,7 @@ const UserProfilePage = () => {
   const [showPostModal, setShowPostModal] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
+  const [showFollowingModal, setShowFollowingModal] = useState(false);
 
   useEffect(() => {
     dispatch(loadUserProfile(userId));
@@ -95,7 +97,10 @@ const UserProfilePage = () => {
                             {" "}
                             <b>{profile.followers.length}</b> followers
                           </span>
-                          <span className="followingSpan">
+                          <span
+                            className="followingSpan"
+                            onClick={() => setShowFollowingModal(true)}
+                            >
                             {" "}
                             <b>{profile.following.length}</b> following{" "}
                           </span>
@@ -105,6 +110,11 @@ const UserProfilePage = () => {
                           profile={profile}
                           isOpen={showFollowersModal}
                           onClose={() => setShowFollowersModal(false)}
+                        />
+                        <Following
+                          profile={profile}
+                          isOpen={showFollowingModal}
+                          onClose={() => setShowFollowingModal(false)}
                         />
                       </div>
                     </div>

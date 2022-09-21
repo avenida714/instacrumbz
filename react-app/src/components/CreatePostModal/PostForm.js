@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createAPost, updateAPost } from '../../store/posts';
+import { createAPost, getOnePostById, updateAPost } from '../../store/posts';
 import "./PostForm.css"
+
 
 
 const PostForm = ({ post, formType }) => {
@@ -17,8 +18,8 @@ const PostForm = ({ post, formType }) => {
     const [location, setLocation] = useState(post.location || "")
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
-
-
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [showModal, setShowModal] = useState(true);
 
 
   const handleSubmit = async (e) => {
@@ -43,12 +44,12 @@ const PostForm = ({ post, formType }) => {
 
         if (newPost) history.push(`/profile/${user.id}`);
 
-
-
-
       } else {
-        dispatch(updateAPost(post))
-        history.push(`/posts/${post.id}/edit`);
+        const editdata = await dispatch(updateAPost(post))
+        //  history.push(`/profile/${user.id}`);
+        if (editdata) dispatch(getOnePostById(post.id))
+        history.push(`/profile/${user.id}`);
+
       }
 
       setImage_url('');
@@ -60,6 +61,12 @@ const PostForm = ({ post, formType }) => {
 
     };
 
+
+    useEffect(() => {
+  //     dispatch(updateAPost(post)).then(() =>
+  //     dispatch(getOnePostById(post.id)))
+  //     .then(() => setIsLoaded(true));
+  }, [ dispatch, post, image_url, caption, location ]);
 
 
   useEffect(() => {
@@ -79,7 +86,7 @@ const PostForm = ({ post, formType }) => {
     }, [image_url, caption, location])
 
 
-    return (
+     return (
     <div>
          <form className="Form_container" onSubmit={handleSubmit}>
          <div>

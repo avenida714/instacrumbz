@@ -7,12 +7,10 @@ import ToggleFollow from "../FollowButton";
 
 
 //modal
-import ViewPostModal from "../ViewPostModal";
+import SinglePostModal from "../SinglePostModal";
 
 
 import "./ProfilePage.css";
-
-
 
 
 const UserProfilePage = () => {
@@ -25,6 +23,9 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [ showModal, setShowModal ] = useState(false);
+  const [ modalData, setModalData ] = useState(null);
 
 
   useEffect(() => {
@@ -99,15 +100,10 @@ const UserProfilePage = () => {
               {userPosts && userPosts.length ? (
                 userPosts.map((post) => {
                   return (
-                    <>
-                    <div className="eachUserPost" key={post.id}>
-                      <img className='profileimg' src={post.image_url} alt="post"></img>
-
-                        <ViewPostModal post={post} />
-
+                    <div className="profile-post">
+                      <SinglePostModal post={ post }/>
                     </div>
-                    </>
-                  );
+                  )
                 })
               ) : (
                 <div>no posts</div>

@@ -12,7 +12,7 @@ import { authenticate } from './store/session';
 import UserProfilePage from './components/ProfilePage';
 
 import LiveFeedPage from './components/LiveFeedPage';
-import { CurrentUserPage } from './components/UsersPostCard';
+// import { CurrentUserPage } from './components/UsersPostCard';
 import SinglePost from './components/SinglePost';
 import LoginFormModal from './components/LoginFormModal';
 import EditProfile from './components/EditProfile';
@@ -70,9 +70,9 @@ function App() {
           <LiveFeedPage />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/post/current' exact={true} >
+        {/* <ProtectedRoute path='/post/current' exact={true} >
           <CurrentUserPage />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         <ProtectedRoute path='/post/:postId' exact={true} >
           <SinglePost />

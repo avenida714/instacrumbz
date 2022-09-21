@@ -25,7 +25,7 @@ const Following = ({ profile, isOpen, onClose }) => {
                 <div className='followingModalInnerContainer' key={index}>
                    <div className="eachUserProfile">
                      <img className='followingPic' src={followingPic} ></img>
-                     <span>{followingName}</span>
+                     <span className="followingName">{followingName}</span>
                    </div>
                 </div>
                 )

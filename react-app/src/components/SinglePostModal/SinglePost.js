@@ -1,11 +1,16 @@
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { NavLink, useParams } from "react-router-dom";
+import { getOnePostById } from '../../store/posts';
+import EditFormModal from '../EditPostModal';
 
 import "./SinglePost.css";
 
 function SinglePost({ post }) {
   const dispatch = useDispatch();
+
 
   if (post) {
     return (
@@ -36,6 +41,6 @@ function SinglePost({ post }) {
   } else {
     return null;
   }
-}
+
 
 export default SinglePost;

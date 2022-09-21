@@ -1,16 +1,16 @@
-import React from 'react';
-import PostForm from './PostForm';
+// import React from 'react';
+// import PostForm from './PostForm';
 
 
-const CreatePostForm = () => {
+// const CreatePostForm = () => {
   
-    const post = {
+//     const post = {
     
-      };
+//       };
 
-    return (
-      <PostForm post={post} formType="Create Post" />
-    );
-  }
+//     return (
+//       <PostForm post={post} formType="Create Post" />
+//     );
+//   }
   
-  export default CreatePostForm;
+//   export default CreatePostForm;

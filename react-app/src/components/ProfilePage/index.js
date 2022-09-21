@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
-
-import ToggleFollow from "../FollowButton";
-
-//modal
-// import ViewPostModal from "../ViewPostModal";
-import SinglePostModal from "../SinglePostModal";
-
-import "./ProfilePage.css";
 import { getPostsOtherUserId, loadCurrUserPosts } from "../../store/posts";
+import ToggleFollow from "../FollowButton";
+import Followers from "./FollowersModal/index";
+import Following from "./FollowingModal";
+import SinglePostModal from "../SinglePostModal";
+import "./ProfilePage.css";
+import {BsGrid3X3} from "react-icons/bs"
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -22,11 +20,12 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showPostModal, setShowPostModal] = useState(false);
-  const [activeModal, setActiveModal] = useState(null);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
+  const [showFollowingModal, setShowFollowingModal] = useState(false);
+
 
   useEffect(() => {
-    dispatch(loadUserProfile(userId))
+    dispatch(loadUserProfile(userId));
     dispatch(getPostsOtherUserId(userId))
       .then(() => {
         setIsLoaded(true);
@@ -35,8 +34,8 @@ const UserProfilePage = () => {
         setFindAProfileStatus(res.status);
       });
 
-
   }, [dispatch, userId]); //userPosts causes infinity loop
+
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();
@@ -86,11 +85,35 @@ const UserProfilePage = () => {
                           )}
                         </div>
                         <div className="profileDetailSpan">
-                          <span className="postSpan"><b>{userPosts.length}</b> posts</span>
-                          <span className="followerSpan"> <b>{profile.followers.length}</b> followers</span>
-                          <span className="followingSpan"> <b>{profile.following.length}</b> following </span>
+                          <span className="postSpan">
+                            <b>{userPosts.length}</b> posts
+                          </span>
+                          <span
+                            className="followerSpan"
+                            onClick={() => setShowFollowersModal(true)}
+                          >
+                            {" "}
+                            <b>{profile.followers.length}</b> followers
+                          </span>
+                          <span
+                            className="followingSpan"
+                            onClick={() => setShowFollowingModal(true)}
+                            >
+                            {" "}
+                            <b>{profile.following.length}</b> following{" "}
+                          </span>
                         </div>
                         <div className="profileBio">{profile.bio}</div>
+                        <Followers
+                          profile={profile}
+                          isOpen={showFollowersModal}
+                          onClose={() => setShowFollowersModal(false)}
+                        />
+                        <Following
+                          profile={profile}
+                          isOpen={showFollowingModal}
+                          onClose={() => setShowFollowingModal(false)}
+                        />
                       </div>
                     </div>
                   );
@@ -101,17 +124,20 @@ const UserProfilePage = () => {
             </div>
 
             <div className="userPostContainer">
-            {userPosts && userPosts.length ? (
-                userPosts.map((post) => {
-                  return (
-                    <div className="profile-post">
-                      <SinglePostModal post={ post }/>
-                    </div>
-                  )
-                })
-              ) : (
-                <div>no posts</div>
-              )}
+                <span className="postsLabel"> <BsGrid3X3/> POSTS</span>
+              <div className="innerPostContainer">
+                {userPosts && userPosts.length ? (
+                  userPosts.map((post) => {
+                    return (
+                      <div className="profile-post">
+                        <SinglePostModal post={post} />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div>no posts</div>
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { loadUserProfile } from "../../store/profile";
 import { userFollow, userUnfollow } from "../../store/session";
+import {RiUserUnfollowFill} from "react-icons/ri"
 import "./FollowButton.css";
 
 const ToggleFollow = (profile) => {
@@ -62,10 +63,10 @@ const ToggleFollow = (profile) => {
   console.log("here------", profile.followers);
   // if (sessionUser.username === profile.username) {
   return (
-    <div>
+    <div className="buttonContainer">
       {userIsFollowing ? (
-        <button className="unfollowButton" onClick={unfollowProfile}>
-          Unfollow
+         <button className="unfollowButton" onClick={unfollowProfile}>
+          Unfollow <RiUserUnfollowFill/>
         </button>
       ) : (
         <button className="followButton" onClick={followProfile}>

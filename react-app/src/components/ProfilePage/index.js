@@ -81,9 +81,11 @@ const UserProfilePage = () => {
                             ) && <ToggleFollow profile={profile} />
                           )}
                         </div>
-                        <span>{userPosts.length}</span> posts
-                        <span> {profile.followers.length}</span> followers
-                        <span> {profile.following.length} </span> following
+                        <div className="profileDetailSpan">
+                          <span className="postSpan"><b>{userPosts.length}</b> posts</span>
+                          <span className="followerSpan"> <b>{profile.followers.length}</b> followers</span>
+                          <span className="followingSpan"> <b>{profile.following.length}</b> following </span>
+                        </div>
                         <div className="profileBio">{profile.bio}</div>
                       </div>
                     </div>

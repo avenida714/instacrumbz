@@ -20,6 +20,9 @@
     width: 45px;
     height: 45px;
 }
+.user-img-fp:hover {
+    cursor: pointer;
+}
 
 .suggestions-divider {
     padding-top: 2px;

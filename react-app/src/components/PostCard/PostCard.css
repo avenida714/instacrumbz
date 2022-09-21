@@ -3,7 +3,7 @@
     width: 470px;
     border-radius: 8px;
     border: 1px lightgray solid;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Helvetica", Arial, sans-serif;
     box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
 }
 
@@ -111,3 +111,4 @@ textarea{
 .padding{
     margin-bottom: 10px;
 }
+

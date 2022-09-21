@@ -1,9 +1,33 @@
+.buttonContainer {
+  display: flex;
+  align-items: center;
+}
+
 .followButton {
-  width: 70px;
-  height: 40px;
+  background-color: #1e8ce6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  width: 95px;
+}
+.followButton:hover {
+  cursor: pointer;
 }
 
 .unfollowButton {
-  width: 70px;
-  height: 40px;
+  background-color: #1e8ce6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  width: 95px;
+}
+
+.unfollowButton:hover {
+  cursor: pointer;
 }

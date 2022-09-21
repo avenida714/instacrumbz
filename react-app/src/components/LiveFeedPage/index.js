@@ -21,10 +21,9 @@ const LiveFeedPage  = () => {
   // console.log("***********THIS IS OBJECT.values(postObj)*************", posts)
 
   const currUser = useSelector(state => state.session.user);
-  // console.log("***********THIS IS currUser*************", currUser)
 
-  const displayPosts = posts.map((post) => (
-    <PostCard key={post.id} post={ post } currUser={ currUser } />
+  const displayPosts = posts.map((post, i) => (
+    <PostCard key={i} post={ post } currUser={ currUser } />
   ));
 
   // const displayFollows = User.follows.map();

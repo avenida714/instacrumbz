@@ -132,10 +132,6 @@ def delete_post(id):
 def create_comment(id):
     form = CommentForm()
     user_id = current_user.id
-    print("user_id**************", user_id)
-    # user_id = form.data['user_id']
-    # post_id = form.data['post_id']
-    # comment = form.data['comment']
     post = Post.query.get_or_404(id)
     form['csrf_token'].data = request.cookies['csrf_token']
 

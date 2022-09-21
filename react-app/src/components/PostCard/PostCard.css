@@ -54,7 +54,8 @@
 
 .comment-display-pc {
     padding-top: 5px;
-    margin-top: 5px;
+    padding-bottom: 13px;
+    margin: 10px;
     height: 100px;
     vertical-align: baseline;
     /* border: 1px red solid; */
@@ -111,4 +112,3 @@ textarea{
 .padding{
     margin-bottom: 10px;
 }
-

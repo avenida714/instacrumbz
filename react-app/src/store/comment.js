@@ -1,3 +1,5 @@
+import { getOnePostById } from "./posts";
+
 const CREATE_COMMENT = 'comment/createComment';
 const READ_COMMENT = 'comment/readComment'; // get all comments action type
 const UPDATE_COMMENT = 'comment/updateComment';
@@ -34,7 +36,7 @@ const actionDeleteComment = (id) => {
 
 
 //thunk:
-// Get all comment 
+// Get all comment
 export const getPostComment = (postId) => async (dispatch) => {
     const response = await fetch(`/api/posts/${postId}/all_comments`)
 
@@ -48,15 +50,16 @@ export const getPostComment = (postId) => async (dispatch) => {
 
 // Create a comment for post
 export const createComment = (newCommentData) => async (dispatch) => {
+
     const response = await fetch(`/api/posts/${newCommentData.post_id}/new_comment`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newCommentData)
     });
-
     if (response.ok) {
       const newComment = await response.json();
-      dispatch(actionCreateComment(newComment));
+      await dispatch(actionCreateComment(newComment));
+      await dispatch(getOnePostById(newCommentData.post_id));
       return newComment
     }
     return response;
@@ -79,15 +82,15 @@ export const createComment = (newCommentData) => async (dispatch) => {
 }
 
 
-// Delete a comment 
+// Delete a comment
   export const deleteAComment = (id) => async (dispatch) => {
-  
+
     const response = await fetch(`/api/comment/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-  
+
     });
-  
+
     if (response.ok) {
     //   const comment = await response.json();
       dispatch(actionDeleteComment(id));
@@ -131,7 +134,7 @@ const commentsReducer = (state = initialState, action) => {
             delete newState[action.id]
             return newState
         }
- 
+
         default:
             return state;
     };

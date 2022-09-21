@@ -49,7 +49,7 @@ def seed_comments():
         post_id=4
     )
     comment10 = Comment(
-        comment="Share next time Alec!",
+        comment="Share next time!",
         user_id=4,
         post_id=5
     )
@@ -64,7 +64,7 @@ def seed_comments():
         post_id=5
     )
     comment13 = Comment(
-        comment="Share next time Ray!",
+        comment="Share next time!",
         user_id=4,
         post_id=6
     )
@@ -79,7 +79,7 @@ def seed_comments():
         post_id=6
     )
     comment16 = Comment(
-        comment="Share next time Rudy!",
+        comment="Share next time!",
         user_id=4,
         post_id=7
     )

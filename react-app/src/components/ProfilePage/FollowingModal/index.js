@@ -6,6 +6,9 @@ import './FollowingModal.css'
 const Following = ({ profile, isOpen, onClose }) => {
   const userFollowing = profile.following;
   console.log("here-------", userFollowing);
+
+
+
   return (
     <>
       {isOpen && (
@@ -16,11 +19,13 @@ const Following = ({ profile, isOpen, onClose }) => {
             </div>
             {userFollowing ? (
               userFollowing.map((following, index) => {
-                let followingName = following[1];
+                let followingName = following.name;
+                let followingPic = following.profile_img;
                 return (
                 <div className='followingModalInnerContainer' key={index}>
-                   <div>
-                    <span>{followingName}</span>
+                   <div className="eachUserProfile">
+                     <img className='followingPic' src={followingPic} ></img>
+                     <span>{followingName}</span>
                    </div>
                 </div>
                 )

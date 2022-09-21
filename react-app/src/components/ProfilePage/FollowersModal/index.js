@@ -4,6 +4,7 @@ import './FollowersModal.css'
 
 const Followers = ({ profile, isOpen, onClose }) => {
   const userFollowers = profile.followers;
+  console.log("here------", userFollowers)
 
 
   return (
@@ -16,11 +17,13 @@ const Followers = ({ profile, isOpen, onClose }) => {
             </div>
             {userFollowers ? (
               userFollowers.map((follower, index) => {
-                let followerName = follower[1];
+                let followerName = follower.name;
+                let followerPic= follower.profile_img
                 return (
                 <div className='followerModalInnerContainer' key={index}>
-                  <div>
-                    {followerName}
+                  <div className="eachUserProfile">
+                    <img className='followerPic' src={followerPic}></img>
+                    <span>{followerName}</span>
                   </div>
                 </div>
                 )

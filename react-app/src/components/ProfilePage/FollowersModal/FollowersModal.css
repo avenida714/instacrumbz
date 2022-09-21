@@ -2,6 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 200px;
+  height: 400px;
   width: 500px;
+  overflow-y:auto
 }
+
+.followerModalInnerContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.followerPic {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+

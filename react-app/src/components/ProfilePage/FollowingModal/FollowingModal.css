@@ -2,6 +2,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 200px;
+  height: 400px;
   width: 500px;
+  overflow-y:auto
+}
+
+.followingModalInnerContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.followingPic {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+.eachUserProfile {
+  display: flex;
+  padding: 20px;
 }

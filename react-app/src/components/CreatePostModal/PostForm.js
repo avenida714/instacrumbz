@@ -8,7 +8,7 @@ import "./PostForm.css"
 
 
 
-const PostForm = ({ post, formType }) => {
+const PostForm = ({ post, formType, onClick }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
@@ -19,12 +19,13 @@ const PostForm = ({ post, formType }) => {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
+  
     if (validationErrors.length > 0) {
       return alert("Cannot Submit");
     }
@@ -37,18 +38,21 @@ const PostForm = ({ post, formType }) => {
         location,
       };
 
+
+
       console.log("*************post: ", post)
 
       if (formType === "Create Post") {
         const newPost = await dispatch(createAPost(post))
-
+       
         if (newPost) history.push(`/profile/${user.id}`);
+        
 
       } else {
         const editdata = await dispatch(updateAPost(post))
-        //  history.push(`/profile/${user.id}`);
+
         if (editdata) dispatch(getOnePostById(post.id))
-        history.push(`/profile/${user.id}`);
+        onClick()
 
       }
 
@@ -61,12 +65,20 @@ const PostForm = ({ post, formType }) => {
 
     };
 
+    // useEffect(() => {
+    //   if (post) {
+    //     setImage_url(post.image_url);
+    //     setCaption(post.caption);
+    //     setLocation(post.location)
+    //   }
+    // }, [post]);
 
-    useEffect(() => {
+
+    // useEffect(() => {
   //     dispatch(updateAPost(post)).then(() =>
   //     dispatch(getOnePostById(post.id)))
   //     .then(() => setIsLoaded(true));
-  }, [ dispatch, post, image_url, caption, location ]);
+  // }, [ dispatch, image_url, caption, location ]);
 
 
   useEffect(() => {
@@ -88,7 +100,7 @@ const PostForm = ({ post, formType }) => {
 
      return (
     <div>
-         <form className="Form_container" onSubmit={handleSubmit}>
+        <form className="Form_container" onSubmit={handleSubmit}>
          <div>
             <ul className="Form_errors">
               {hasSubmitted && validationErrors.map(error => (

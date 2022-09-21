@@ -13,8 +13,8 @@ function EditFormModal( {post} ) {
       <i className="fa-solid fa-ellipsis" onClick={() => setShowModal(true)}  />
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <p onClick={() => setShowModal(false)}>X</p>
-          <PostForm  post={post} formType="Update Post" />
+            {/* <p onClick={() => setShowModal(false)}>X</p> */}
+          <PostForm  post={post} formType="Update Post" onClick={() => setShowModal(false)}/>
         </Modal>
       )}
     </>

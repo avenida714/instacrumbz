@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PostForm from './PostForm';
 
 
 const CreatePostForm = () => {
-  
+  const [showModal, setShowModal] = useState(false);
+
     const post = {
     
       };

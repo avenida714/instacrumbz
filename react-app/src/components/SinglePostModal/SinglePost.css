@@ -1,0 +1,13 @@
+
+.image-container{
+  display: flex;
+  border: 2px solid blue;
+  width: 100%;
+}
+
+.right-half {
+  border: 2px solid green;
+}
+.left-half {
+  border: 2px solid red;
+}

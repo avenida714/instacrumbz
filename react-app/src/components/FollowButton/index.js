@@ -15,10 +15,7 @@ const ToggleFollow = (profile) => {
 
   const [userIsFollowing, setUserIsFollowing] = useState(false);
 
-  // is the logged in user following the profile being viewed
-  // sessionUser.id is in the profile's following list
-  // forEach follower of the profile
-  // check if the followerId === sessionUser.id (logged in user)
+  
   useEffect(() => {
     profile.followers.forEach((follower) => {
       // followers of the profile being viewed

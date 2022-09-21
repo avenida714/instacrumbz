@@ -1,25 +1,26 @@
 .mainProfileContainer {
   display: flex;
   flex-direction: column;
+  /* position: relative; */
   flex-wrap: wrap;
   margin-top: 2rem;
-  margin-left: 30%;
-  margin-right: 30%;
-  /* border: 1px solid red; */
+  margin-left: 25%;
+  margin-right: 20%;
   background-color: rgb(249, 249, 249);
+  /* border: 1px solid red; */
 }
 
 .innerProfileContainer{
   display: flex;
-  /* border: 1px solid red; */
   width: 100%;
-  /* border-bottom: 1px solid rgb(216, 203, 203); */
+  /* border: 1px solid red; */
+
 }
 
 .profileInfoContainer {
   display: flex;
   /* border: 1px solid red; */
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   margin-left: 10px;
   margin-top: 20px;
   width: 90%;
@@ -73,17 +74,18 @@
   gap: 10px;
   margin-top: 5%;
   margin-bottom: 5%;
-  margin-left: 2%;
+  max-width: 100%;
   margin-right: 9%;
   height: 1000px;
   border-top: 1px solid rgb(216, 203, 203);
 }
 
-.eachUserPost {
+/* .eachUserPost {
   padding-top: 20px;
   height: 280px;
   width: 280px;
-}
+  max-width: 100%;
+} */
 
 .profileimg{
   object-fit: cover;
@@ -106,8 +108,15 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.profile-post {
+  width: 300px;
+  padding-top: 35px;
+  height: 300px;
+  margin: 5px;
+  max-width: 100%;
+}
 
-.eachUserPost > img:hover {
+.profile-post > img:hover {
   filter: brightness(.7);
   transition: .25s;
 }

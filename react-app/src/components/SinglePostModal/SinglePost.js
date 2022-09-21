@@ -13,7 +13,12 @@ function SinglePost({ post }) {
         <div>
         <div><img src={post.image_url}/></div>
         <div>{post.location}</div>
-        <div>Comments Component: </div>
+        <div className="comment-display-pc">
+                { post.comments.map((comment) => (
+                        <div key={comment.id}> { comment.comment } </div>
+                    ))
+                }
+        </div>
         <div>{post.caption}</div>
         <div>{post.user.username}</div>
         </div>

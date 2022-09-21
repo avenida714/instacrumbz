@@ -8,7 +8,7 @@ import "./PostForm.css"
 
 
 
-const PostForm = ({ post, formType, onClick }) => {
+const PostForm = ({ post, formType, onClick, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
@@ -19,8 +19,8 @@ const PostForm = ({ post, formType, onClick }) => {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-
+    // const [showModal, setShowModal] = useState(false);
+// console.log(" onClick",  onClick)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,16 +40,14 @@ const PostForm = ({ post, formType, onClick }) => {
 
 
 
-      console.log("*************post: ", post)
-
+      // console.log("*************post: ", post)
+ 
       if (formType === "Create Post") {
         const newPost = await dispatch(createAPost(post))
        
         if (newPost) dispatch(getOnePostById(post.id))
-        
-        history.push(`/profile/${user.id}`);
         onClick()
-        
+        history.push(`/profile/${user.id}`);
 
       } else {
         const editdata = await dispatch(updateAPost(post))
@@ -58,6 +56,7 @@ const PostForm = ({ post, formType, onClick }) => {
         onClick()
 
       }
+     
 
       setImage_url('');
       setCaption('');
@@ -77,11 +76,11 @@ const PostForm = ({ post, formType, onClick }) => {
     // }, [post]);
 
 
-    // useEffect(() => {
+  //   useEffect(() => {
   //     dispatch(updateAPost(post)).then(() =>
   //     dispatch(getOnePostById(post.id)))
   //     .then(() => setIsLoaded(true));
-  // }, [ dispatch, image_url, caption, location ]);
+  // }, [ dispatch ]);
 
 
   useEffect(() => {

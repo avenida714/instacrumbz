@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createAPost, updateAPost } from '../../store/posts';
+import { createAPost, getOnePostById, updateAPost } from '../../store/posts';
 import "./PostForm.css"
 
 
-const PostForm = ({ post, formType }) => {
+
+const PostForm = ({ post, formType, onClick, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
@@ -17,13 +18,14 @@ const PostForm = ({ post, formType }) => {
     const [location, setLocation] = useState(post.location || "")
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
-
-
-
+    const [isLoaded, setIsLoaded] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
+// console.log(" onClick",  onClick)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
+  
     if (validationErrors.length > 0) {
       return alert("Cannot Submit");
     }
@@ -36,20 +38,25 @@ const PostForm = ({ post, formType }) => {
         location,
       };
 
-      console.log("*************post: ", post)
 
+
+      // console.log("*************post: ", post)
+ 
       if (formType === "Create Post") {
         const newPost = await dispatch(createAPost(post))
-
-        if (newPost) history.push(`/profile/${user.id}`);
-
-
-
+       
+        if (newPost) dispatch(getOnePostById(post.id))
+        onClick()
+        history.push(`/profile/${user.id}`);
 
       } else {
-        dispatch(updateAPost(post))
-        history.push(`/posts/${post.id}/edit`);
+        const editdata = await dispatch(updateAPost(post))
+
+        if (editdata) dispatch(getOnePostById(post.id))
+        onClick()
+
       }
+     
 
       setImage_url('');
       setCaption('');
@@ -60,6 +67,20 @@ const PostForm = ({ post, formType }) => {
 
     };
 
+    // useEffect(() => {
+    //   if (post) {
+    //     setImage_url(post.image_url);
+    //     setCaption(post.caption);
+    //     setLocation(post.location)
+    //   }
+    // }, [post]);
+
+
+  //   useEffect(() => {
+  //     dispatch(updateAPost(post)).then(() =>
+  //     dispatch(getOnePostById(post.id)))
+  //     .then(() => setIsLoaded(true));
+  // }, [ dispatch ]);
 
 
   useEffect(() => {
@@ -79,9 +100,9 @@ const PostForm = ({ post, formType }) => {
     }, [image_url, caption, location])
 
 
-    return (
+     return (
     <div>
-         <form className="Form_container" onSubmit={handleSubmit}>
+        <form className="Form_container" onSubmit={handleSubmit}>
          <div>
             <ul className="Form_errors">
               {hasSubmitted && validationErrors.map(error => (

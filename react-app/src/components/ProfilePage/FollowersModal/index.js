@@ -3,7 +3,8 @@ import { Modal } from "../../../context/Modal";
 
 const Followers = ({ profile, isOpen, onClose }) => {
   const userFollowers = profile.followers;
-  console.log("here-------", profile);
+ 
+
   return (
     <>
       {isOpen && (
@@ -12,7 +13,11 @@ const Followers = ({ profile, isOpen, onClose }) => {
             {userFollowers ? (
               userFollowers.map((follower) => {
                 let followerName = follower[1];
-                return <div>{followerName}</div>;
+                return (
+                <div>
+                  {followerName}
+                </div>
+                )
               })
             ) : (
               <div>No followers yet</div>

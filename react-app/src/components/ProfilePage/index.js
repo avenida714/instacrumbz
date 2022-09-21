@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
+import { getPostsOtherUserId, loadCurrUserPosts } from "../../store/posts";
 import ToggleFollow from "../FollowButton";
 import Followers from "./FollowersModal/index";
 import Following from "./FollowingModal";
-import {BsGrid3X3} from "react-icons/bs"
-
-//modal
-// import ViewPostModal from "../ViewPostModal";
 import SinglePostModal from "../SinglePostModal";
-
 import "./ProfilePage.css";
-import { getPostsOtherUserId, loadCurrUserPosts } from "../../store/posts";
+import {BsGrid3X3} from "react-icons/bs"
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -24,10 +20,9 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showPostModal, setShowPostModal] = useState(false);
-  const [activeModal, setActiveModal] = useState(null);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
+
 
   useEffect(() => {
     dispatch(loadUserProfile(userId));

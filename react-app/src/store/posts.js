@@ -95,17 +95,7 @@ export const updateAPost = (data) => async (dispatch) => {
 
 
 //TO-DO:
-export const deleteAPost = (postId) => async (dispatch) => {
-    const response = await fetch(`/api/posts/${postId}`, {
-        method: 'DELETE'
-    })
-    if (response.ok) {
-        // const deleteMe = await response.json() //revist later
-        dispatch(actionDeletePost(postId));
-        // return deleteMe;
-    }
-    return response;
-}
+
 
 
 //TO-DO: Fetch all Posts in general
@@ -144,6 +134,18 @@ export const getPostsOtherUserId = (id) => async (dispatch) => {
     }
 }
 
+export const deleteAPost = (postId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${postId}`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        // const deleteMe = await response.json() //revist later
+        dispatch(actionDeletePost(postId));
+        dispatch(loadCurrUserPosts())
+        // return deleteMe;
+    }
+    return response;
+}
 
 //TO-DO:
 export const likeAPost = (postId) => async (dispatch) => {

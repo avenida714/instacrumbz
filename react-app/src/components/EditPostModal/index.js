@@ -10,7 +10,6 @@ function EditFormModal( {post} ) {
 
   let id = post.id
   const postFromState = useSelector(state => state.posts[id] )
-  console.log("postFromState.owner_id", postFromState.owner_id)
   const userId = useSelector((state) => state.session.user.id)
  
 

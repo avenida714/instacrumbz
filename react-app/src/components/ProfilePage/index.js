@@ -5,15 +5,10 @@ import { loadUserProfile } from "../../store/profile";
 
 import ToggleFollow from "../FollowButton";
 
-
 //modal
 import ViewPostModal from "../ViewPostModal";
 
-
 import "./ProfilePage.css";
-
-
-
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -25,7 +20,8 @@ const UserProfilePage = () => {
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
@@ -65,22 +61,24 @@ const UserProfilePage = () => {
                           <h2 className="profileUserName">{profile.name}</h2>
                           {sessionUser && profile.id === sessionUser.id ? (
                             <button
-                            className="editProfile"
-                            onClick={(e) => handleEditProfile(e, profile.id)}
+                              className="editProfile"
+                              onClick={(e) => handleEditProfile(e, profile.id)}
                             >
                               Edit profile
                             </button>
                           ) : (
-                            <button
-                            style={hideButton}
-                            className="editProfileButton"
-                            onClick={(e) => handleEditProfile(e, profile.id)}
-                            >
-                              edit profile
-                            </button>
-                            && <ToggleFollow profile={profile} />
+                            (
+                              <button
+                                style={hideButton}
+                                className="editProfileButton"
+                                onClick={(e) =>
+                                  handleEditProfile(e, profile.id)
+                                }
+                              >
+                                edit profile
+                              </button>
+                            ) && <ToggleFollow profile={profile} />
                           )}
-
                         </div>
                         <span>{userPosts.length}</span> posts
                         <span> {profile.followers.length}</span> followers
@@ -100,12 +98,23 @@ const UserProfilePage = () => {
                 userPosts.map((post) => {
                   return (
                     <>
-                    <div className="eachUserPost" key={post.id}>
-                      <img className='profileimg' src={post.image_url} alt="post"></img>
+                      <div className="eachUserPost" key={post.id}>
+                        <img
+                          className="profileimg"
+                          src={post.image_url}
+                          alt="post"
+                          onClick={() => {
+                            setShowPostModal(true);
+                            setActiveModal(post.id);
+                          }}
+                        ></img>
 
-                        <ViewPostModal post={post} />
-
-                    </div>
+                        <ViewPostModal
+                          post={post}
+                          isOpen={showPostModal && activeModal === post.id}
+                          onClose={() => setShowPostModal(false)}
+                        />
+                      </div>
                     </>
                   );
                 })

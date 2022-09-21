@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(./FontsFree-Net-Billabong.ttf)
+}
 /* * {
   background-color: white;
 } */
@@ -10,7 +14,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 60;
+  height: 60px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -41,18 +45,29 @@
 
 .logo {
   /* border: 3px solid red; */
-  max-height: 90%;
+  /* max-height: 90%; */
   background: transparent !important;
 }
+
+.text-logo {
+  font-family: MyFont;
+  font-size: 70px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  /* border: 3px solid blue; */
+  padding: 0;
+}
+
 
 .icon-div {
   /* border: 3px solid blue; */
   max-height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   /* align-items: center; */
   gap: 15px;
-  width: 350px;
+  width: 250px;
 }
 
 .icon {

@@ -36,7 +36,7 @@ const UserProfilePage = () => {
       });
 
 
-  }, [dispatch, userId, userPosts]);
+  }, [dispatch, userId]); //userPosts causes infinity loop
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();

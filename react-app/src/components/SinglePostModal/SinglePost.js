@@ -41,6 +41,6 @@ function SinglePost({ post }) {
   } else {
     return null;
   }
-
+}
 
 export default SinglePost;

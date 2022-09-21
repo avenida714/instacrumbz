@@ -5,6 +5,7 @@ import { loadUserProfile } from "../../store/profile";
 import ToggleFollow from "../FollowButton";
 import Followers from "./FollowersModal/index";
 import Following from "./FollowingModal";
+import {BsGrid3X3} from "react-icons/bs"
 
 //modal
 // import ViewPostModal from "../ViewPostModal";
@@ -126,17 +127,20 @@ const UserProfilePage = () => {
             </div>
 
             <div className="userPostContainer">
-              {userPosts && userPosts.length ? (
-                userPosts.map((post) => {
-                  return (
-                    <div className="profile-post">
-                      <SinglePostModal post={post} />
-                    </div>
-                  );
-                })
-              ) : (
-                <div>no posts</div>
-              )}
+                <span className="postsLabel"> <BsGrid3X3/> POSTS</span>
+              <div className="innerPostContainer">
+                {userPosts && userPosts.length ? (
+                  userPosts.map((post) => {
+                    return (
+                      <div className="profile-post">
+                        <SinglePostModal post={post} />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div>no posts</div>
+                )}
+              </div>
             </div>
           </div>
         </div>

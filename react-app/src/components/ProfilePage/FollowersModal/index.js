@@ -1,4 +1,4 @@
-import React,  from "react";
+import React from "react";
 import { Modal } from "../../../context/Modal";
 
 const Followers = ({ profile, isOpen, onClose }) => {

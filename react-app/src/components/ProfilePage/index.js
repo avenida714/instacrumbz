@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserProfile } from "../../store/profile";
-
 import ToggleFollow from "../FollowButton";
+import Followers from "./FollowersModal/index";
 
 //modal
 // import ViewPostModal from "../ViewPostModal";
@@ -24,9 +24,10 @@ const UserProfilePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showPostModal, setShowPostModal] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
 
   useEffect(() => {
-    dispatch(loadUserProfile(userId))
+    dispatch(loadUserProfile(userId));
     dispatch(getPostsOtherUserId(userId))
       .then(() => {
         setIsLoaded(true);
@@ -34,9 +35,7 @@ const UserProfilePage = () => {
       .catch(async (res) => {
         setFindAProfileStatus(res.status);
       });
-
-
-  }, [dispatch, userId, userPosts]);
+  }, [dispatch, userId]);
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();
@@ -86,11 +85,27 @@ const UserProfilePage = () => {
                           )}
                         </div>
                         <div className="profileDetailSpan">
-                          <span className="postSpan"><b>{userPosts.length}</b> posts</span>
-                          <span className="followerSpan"> <b>{profile.followers.length}</b> followers</span>
-                          <span className="followingSpan"> <b>{profile.following.length}</b> following </span>
+                          <span className="postSpan">
+                            <b>{userPosts.length}</b> posts
+                          </span>
+                          <span
+                            className="followerSpan"
+                            onClick={() => setShowFollowersModal(true)}
+                          >
+                            {" "}
+                            <b>{profile.followers.length}</b> followers
+                          </span>
+                          <span className="followingSpan">
+                            {" "}
+                            <b>{profile.following.length}</b> following{" "}
+                          </span>
                         </div>
                         <div className="profileBio">{profile.bio}</div>
+                        <Followers
+                          profile={profile}
+                          isOpen={showFollowersModal}
+                          onClose={() => setShowFollowersModal(false)}
+                        />
                       </div>
                     </div>
                   );
@@ -101,13 +116,13 @@ const UserProfilePage = () => {
             </div>
 
             <div className="userPostContainer">
-            {userPosts && userPosts.length ? (
+              {userPosts && userPosts.length ? (
                 userPosts.map((post) => {
                   return (
                     <div className="profile-post">
-                      <SinglePostModal post={ post }/>
+                      <SinglePostModal post={post} />
                     </div>
-                  )
+                  );
                 })
               ) : (
                 <div>no posts</div>

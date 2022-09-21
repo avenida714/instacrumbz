@@ -70,9 +70,9 @@ function App() {
           <LiveFeedPage />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/post/current' exact={true} >
+        {/* <ProtectedRoute path='/post/current' exact={true} >
           <CurrentUserPage />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         <ProtectedRoute path='/post/:postId' exact={true} >
           <SinglePost />

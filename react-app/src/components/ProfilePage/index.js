@@ -6,7 +6,8 @@ import { loadUserProfile } from "../../store/profile";
 import ToggleFollow from "../FollowButton";
 
 //modal
-import ViewPostModal from "../ViewPostModal";
+// import ViewPostModal from "../ViewPostModal";
+import SinglePostModal from "../SinglePostModal";
 
 import "./ProfilePage.css";
 
@@ -94,29 +95,13 @@ const UserProfilePage = () => {
             </div>
 
             <div className="userPostContainer">
-              {userPosts && userPosts.length ? (
+            {userPosts && userPosts.length ? (
                 userPosts.map((post) => {
                   return (
-                    <>
-                      <div className="eachUserPost" key={post.id}>
-                        <img
-                          className="profileimg"
-                          src={post.image_url}
-                          alt="post"
-                          onClick={() => {
-                            setShowPostModal(true);
-                            setActiveModal(post.id);
-                          }}
-                        ></img>
-
-                        <ViewPostModal
-                          post={post}
-                          isOpen={showPostModal && activeModal === post.id}
-                          onClose={() => setShowPostModal(false)}
-                        />
-                      </div>
-                    </>
-                  );
+                    <div className="profile-post">
+                      <SinglePostModal post={ post }/>
+                    </div>
+                  )
                 })
               ) : (
                 <div>no posts</div>

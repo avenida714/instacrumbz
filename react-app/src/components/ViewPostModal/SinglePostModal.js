@@ -1,37 +1,37 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
-import { Modal } from '../../context/Modal'
-import SinglePost from '../SinglePost';
+// import React, { useState } from 'react'
+// import { useDispatch } from 'react-redux'
+// import { useHistory, useParams } from 'react-router-dom'
+// import { Modal } from '../../context/Modal'
+// import SinglePost from '../SinglePost';
 
 
-// import comment component
-// import create comment component
+// // import comment component
+// // import create comment component
 
 
 
 
-//post comes from Profile Page (see below)
-function SinglePostModal( { post }) {
+// //post comes from Profile Page (see below)
+// function SinglePostModal( { post }) {
 
-  const [showModal, setShowModal] = useState(false);
+//   const [showModal, setShowModal] = useState(false);
 
 
-  return (
-    <div>
-      <button className="post-modal" onClick={() => setShowModal(true)}>
-        <img className="post-modal"src={post.image} alt=""/>
-      </button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <SinglePost post={post}/>
-        </Modal>
-      )}
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <button className="post-modal" onClick={() => setShowModal(true)}>
+//         <img className="post-modal"src={post.image} alt=""/>
+//       </button>
+//       {showModal && (
+//         <Modal onClose={() => setShowModal(false)}>
+//           <SinglePost post={post}/>
+//         </Modal>
+//       )}
+//     </div>
+//   )
+// }
 
-export default SinglePostModal
+// export default SinglePostModal
 
 
 

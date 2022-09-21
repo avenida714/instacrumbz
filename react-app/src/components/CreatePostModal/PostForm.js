@@ -45,7 +45,10 @@ const PostForm = ({ post, formType, onClick }) => {
       if (formType === "Create Post") {
         const newPost = await dispatch(createAPost(post))
        
-        if (newPost) history.push(`/profile/${user.id}`);
+        if (newPost) dispatch(getOnePostById(post.id))
+        
+        history.push(`/profile/${user.id}`);
+        onClick()
         
 
       } else {

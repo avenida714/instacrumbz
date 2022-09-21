@@ -33,7 +33,9 @@ const UserProfilePage = () => {
       .catch(async (res) => {
         setFindAProfileStatus(res.status);
       });
-  }, [dispatch, userId]);
+
+  }, [dispatch, userId]); //userPosts causes infinity loop
+
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();

@@ -50,7 +50,7 @@ const PostCard = ({ post, currUser }) => {
         <div className="outter-div-pc" /* outter main div container for single post */ >
             <div className="header-pc" >
                 <div className="user-icon-pc" onClick={usersProfilePage}>
-                    <img className="img circle" src={ post.user.profile_img }/>
+                    <img alt="post" className="img circle" src={ post.user.profile_img }/>
                 </div>
                 <div className="header-info">
                     <div>{ post.user.username }</div>
@@ -58,7 +58,7 @@ const PostCard = ({ post, currUser }) => {
                 </div>
             </div>
             <div className="post-card-img-container padding" /* image display container */ >
-                <img className="img" src={ post?.image_url } />
+                <img className="img" alt="post" src={ post?.image_url } />
             </div>
             <div className="likes padding">
                 <TiHeartOutline className="heart-pc" />

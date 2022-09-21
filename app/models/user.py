@@ -63,7 +63,7 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'gender': self.gender,
             'profile_img': self.profile_img,
-            'followers': [(user.id, user.name) for user in self.followers],
-            'following': [(user.id, user.name) for user in self.following]
+            'followers': [{'id':user.id, 'username':user.name, 'profile_img':user.profile_img} for user in self.followers],
+            'following': [{'id':user.id, 'username':user.name, 'profile_img':user.profile_img} for user in self.following]
         }
 # FLASK will not automatically convert a set into JSON; use tuple and not set ^^

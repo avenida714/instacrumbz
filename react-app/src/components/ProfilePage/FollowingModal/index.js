@@ -1,5 +1,6 @@
 import React  from "react";
 import { Modal } from "../../../context/Modal";
+import './FollowingModal.css'
 
 
 const Following = ({ profile, isOpen, onClose }) => {
@@ -9,11 +10,20 @@ const Following = ({ profile, isOpen, onClose }) => {
     <>
       {isOpen && (
         <Modal onClose={onClose}>
-          <div>
+          <div className='followingModalContainer'>
+            <div>
+              <h1>Following</h1>
+            </div>
             {userFollowing ? (
-              userFollowing.map((following) => {
+              userFollowing.map((following, index) => {
                 let followingName = following[1];
-                return <div>{followingName}</div>;
+                return (
+                <div className='followingModalInnerContainer' key={index}>
+                   <div>
+                    <span>{followingName}</span>
+                   </div>
+                </div>
+                )
               })
             ) : (
               <div>Not following anyone</div>

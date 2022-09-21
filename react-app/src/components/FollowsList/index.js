@@ -1,9 +1,11 @@
 import './FollowsList.css'
 import '../../index.css'
+import { useHistory } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
 
 
 const FollowsList = ({ currUser }) => {
+    const history = useHistory();
 
     const developers = [
         {
@@ -32,9 +34,14 @@ const FollowsList = ({ currUser }) => {
         }
     ];
 
+    const usersProfilePage = () => {
+        let path = `/profile/${currUser.id}`;
+        history.push(path);
+    };
+
     const displayDevs = developers.map((dev) => (
         <div key={dev.name} className='user-follow-header'>
-            <div className='user-img-fp'>
+            <div className='user-img-fp' >
                 <img className="img circle" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
             </div>
             <div>
@@ -50,7 +57,7 @@ const FollowsList = ({ currUser }) => {
     return (
         <div className='follows-outer-container'>
             <div className='user-follow-header'>
-                <div className='user-img-fp'>
+                <div className='user-img-fp' onClick={usersProfilePage}>
                     <img className="img circle" src={ currUser.profile_img }/>
                 </div>
                 <div>

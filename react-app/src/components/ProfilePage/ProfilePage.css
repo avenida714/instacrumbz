@@ -4,24 +4,16 @@
   flex-wrap: wrap;
   margin-top: 2rem;
   margin-left: 30%;
-  margin-right: 30%;
-  /* border: 1px solid red; */
+  margin-right: 25%;
   background-color: rgb(249, 249, 249);
-}
-
-.innerProfileContainer{
-  display: flex;
-  /* border: 1px solid red; */
-  width: 100%;
-  /* border-bottom: 1px solid rgb(216, 203, 203); */
 }
 
 .profileInfoContainer {
   display: flex;
-  /* border: 1px solid red; */
-  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
   margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 2rem;
   width: 90%;
 }
 
@@ -39,6 +31,7 @@
   width: 80px;
   align-self: center;
 }
+
 
 .profilePic > img {
   height:150px;
@@ -71,19 +64,14 @@
   position: relative;
   justify-content: center;
   gap: 10px;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 5%;
-  margin-left: 2%;
+  max-width: 100%;
   margin-right: 9%;
   height: 1000px;
   border-top: 1px solid rgb(216, 203, 203);
 }
 
-.eachUserPost {
-  padding-top: 20px;
-  height: 280px;
-  width: 280px;
-}
 
 .profileimg{
   object-fit: cover;
@@ -106,8 +94,15 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.profile-post {
+  width: 310px;
+  padding-top: 35px;
+  height: 320px;
+  margin: 5px;
+  max-width: 100%;
+}
 
-.eachUserPost > img:hover {
+.profile-post > img:hover {
   filter: brightness(.7);
   transition: .25s;
 }

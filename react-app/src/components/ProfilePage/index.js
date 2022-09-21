@@ -10,6 +10,7 @@ import ToggleFollow from "../FollowButton";
 import SinglePostModal from "../SinglePostModal";
 
 import "./ProfilePage.css";
+import { getPostsOtherUserId, loadCurrUserPosts } from "../../store/posts";
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -26,13 +27,16 @@ const UserProfilePage = () => {
 
   useEffect(() => {
     dispatch(loadUserProfile(userId))
+    dispatch(getPostsOtherUserId(userId))
       .then(() => {
         setIsLoaded(true);
       })
       .catch(async (res) => {
         setFindAProfileStatus(res.status);
       });
-  }, [dispatch, userId]);
+
+
+  }, [dispatch, userId, userPosts]);
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();

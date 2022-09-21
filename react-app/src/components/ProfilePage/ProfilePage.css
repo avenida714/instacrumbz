@@ -66,8 +66,16 @@
   margin-right: 30px;
 }
 
+.followerSpan:hover{
+  cursor: pointer;
+}
+
 .followingSpan{
   margin-right: 30px;
+}
+
+.followingSpan:hover{
+  cursor: pointer;
 }
 .profileBio {
   margin-top: 10px;
@@ -76,17 +84,31 @@
 .userPostContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   position: relative;
   justify-content: center;
   gap: 10px;
   margin-top: 2%;
-  margin-bottom: 5%;
-  max-width: 100%;
-  margin-right: 9%;
-  height: 1000px;
+  /* margin-left: 200px; */
+  max-width: 93.5rem;
+  width: 100%;
   border-top: 1px solid rgb(216, 203, 203);
+  /* border: 1px solid red; */
 }
 
+.innerPostContainer {
+  display: flex;
+  position: relative;
+  flex-direction:row;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 5px;
+  flex-wrap: wrap;
+  margin-left: 3.5rem;
+  /* margin-right: 2rem; */
+  width: 100%;
+  /* border: 1px solid red; */
+}
 
 .profileimg{
   object-fit: cover;
@@ -109,12 +131,23 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.postsLabel {
+  font-family: 'Roboto';
+  color: grey;
+  font-size: 16px;
+  padding-top:10px;
+}
+
 .profile-post {
-  width: 310px;
-  padding-top: 35px;
-  height: 320px;
-  margin: 5px;
-  max-width: 100%;
+  margin: 9px;
+}
+
+.profile-post > img {
+  display: block;
+  max-width:350px;
+  max-height:350px;
+  width: auto;
+  height: auto;
 }
 
 .profile-post > img:hover {

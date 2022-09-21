@@ -7,6 +7,7 @@ import "./EditProfile.css";
 const EditProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   let { userId } = useParams();
   userId = Number(userId);
   const profile = useSelector((state) => {
@@ -75,6 +76,12 @@ const EditProfile = () => {
       });
   };
 
+  const redirectBack = (e) => {
+    e.preventDefault();
+    let path = `/profile/${sessionUser.id}`;
+    history.push(path);
+  };
+
   if (isLoaded) {
     return (
       <div className="editProfileContainer">
@@ -127,8 +134,8 @@ const EditProfile = () => {
               />
             </label>
             <div className="editProfileButton">
-              <button className="backButton" onClick={history.goBack}>
-                Go Back
+              <button className="backButton" onClick={redirectBack}>
+                Cancel
               </button>
               <button className="editProfileButton" type="submit">
                 Edit Profile

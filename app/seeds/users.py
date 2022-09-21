@@ -39,7 +39,7 @@ def seed_users():
         name='David Ting',
         bio='Hi, Im David Ting',
         gender='Male',
-        profile_img='https://static.wikia.nocookie.net/monster/images/9/95/Charizard.png/revision/latest?cb=20170708221247',
+        profile_img='https://assets.dragoart.com/images/378_501/how-to-draw-fred-flintstone_5e4c71b7472074.16871918_2326_3_4.jpg',
         password='password',
         followers=[demo, marnie, bobbie]
         )

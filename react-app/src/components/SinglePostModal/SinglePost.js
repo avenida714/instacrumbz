@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import { createComment } from "../../store/comment";
 import { getOnePostById } from "../../store/posts";
 import EditFormModal from "../EditPostModal";
 
@@ -16,6 +17,31 @@ function SinglePost({ post }) {
     let path = `/profile/${post.owner_id}`;
     history.push(path);
   };
+
+  const currUser = useSelector(state => state.session.user);
+
+
+  const [ comment, setComment ] = useState('');
+  const [ isDisabled, setIsDisabled ] = useState(false);
+
+
+  let id = post.id
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let newComment = {
+        comment: comment,
+        user_id: currUser.id,
+        post_id: id
+    };
+
+    dispatch(createComment(newComment));
+    setComment("");
+
+};
+
 
   if (post) {
     return (
@@ -56,7 +82,18 @@ function SinglePost({ post }) {
               ))}
             </div>
             </div>
-
+            <div className="leave-comment-pc" /* comment text area */ >
+                <form className="comment-form" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        className="comment-area"
+                        placeholder="Add a comment..."
+                        value={ comment }
+                        onChange = {(e) => setComment(e.target.value)}
+                    />
+                    <button className="post-comment" disabled={ isDisabled }>Post</button>
+                </form>
+            </div>
           </div>
         </div>
 

@@ -52,14 +52,20 @@
     gap: 10px;
 }
 
+.comments-header-pc{
+    color: gray;
+    margin-left: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 .comment-display-pc {
     padding-top: 5px;
     padding-bottom: 13px;
-    margin: 10px;
-    height: 100px;
+    margin-bottom: 10px;
+    height: 75px;
     vertical-align: baseline;
     /* border: 1px red solid; */
-    margin-left: 12px;
     margin-right: 12px;
     overflow-y: auto;
 }
@@ -111,4 +117,8 @@ textarea{
 
 .padding{
     margin-bottom: 10px;
+}
+
+.gray {
+    color: gray;
 }

@@ -44,7 +44,7 @@ const LoginForm = () => {
             history.push("/")
         }
 
-    
+
     };
 
     const updateEmail = (e) => {
@@ -99,14 +99,22 @@ const LoginForm = () => {
                                 />
 
                             </div>
-                            <button className='login_button' type='submit'>login</button>
+                            <div className='center-buttons'>
+                                <button className='login_button' type='submit'>Login</button>
+                                <button className='login_button' type='submit'
+                                    onClick={() => {
+                                        setEmail("demo@aa.io")
+                                        setPassword("password")
+                                    }}
+                                >Demo Login</button>
+                            </div>
                         </div>
                         <div className='register'>
-                            Don't have an account? <NavLink className='login_link' to='/sign-up'> register </NavLink>
+                            Don't have an account? <NavLink className='login_link' to='/sign-up'> Register </NavLink>
                         </div>
                     </div>
                 </div>
-                
+
                 <footer className='login_footer'>© 2022 Instacrumbz from Alec, Rudy, Ray, David</footer>
 
             </form>

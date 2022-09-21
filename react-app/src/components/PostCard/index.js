@@ -14,12 +14,11 @@ const PostCard = ({ post, currUser }) => {
 
     const [ comment, setComment ] = useState('');
     const [ errors, setErrors ] = useState('');
-    const [ isDisabled, setIsDisabled ] = useState(false)
+    const [ isDisabled, setIsDisabled ] = useState(false);
 
-    const targetpost = useSelector(state => state.posts)
+    // const users = useSelector(state => Object.values(state.users));
 
     let id = post.id
-
 
     useEffect(() => {
         let errors = [];
@@ -55,7 +54,7 @@ const PostCard = ({ post, currUser }) => {
                 </div>
                 <div className="header-info">
                     <div>{ post.user.username }</div>
-                    <div>{ post.location }</div>
+                    <div className="gray">{ post.location }</div>
                 </div>
             </div>
             <div className="post-card-img-container padding" /* image display container */ >
@@ -71,9 +70,13 @@ const PostCard = ({ post, currUser }) => {
                 <div className="bold">{ post.user.username }</div>
                 <div>{ post.caption }</div>
             </div>
+            <div className="comments-header-pc">Comments:</div>
             <div className="comment-display-pc">
                 { post.comments.map((comment) => (
-                        <div key={comment.id}> { comment.comment } </div>
+                        <div key={comment.id} className="caption-pc">
+                        <div className="bold">{ comment.user.username }:</div>
+                        <div>{ comment.comment }</div>
+                        </div>
                     ))
                 }
             </div>

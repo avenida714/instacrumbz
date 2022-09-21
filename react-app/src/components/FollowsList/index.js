@@ -39,8 +39,8 @@ const FollowsList = ({ currUser }) => {
         history.push(path);
     };
 
-    const displayDevs = developers.map((dev) => (
-        <div key={dev.name} className='user-follow-header'>
+    const displayDevs = developers.map((dev, i) => (
+        <div key={i} className='user-follow-header'>
             <div className='user-img-fp' >
                 <img className="img circle" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
             </div>
@@ -54,6 +54,23 @@ const FollowsList = ({ currUser }) => {
         </div>
     ));
 
+    // let something = []
+
+    // const displayUsersToFollow = something.map(() =>(
+    //     <div key={i} className='user-follow-header'>
+    //         <div className='user-img-fp' >
+    //             <img className="img circle" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
+    //         </div>
+    //         <div>
+    //             <div>{ dev.name }</div>
+    //             <div className='our-links'>
+    //                 <a className="link lightgray" href={dev.gitHubLink}>GitHub</a>
+    //                 <a className="link lightgray" href={dev.linkedIn}>LinkedIn</a>
+    //             </div>
+    //         </div>
+    //     </div>
+    // ))
+
     return (
         <div className='follows-outer-container'>
             <div className='user-follow-header'>
@@ -66,7 +83,14 @@ const FollowsList = ({ currUser }) => {
                 </div>
             </div>
             <div className='suggestions-divider darkgray'>
-                Follow the Developers
+                Suggestions For You
+            </div>
+            <div className='suggestions-list'>
+                <div> Test </div>
+                <div> Test </div>
+            </div>
+            <div className='suggestions-divider darkgray'>
+                Meet the Developers
             </div>
             <div className='suggestions-list'>
                 {displayDevs}

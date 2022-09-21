@@ -15,12 +15,9 @@ function SinglePost({ post }) {
   if (post) {
     return (
       <div className="outer-most-div-dont-style-me">
-        <div className="image-container">
 
           <div className="left-half">
-            <div className="post-image">
-              <img src={post.image_url} alt="post" className="image" />
-            </div>
+              <img src={post.image_url} alt="post" className="img" />
           </div>
 
 
@@ -35,7 +32,6 @@ function SinglePost({ post }) {
           <div>{post.user.username}</div>
           </div>
 
-        </div>
       </div>
     );
   } else {

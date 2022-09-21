@@ -25,4 +25,35 @@
 
 .right-half {
   border: 2px solid green;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.right-half-inner {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  /* padding-left: 30px; */
+
+
+}
+
+.header-info {
+  padding-left: 30px;
+}
+
+.underline {
+  border-bottom: 1px solid lightgray;
+  padding-left: 0px;
+}
+
+.header-pc{
+  /* border: 3px solid yellow; */
+}
+
+.caption-comments {
+  border: 2px solid yellow;
+  padding-left: 30px;
 }

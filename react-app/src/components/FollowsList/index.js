@@ -52,7 +52,7 @@ const FollowsList = ({ currUser }) => {
     const displayDevs = developers.map((dev, i) => (
         <div key={i} className='user-follow-header'>
             <div className='user-img-fp' >
-                <img className="img circle" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
+                <img className="img circle no-cursor" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
             </div>
             <div>
                 <div>{ dev.name }</div>

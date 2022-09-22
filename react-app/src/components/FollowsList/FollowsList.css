@@ -54,3 +54,7 @@
 .link {
     text-decoration: none;
 }
+
+.no-cursor {
+    cursor: default;
+}

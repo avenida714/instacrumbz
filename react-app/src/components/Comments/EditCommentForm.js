@@ -7,7 +7,7 @@ import { getOnePostById } from "../../store/posts";
 
 
 
-function EditCommentForm({ post }) {
+function EditCommentForm({ post, comment1, commentId, onClick}) {
 
   console.log("**************** let's see the post ID", post.id)
 
@@ -19,14 +19,14 @@ function EditCommentForm({ post }) {
 
   let id = post.id;
 
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState(comment1);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setHasSubmitted(true);
@@ -36,12 +36,23 @@ function EditCommentForm({ post }) {
     }
 
     let editedComment = {
+    
       comment: comment,
       user_id: currUser.id,
       post_id: id,
     };
 
-    dispatch(updateAComment(editedComment));
+    console.log("editedComment**********", editedComment)
+
+
+    const editCom = await dispatch(updateAComment(editedComment, commentId));
+    if(editCom) {
+        onClick()
+        history.push("/profile/1")
+        history.push("/")
+    }
+ 
+
     setComment("");
     setValidationErrors([]);
     setHasSubmitted(false);

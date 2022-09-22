@@ -23,8 +23,15 @@ const LiveFeedPage  = () => {
 
   posts.reverse()
 
-
   const currUser = useSelector(state => state.session.user);
+  const commentObj = useSelector(state => state.comment)
+  let allComments
+    if (commentObj) allComments = Object.values(commentObj)
+
+
+
+
+
 
   const displayPosts = posts.map((post, i) => (
     <PostCard key={i} post={ post } currUser={ currUser } />

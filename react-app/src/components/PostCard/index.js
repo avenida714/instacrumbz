@@ -5,7 +5,8 @@ import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
 import { createComment, getPostComment } from "../../store/comment"
-import EditCommentForm from "../Comments/EditCommentForm";
+import EditCommentModal from "../Comments/EditCommentFormModal";
+
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post, currUser }) => {
@@ -18,22 +19,6 @@ const PostCard = ({ post, currUser }) => {
     const [ isDisabled, setIsDisabled ] = useState(false);
 
     let id = post.id
-
-
-    const commentObj = useSelector(state => state.comment)
-
-    // console.log("commentObj *****************", commentObj)
-
-    const allComments = Object.values(commentObj)
-
-        console.log("allComments *****************", allComments)
-    console.log("******************currUser.id", currUser.id)
-
-    const filter = allComments.filter(comment => comment.user_id === currUser.id)
-
-
-            console.log("filter *****************", filter)
-
 
 
     useEffect(() => {
@@ -52,7 +37,11 @@ const PostCard = ({ post, currUser }) => {
             post_id: id
         };
 
+        console.log("newComment********", newComment)
+    
+
         dispatch(createComment(newComment));
+       
         setComment("");
 
     };
@@ -101,8 +90,7 @@ const PostCard = ({ post, currUser }) => {
                         <div key={comment.id} className="caption-pc">
                         <div className="bold">{ comment.user.username }:</div>
                         <div>{ comment.comment }</div>
-                        {(filter) && (<EditCommentForm  post={post} />)}
-
+                        {(comment.user.id === currUser.id) && (<EditCommentModal  post={ post} comment1={comment.comment} commentId={comment.id} />) }
 
                         </div>
                     ))

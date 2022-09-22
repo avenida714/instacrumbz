@@ -121,9 +121,13 @@
   border-radius: 2%;
   height: 30px;
   width: 100px;
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 400;
+  background-color: white;
   border-color: rgb(216, 203, 203);
   border-style: solid ;
-  border-width: 1px
+  border-width: .5px
 }
 
 .profileDetailHeader > button:hover {

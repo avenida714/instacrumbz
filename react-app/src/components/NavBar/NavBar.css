@@ -76,6 +76,10 @@
   margin: 5px;
 }
 
+.createPostIcon:hover {
+  cursor: pointer;
+}
+
 .photo-div-inner {
   /* border: 2px solid red; */
 

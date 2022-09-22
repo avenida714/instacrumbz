@@ -36,11 +36,14 @@ function SinglePost({ post }) {
     setComment("");
   };
 
+
+
   const type = () => dispatch(getPostsOtherUserId(currUser.id))
   
 
   const postFromState = useSelector((state) => state.posts[id]);
   const user = useSelector((state) => state.session.user);
+
 
   useEffect(() => {
     dispatch(getOnePostById(post.id));
@@ -57,7 +60,9 @@ function SinglePost({ post }) {
           <div className="right-half">
             <div className="right-half-inner">
               <div className="underline">
-                <div className="header-pc">
+
+                <div className="header-sp">
+
                   <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img
                       alt="post"
@@ -80,10 +85,18 @@ function SinglePost({ post }) {
                 </div>
               </div>
               <div className="caption-comments">
-                <div className="comment-display-pc">
-                  <div>{postFromState.caption}</div>
+                <div className="comment-display-sp">
+                  <div className="post-caption">{postFromState.caption}</div>
                   {postFromState.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
+                      <div className="user-icon-pc" onClick={usersProfilePage}>
+                        <img
+                          alt="post"
+                          className="img circle"
+                          src={comment.user.profile_img}
+                        />
+                      </div>
+
                       <div className="bold">{comment.user.username}:</div>
                       <div className="comment_content"> {comment.comment}</div>
                       <div className="comment_content">

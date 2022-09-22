@@ -20,6 +20,9 @@ const PostCard = ({ post, currUser }) => {
 
   let id = post.id;
 
+  const type = () => dispatch(getAllPosts())
+
+
   useEffect(() => {
     let errors = [];
     if (comment.length > 2000)
@@ -125,6 +128,7 @@ const PostCard = ({ post, currUser }) => {
             <div>{comment.comment}</div>
             {comment.user.id === currUser.id && (
               <EditCommentModal
+                type={type}
                 post={post}
                 comment1={comment.comment}
                 commentId={comment.id}

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAComment, updateAComment } from "../../store/comment";
-import { getOnePostById } from "../../store/posts";
+import { getOnePostById, getPostsOtherUserId } from "../../store/posts";
 import { getAllPosts } from "../../store/posts";
 import "./EditCommentForm.css";
 
-function EditCommentForm({ post, comment1, commentId, onHide }) {
+function EditCommentForm({ post, comment1, commentId, onHide, type }) {
   console.log("**************** let's see the post ID", post.id);
 
   const history = useHistory();
@@ -41,7 +41,7 @@ function EditCommentForm({ post, comment1, commentId, onHide }) {
     const editCom = await dispatch(updateAComment(editedComment, commentId));
     if (editCom) {
       onHide();
-      dispatch(getAllPosts());
+      type()
     }
 
     setComment("");
@@ -53,7 +53,7 @@ function EditCommentForm({ post, comment1, commentId, onHide }) {
     const del = await dispatch(deleteAComment(id));
     if (del) alert("I have successfully eaten the comment for you!!!");
     onHide();
-    dispatch(getAllPosts());
+    type()
   };
 
   useEffect(() => {

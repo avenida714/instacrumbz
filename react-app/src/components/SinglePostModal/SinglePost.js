@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { deleteAPost, getOnePostById } from "../../store/posts";
+import { deleteAPost, getOnePostById, getPostsOtherUserId } from "../../store/posts";
 import EditFormModal from "../EditPostModal";
-import { createComment } from "../../store/comment";
+import { createComment, deleteAComment } from "../../store/comment";
 import "./SinglePost.css";
 import EditCommentModal from "../Comments/EditCommentFormModal";
 
@@ -35,6 +35,9 @@ function SinglePost({ post }) {
     dispatch(createComment(newComment));
     setComment("");
   };
+
+  const type = () => dispatch(getPostsOtherUserId(currUser.id))
+  
 
   const postFromState = useSelector((state) => state.posts[id]);
   const user = useSelector((state) => state.session.user);
@@ -89,6 +92,7 @@ function SinglePost({ post }) {
                             post={post}
                             comment1={comment.comment}
                             commentId={comment.id}
+                            type={type}
                           />
                         )}
                       </div>

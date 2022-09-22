@@ -1,11 +1,15 @@
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './FollowsList.css'
 import '../../index.css'
-import { useHistory } from 'react-router-dom';
-// import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 
 const FollowsList = ({ currUser }) => {
     const history = useHistory();
+
+    const [users, setUsers] = useState([]);
 
     const developers = [
         {
@@ -34,10 +38,16 @@ const FollowsList = ({ currUser }) => {
         }
     ];
 
-    const usersProfilePage = () => {
-        let path = `/profile/${currUser.id}`;
-        history.push(path);
-    };
+
+    useEffect(() => {
+    async function fetchData() {
+        const response = await fetch('/api/users/');
+        const responseData = await response.json();
+        setUsers(responseData.users);
+    }
+    fetchData();
+    }, []);
+
 
     const displayDevs = developers.map((dev, i) => (
         <div key={i} className='user-follow-header'>
@@ -54,27 +64,37 @@ const FollowsList = ({ currUser }) => {
         </div>
     ));
 
-    // let something = []
+    let array = currUser.following.map((each) => each.id)
+    array.push(currUser.id)
 
-    // const displayUsersToFollow = something.map(() =>(
-    //     <div key={i} className='user-follow-header'>
-    //         <div className='user-img-fp' >
-    //             <img className="img circle" src={ dev?.pic || "https://i.stack.imgur.com/6M513.png" } />
-    //         </div>
-    //         <div>
-    //             <div>{ dev.name }</div>
-    //             <div className='our-links'>
-    //                 <a className="link lightgray" href={dev.gitHubLink}>GitHub</a>
-    //                 <a className="link lightgray" href={dev.linkedIn}>LinkedIn</a>
-    //             </div>
-    //         </div>
-    //     </div>
-    // ))
+    let notFollowing = users.filter((user) => !array.includes(user.id))
+
+
+    const displayUsersToFollow = notFollowing.map((user, i) =>(
+        <NavLink key={i} to={`/profile/${user.id}`} className='user-follow-header'>
+            <div className='user-img-fp' >
+                <img
+                    className="img circle"
+                    src={ user?.profile_img || "https://i.stack.imgur.com/6M513.png" }
+                />
+            </div>
+            <div>
+                <div>{ user.name }</div>
+            </div>
+        </NavLink>
+    ));
+
+
+    const currUsersProfilePage = () => {
+        let path = `/profile/${currUser.id}`;
+        history.push(path);
+    };
+
 
     return (
         <div className='follows-outer-container'>
             <div className='user-follow-header'>
-                <div className='user-img-fp' onClick={usersProfilePage}>
+                <div className='user-img-fp' onClick={currUsersProfilePage}>
                     <img className="img circle" src={ currUser.profile_img }/>
                 </div>
                 <div>
@@ -86,8 +106,7 @@ const FollowsList = ({ currUser }) => {
                 Suggestions For You
             </div>
             <div className='suggestions-list'>
-                <div> Test </div>
-                <div> Test </div>
+                { displayUsersToFollow }
             </div>
             <div className='suggestions-divider darkgray'>
                 Meet the Developers

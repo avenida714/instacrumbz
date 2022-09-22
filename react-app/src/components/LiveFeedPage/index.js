@@ -20,9 +20,8 @@ const LiveFeedPage  = () => {
   const posts = Object.values(postObj)
   // console.log("***********THIS IS OBJECT.values(postObj)*************", posts)
 
-  const newestPost = posts.reverse()
+  posts.reverse()
 
-  console.log("**************************************",newestPost)
 
   const currUser = useSelector(state => state.session.user);
 

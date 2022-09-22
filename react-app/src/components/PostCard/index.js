@@ -16,8 +16,6 @@ const PostCard = ({ post, currUser }) => {
     const [ errors, setErrors ] = useState('');
     const [ isDisabled, setIsDisabled ] = useState(false);
 
-    // const users = useSelector(state => Object.values(state.users));
-
     let id = post.id
 
     useEffect(() => {

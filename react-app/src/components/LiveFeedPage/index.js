@@ -8,6 +8,7 @@ import './LiveFeedPage.css'
 import '../../index.css'
 import PostCard from '../PostCard';
 import FollowsList from '../FollowsList';
+import { getPostComment } from '../../store/comment';
 
 const LiveFeedPage  = () => {
   const history = useHistory()
@@ -22,8 +23,15 @@ const LiveFeedPage  = () => {
 
   posts.reverse()
 
-
   const currUser = useSelector(state => state.session.user);
+  const commentObj = useSelector(state => state.comment)
+  let allComments
+    if (commentObj) allComments = Object.values(commentObj)
+
+
+
+
+
 
   const displayPosts = posts.map((post, i) => (
     <PostCard key={i} post={ post } currUser={ currUser } />
@@ -35,6 +43,9 @@ const LiveFeedPage  = () => {
     dispatch(getAllPosts())
     .then(() => setIsLoaded(true))
   }, [dispatch]);
+
+
+
 
 
   return isLoaded && (

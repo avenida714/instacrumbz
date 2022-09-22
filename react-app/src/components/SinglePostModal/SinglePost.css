@@ -19,8 +19,15 @@
   max-width: 500px;
 } */
 
-
-
+.comment_line{
+  display: flex;
+ 
+}
+.comment_content{
+ 
+  max-width: 325px; 
+  overflow-wrap: break-word;
+}
 
 .right-half {
   /* border: 2px solid green; */

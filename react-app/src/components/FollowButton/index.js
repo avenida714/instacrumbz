@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { loadUserProfile } from "../../store/profile";
 import { userFollow, userUnfollow } from "../../store/session";
-import {RiUserUnfollowFill} from "react-icons/ri"
+import { RiUserUnfollowFill } from "react-icons/ri";
 import "./FollowButton.css";
 
 const ToggleFollow = (profile) => {
@@ -15,14 +15,11 @@ const ToggleFollow = (profile) => {
 
   const [userIsFollowing, setUserIsFollowing] = useState(false);
 
-  
   useEffect(() => {
     profile.followers.forEach((follower) => {
-      // followers of the profile being viewed
-      console.log("FOLLOWER");
       console.log(follower);
-      let followerId = follower[0];
-      console.log(followerId);
+      // followers of the profile being viewed
+      let followerId = follower.id;
       if (sessionUser.id === followerId) {
         setUserIsFollowing(true);
         // if logged in user is following the profile being viewed
@@ -62,8 +59,8 @@ const ToggleFollow = (profile) => {
   return (
     <div className="buttonContainer">
       {userIsFollowing ? (
-         <button className="unfollowButton" onClick={unfollowProfile}>
-          Unfollow <RiUserUnfollowFill/>
+        <button className="unfollowButton" onClick={unfollowProfile}>
+          Unfollow <RiUserUnfollowFill />
         </button>
       ) : (
         <button className="followButton" onClick={followProfile}>

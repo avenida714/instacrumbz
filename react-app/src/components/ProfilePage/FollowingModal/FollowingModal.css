@@ -29,6 +29,10 @@
   font-family: 'Roboto', Helvetica;
 }
 
+.eachUserProfile:hover {
+  cursor: pointer;
+}
+
 .followingName  {
   margin-left: 20px;
 }

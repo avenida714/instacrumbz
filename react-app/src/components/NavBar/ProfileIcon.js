@@ -22,10 +22,6 @@ function ProfileIcon({ userLoggedIn }) {
     setShowMenu(true);
   };
 
-  const closeMenu = () => {
-    setShowMenu(false)
-  }
-
   // useEffect(() => {
   //   if (!showMenu) return;
 

@@ -18,6 +18,7 @@ const UserProfilePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const userPostsObj = useSelector((state) => state.posts);
+
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -138,7 +139,7 @@ const UserProfilePage = () => {
                   userPosts.map((post) => {
                     return (
                       <div className="profile-post">
-                        <SinglePostModal post={post} />
+                        <SinglePostModal className='profile-postImage' post={post} />
                       </div>
                     );
                   })

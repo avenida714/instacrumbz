@@ -9,6 +9,7 @@ import Following from "./FollowingModal";
 import SinglePostModal from "../SinglePostModal";
 import "./ProfilePage.css";
 import {BsGrid3X3} from "react-icons/bs"
+import {BiEditAlt} from "react-icons/bi"
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -68,7 +69,7 @@ const UserProfilePage = () => {
                               className="editProfile"
                               onClick={(e) => handleEditProfile(e, profile.id)}
                             >
-                              Edit profile
+                              Edit profile <BiEditAlt/>
                             </button>
                           ) : (
                             (

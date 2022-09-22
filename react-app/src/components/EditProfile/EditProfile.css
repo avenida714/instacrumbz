@@ -6,14 +6,20 @@
   margin: auto;
   margin-top: 10%;
   padding:40px;
-  border: 2px double rgb(216, 203, 203);
+  /* border: 2px double rgb(216, 203, 203); */
   border-radius: 20px;
 }
 
 .editProfileFormContainer{
-  width: 35%;
+  display: flex;
+  justify-content: center;
+  width: 50%;;
+  margin: auto;
   margin-top: 10%;
   margin-bottom: 10%;
+  padding:40px;
+  border: 2px double rgb(216, 203, 203);
+  border-radius: 20px;
 }
 
 .profilePreview {
@@ -44,7 +50,7 @@
 .profileEdit > label > input {
   font-size: 16px;
   padding-left: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 350px;
   border: 2px double rgb(216, 203, 203);
   border-radius: 20px;
@@ -58,7 +64,8 @@
 
 .profileEdit span {
   font-size: 15px;
-  width: 12%;
+  margin-right: 12px ;
+  width: 20%;
 }
 
 .editProfileButton {
@@ -70,6 +77,7 @@
   border-radius: 2%;
   font-family: 'Roboto';
   width: 100px;
+  background-color: white;
   border-color: rgb(216, 203, 203);
   border-style: solid ;
   border-width: 1px;

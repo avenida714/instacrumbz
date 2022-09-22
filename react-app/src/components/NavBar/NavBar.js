@@ -43,7 +43,7 @@ const NavBar = () => {
           {/* <NavLink to="/" exact={true} activeClassName="active" className="icon">
             <TbSquarePlus />
           </NavLink> */}
-          <CreatePostModal />
+           <span className="createPostIcon"> <CreatePostModal /> </span>
 
           <div className="center">
             <ProfileIcon userLoggedIn={ userLoggedIn }/>

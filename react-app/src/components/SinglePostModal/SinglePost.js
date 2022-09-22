@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { deleteAPost, getOnePostById } from "../../store/posts";
+import { deleteAPost, getOnePostById, getPostsOtherUserId } from "../../store/posts";
 import EditFormModal from "../EditPostModal";
-import { createComment } from "../../store/comment";
+import { createComment, deleteAComment } from "../../store/comment";
 import "./SinglePost.css";
 import EditCommentModal from "../Comments/EditCommentFormModal";
 
@@ -36,14 +36,14 @@ function SinglePost({ post }) {
     setComment("");
   };
 
+
+
+  const type = () => dispatch(getPostsOtherUserId(currUser.id))
+  
+
   const postFromState = useSelector((state) => state.posts[id]);
   const user = useSelector((state) => state.session.user);
 
-  //   const deletePost = async (id) => {
-  //     const del = await dispatch(deleteAPost(id));
-  //     if (del) alert("Successfully deleted the post, see you later.");
-  //     history.push(`/profile/${user.id}`);
-  //   };
 
   useEffect(() => {
     dispatch(getOnePostById(post.id));
@@ -60,7 +60,9 @@ function SinglePost({ post }) {
           <div className="right-half">
             <div className="right-half-inner">
               <div className="underline">
+
                 <div className="header-sp">
+
                   <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img
                       alt="post"
@@ -94,6 +96,7 @@ function SinglePost({ post }) {
                           src={comment.user.profile_img}
                         />
                       </div>
+
                       <div className="bold">{comment.user.username}:</div>
                       <div className="comment_content"> {comment.comment}</div>
                       <div className="comment_content">
@@ -102,6 +105,7 @@ function SinglePost({ post }) {
                             post={post}
                             comment1={comment.comment}
                             commentId={comment.id}
+                            type={type}
                           />
                         )}
                       </div>

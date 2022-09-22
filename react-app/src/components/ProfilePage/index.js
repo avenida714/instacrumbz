@@ -8,8 +8,8 @@ import Followers from "./FollowersModal/index";
 import Following from "./FollowingModal";
 import SinglePostModal from "../SinglePostModal";
 import "./ProfilePage.css";
-import {BsGrid3X3} from "react-icons/bs"
-import {BiEditAlt} from "react-icons/bi"
+import { BsGrid3X3 } from "react-icons/bs";
+import { BiEditAlt } from "react-icons/bi";
 
 const UserProfilePage = () => {
   const history = useHistory();
@@ -25,26 +25,23 @@ const UserProfilePage = () => {
   const [showFollowersModal, setShowFollowersModal] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
 
-
-  const helper = async() => {
-    const userProfile = await  dispatch(loadUserProfile(userId))
-    const res = await  dispatch(getPostsOtherUserId(userId))
-    .then(() => {
-      setIsLoaded(true);
-    })
-    .catch(async (res) => {
-      setFindAProfileStatus(res.status);
-    });
-  }
+  const helper = async () => {
+    const userProfile = await dispatch(loadUserProfile(userId));
+    const res = await dispatch(getPostsOtherUserId(userId))
+      .then(() => {
+        setIsLoaded(true);
+      })
+      .catch(async (res) => {
+        setFindAProfileStatus(res.status);
+      });
+  };
 
   useEffect(() => {
-    helper()
-
+    helper();
   }, [dispatch, userId]); //userPosts causes infinity loop
 
-  let userPosts = []
-  if (userPostsObj) userPosts = Object.values(userPostsObj)
-
+  let userPosts = [];
+  if (userPostsObj) userPosts = Object.values(userPostsObj);
 
   const handleEditProfile = (e, userId) => {
     e.preventDefault();
@@ -77,7 +74,7 @@ const UserProfilePage = () => {
                               className="editProfile"
                               onClick={(e) => handleEditProfile(e, profile.id)}
                             >
-                              Edit profile <BiEditAlt/>
+                              Edit profile <BiEditAlt />
                             </button>
                           ) : (
                             (
@@ -107,14 +104,14 @@ const UserProfilePage = () => {
                           <span
                             className="followingSpan"
                             onClick={() => setShowFollowingModal(true)}
-                            >
+                          >
                             {" "}
                             <b>{profile.following.length}</b> following{" "}
                           </span>
                         </div>
                         <div className="profileBio">{profile.bio}</div>
                         <Followers
-                          profile={profile}
+                          profile={profile} //test
                           isOpen={showFollowersModal}
                           onClose={() => setShowFollowersModal(false)}
                         />
@@ -133,13 +130,19 @@ const UserProfilePage = () => {
             </div>
 
             <div className="userPostContainer">
-                <span className="postsLabel"> <BsGrid3X3/> POSTS</span>
+              <span className="postsLabel">
+                {" "}
+                <BsGrid3X3 /> POSTS
+              </span>
               <div className="innerPostContainer">
                 {userPosts && userPosts.length ? (
                   userPosts.map((post) => {
                     return (
                       <div className="profile-post">
-                        <SinglePostModal className='profile-postImage' post={post} />
+                        <SinglePostModal
+                          className="profile-postImage"
+                          post={post}
+                        />
                       </div>
                     );
                   })

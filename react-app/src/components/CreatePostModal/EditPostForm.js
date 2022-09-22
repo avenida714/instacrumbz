@@ -7,7 +7,7 @@
 // const EditPostForm = () => {
 //     const {postId} = useParams();
 //     console.log("postId from EditPost***********", postId)
-    
+
 //     const post = useSelector(state => state.post[postId])
 //     console.log("post from EditPost***************", post)
 

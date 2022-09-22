@@ -21,11 +21,11 @@
 
 .comment_line{
   display: flex;
- 
+
 }
 .comment_content{
- 
-  max-width: 325px; 
+
+  max-width: 325px;
   overflow-wrap: break-word;
 }
 

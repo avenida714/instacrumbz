@@ -1,11 +1,11 @@
-import React, { useState, useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
-import "./ProfileIcon.css"
-import "../../index.css"
+import "./ProfileIcon.css";
+import "../../index.css";
 
-function ProfileIcon ({ userLoggedIn }) {
+function ProfileIcon({ userLoggedIn }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -22,7 +22,7 @@ function ProfileIcon ({ userLoggedIn }) {
     const closeMenu = () => {
       setShowMenu(false);
     };
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
@@ -34,14 +34,20 @@ function ProfileIcon ({ userLoggedIn }) {
   };
 
   return (
-      <div className="profile-icon" onClick={openMenu}>
-            <img className="img circle" src={ userLoggedIn?.profile_img } />
+    <div className="profile-icon" onClick={openMenu}>
+      <img className="img circle" src={userLoggedIn?.profile_img} />
       {showMenu && (
         <div className="profile-dropdown">
           <div className="dropdown-content">
-              <div className="welcome-dropdown"> Welcome, { userLoggedIn.name }</div>
+            <div className="welcome-dropdown">
+              {" "}
+              Welcome, {userLoggedIn.name}
+            </div>
             <div className="linkhighlight-dropdown">
-              <NavLink className="your-text-dropdown" to={`/profile/${sessionUser.id}`} >
+              <NavLink
+                className="your-text-dropdown"
+                to={`/profile/${sessionUser.id}`}
+              >
                 Profile
               </NavLink>
             </div>
@@ -50,7 +56,9 @@ function ProfileIcon ({ userLoggedIn }) {
                 Settings
               </NavLink>
             </div>
-          <div className="logout-dropdown" onClick={onLogout}>Log Out</div>
+            <div className="logout-dropdown" onClick={onLogout}>
+              Log Out
+            </div>
           </div>
         </div>
       )}

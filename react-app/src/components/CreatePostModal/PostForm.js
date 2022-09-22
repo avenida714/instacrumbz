@@ -76,7 +76,7 @@ const PostForm = ({ post, formType, onClick }) => {
   // const handleDelete = async (e) => {
 
   //   const del = await dispatch(deleteAPost(post.id))
-    
+
   //   if (del) setShowModal(false)
   //     history.push(`/profile/${user.id}`);
 
@@ -165,7 +165,7 @@ const PostForm = ({ post, formType, onClick }) => {
       {(formType === "Update Post") && ( <button onClick={() => deletePost(post.id)}>
                   <i className="fa-solid fa-trash-can"></i> Delete</button> )}
     </div>
-  ) 
+  )
 }
 
         export default PostForm;

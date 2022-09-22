@@ -1,13 +1,15 @@
-import React, { useState, useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+
 import "./ProfileIcon.css"
 import "../../index.css"
 import Following from "../ProfilePage/FollowingModal";
 import FollowingPCModal from "./FollowingPCModal";
 
-function ProfileIcon ({ userLoggedIn }) {
+
+function ProfileIcon({ userLoggedIn }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
@@ -27,10 +29,12 @@ function ProfileIcon ({ userLoggedIn }) {
   // useEffect(() => {
   //   if (!showMenu) return;
 
-  //   const closeMenu = () => {
-  //     setShowMenu(false);
-  //   };
-  //   document.addEventListener('click', closeMenu);
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+    document.addEventListener("click", closeMenu);
+
 
   //   return () => document.removeEventListener("click", closeMenu);
   // }, [showMenu]);

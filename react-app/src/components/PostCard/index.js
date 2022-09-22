@@ -32,13 +32,15 @@ const PostCard = ({ post, currUser }) => {
   }, [comment]);
 
   useEffect(() => {
+    // console.log("POST LIKE CHANGED", post.id);
+    // console.log(post.likes);
     post.likes.forEach((userIdWhoLiked) => {
       if (sessionUser.id === userIdWhoLiked) {
         setIsLikedByUser(true);
         return;
       }
     });
-  }, [post, post.likes]);
+  }, [post.likes]);
 
   useEffect(() => {
     let errors = [];
@@ -75,9 +77,10 @@ const PostCard = ({ post, currUser }) => {
 
   const likePost = async (post) => {
     console.log(post);
-    dispatch(getAllPosts());
-    dispatch(likeAPost(post));
-    setIsLikedByUser(!isLikedByUser);
+    dispatch(likeAPost(post)).then(() => {
+      dispatch(getAllPosts());
+      setIsLikedByUser(!isLikedByUser);
+    });
   };
 
   return (

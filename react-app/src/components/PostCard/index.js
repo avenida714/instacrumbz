@@ -5,36 +5,50 @@ import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
 import { createComment, getPostComment } from "../../store/comment"
+import { getOnePostById, likeAPost } from "../../store/posts";
 import EditCommentModal from "../Comments/EditCommentFormModal";
 
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post, currUser }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [comment, setComment] = useState("");
+  const [errors, setErrors] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+  let id = post.id;
 
-    const [ comment, setComment ] = useState('');
-    const [ errors, setErrors ] = useState('');
-    const [ isDisabled, setIsDisabled ] = useState(false);
+  useEffect(() => {
+    let errors = [];
+    if (comment.length > 2000)
+      errors.push("Comment should be less than 2000 characters!");
+    if (comment === "") errors.push("Please leave a comment!");
+    errors = setErrors(errors);
+  }, [comment]);
 
-    let id = post.id
+  useEffect(() => {
+    console.log("POST LIKES");
+    console.log(post.likes);
+  }, [post ,post.likes]);
 
 
-    useEffect(() => {
+
+  useEffect(() => {
         let errors = [];
         if (comment.length > 2000) errors.push('Comment should be less than 2000 characters!')
         if (comment === "") errors.push('Please leave a comment!')
         errors = setErrors(errors)
     }, [ comment ]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+      e.preventDefault();
 
-        let newComment = {
-            comment: comment,
-            user_id: currUser.id,
-            post_id: id
+
+      let newComment = {
+          comment: comment,
+          user_id: currUser.id,
+          post_id: id,
         };
 
         console.log("newComment********", newComment)
@@ -43,7 +57,6 @@ const PostCard = ({ post, currUser }) => {
         dispatch(createComment(newComment));
        
         setComment("");
-
     };
 
     const usersProfilePage = () => {
@@ -53,11 +66,12 @@ const PostCard = ({ post, currUser }) => {
 
     useEffect(() => {
         dispatch(getPostComment(post.id))
-      }, [dispatch]);
-
-
-
-
+    }, [dispatch]);
+    
+    const likePost = async (post) => {
+        console.log(post);
+        dispatch(likeAPost(post));
+    };
 
 
     return (
@@ -91,7 +105,6 @@ const PostCard = ({ post, currUser }) => {
                         <div className="bold">{ comment.user.username }:</div>
                         <div>{ comment.comment }</div>
                         {(comment.user.id === currUser.id) && (<EditCommentModal  post={ post} comment1={comment.comment} commentId={comment.id} />) }
-
                         </div>
                     ))
                 }
@@ -109,7 +122,7 @@ const PostCard = ({ post, currUser }) => {
                 </form>
             </div>
         </div>
-    )
+  );
 };
 
 export default PostCard;

@@ -18,24 +18,24 @@ const UserProfilePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const userPostsObj = useSelector((state) => state.posts);
-  
+
   const profile = useSelector((state) => state.profile.profile);
   const [findAProfileStatus, setFindAProfileStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
 
-  
-    const helper = async() => {
-      const userProfile = await  dispatch(loadUserProfile(userId))
-      const res = await  dispatch(getPostsOtherUserId(userId))
-      .then(() => {
-        setIsLoaded(true);
-      })
-      .catch(async (res) => {
-        setFindAProfileStatus(res.status);
-      });
-    }
+
+  const helper = async() => {
+    const userProfile = await  dispatch(loadUserProfile(userId))
+    const res = await  dispatch(getPostsOtherUserId(userId))
+    .then(() => {
+      setIsLoaded(true);
+    })
+    .catch(async (res) => {
+      setFindAProfileStatus(res.status);
+    });
+  }
 
   useEffect(() => {
     helper()
@@ -45,7 +45,7 @@ const UserProfilePage = () => {
   let userPosts = []
   if (userPostsObj) userPosts = Object.values(userPostsObj)
 
-  
+
   const handleEditProfile = (e, userId) => {
     e.preventDefault();
     let path = `/profile/edit/${userId}`;
@@ -139,7 +139,7 @@ const UserProfilePage = () => {
                   userPosts.map((post) => {
                     return (
                       <div className="profile-post">
-                        <SinglePostModal post={post} />
+                        <SinglePostModal className='profile-postImage' post={post} />
                       </div>
                     );
                   })

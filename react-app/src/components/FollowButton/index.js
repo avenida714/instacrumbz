@@ -12,17 +12,14 @@ const ToggleFollow = (profile) => {
   let { userId } = useParams();
   userId = Number(userId);
   const sessionUser = useSelector((state) => state.session.user);
-
   const [userIsFollowing, setUserIsFollowing] = useState(false);
 
   useEffect(() => {
     profile.followers.forEach((follower) => {
       console.log(follower);
-      // followers of the profile being viewed
       let followerId = follower.id;
       if (sessionUser.id === followerId) {
         setUserIsFollowing(true);
-        // if logged in user is following the profile being viewed
       }
     });
   }, [profile.followers]);
@@ -54,8 +51,7 @@ const ToggleFollow = (profile) => {
     }
     setUserIsFollowing(false);
   };
-  console.log("here------", profile.followers);
-  // if (sessionUser.username === profile.username) {
+
   return (
     <div className="buttonContainer">
       {userIsFollowing ? (

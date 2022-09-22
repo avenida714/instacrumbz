@@ -160,7 +160,7 @@ def get_all_comment(post_id):
     return {"comments": all_comment_json}
 
 
-@post_routes.route('/<int:id>/post_likes')
+@post_routes.route('/<int:post_id>/post_likes', methods = ["POST"])
 @login_required
 def like_unlike_a_post(post_id):
 

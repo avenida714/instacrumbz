@@ -129,6 +129,7 @@ const PostForm = ({ post, formType, onClick }) => {
             image_url:
             <input
               type="text"
+              autoFocus
               placeholder="image_url..."
               value={image_url}
               onChange={e => setImage_url(e.target.value)}
@@ -139,7 +140,7 @@ const PostForm = ({ post, formType, onClick }) => {
         <div>
           <label>
             caption:
-            <textarea
+            <textarea className='PostForm_textarea'
               type="text"
               placeholder="caption..."
               value={caption}

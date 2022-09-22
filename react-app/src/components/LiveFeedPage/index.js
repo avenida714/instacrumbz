@@ -8,6 +8,12 @@ import "./LiveFeedPage.css";
 import "../../index.css";
 import PostCard from "../PostCard";
 import FollowsList from "../FollowsList";
+import { getPostComment } from '../../store/comment';
+import './LiveFeedPage.css'
+import '../../index.css'
+import PostCard from '../PostCard';
+import FollowsList from '../FollowsList';
+import { getPostComment } from '../../store/comment';
 
 const LiveFeedPage = () => {
   const history = useHistory();
@@ -22,7 +28,12 @@ const LiveFeedPage = () => {
 
   posts.reverse();
 
-  const currUser = useSelector((state) => state.session.user);
+
+  const currUser = useSelector(state => state.session.user);
+  const commentObj = useSelector(state => state.comment)
+  let allComments
+    if (commentObj) allComments = Object.values(commentObj)
+
 
   const displayPosts = posts.map((post, i) => (
     <PostCard key={i} post={post} currUser={currUser} />
@@ -34,6 +45,7 @@ const LiveFeedPage = () => {
     dispatch(getAllPosts()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+
   return (
     isLoaded && (
       <div className="outter-most-wrapper">
@@ -43,7 +55,6 @@ const LiveFeedPage = () => {
         <div className="live-feed-follows">
           <FollowsList currUser={currUser} />
         </div>
-      </div>
     )
   );
 };

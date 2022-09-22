@@ -97,20 +97,27 @@ const LoginForm = () => {
                                     value={password}
                                     onChange={updatePassword}
                                 />
-
                             </div>
                             <div className='center-buttons'>
-                                <button className='login_button' type='submit'>Login</button>
+                                <button className='login_button' type='submit'>
+                                    Login </button>
                                 <button className='login_button' type='submit'
                                     onClick={() => {
                                         setEmail("demo@aa.io")
                                         setPassword("password")
-                                    }}
-                                >Demo Login</button>
+                                    }}> Demo User #1 </button>
+                                <button className='login_button' type='submit'
+                                    onClick={() => {
+                                        setEmail("snorlax@aa.io")
+                                        setPassword("password")
+                                    }}> Demo User #2 </button>
                             </div>
-                        </div>
-                        <div className='register'>
-                            Don't have an account? <NavLink className='login_link' to='/sign-up'> Register </NavLink>
+                            <div className='login-text'>Demo User #2
+                                for Followers Functionality</div>
+                            <div className='register login-text'>
+                                Don't have an account?
+                                <NavLink className='login_link login-text' to='/sign-up'> Register </NavLink>
+                            </div>
                         </div>
                     </div>
                 </div>

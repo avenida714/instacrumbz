@@ -57,7 +57,7 @@ function EditCommentForm({ post, comment1, commentId, onHide }) {
   };
 
   useEffect(() => {
-    dispatch(getOnePostById(id));
+    dispatch(getOnePostById(id)).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   useEffect(() => {

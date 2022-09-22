@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-
-import "./NavBar.css";
-import "../../index.css";
-
 import { MdHomeFilled } from "react-icons/md";
 import { TbSquarePlus } from "react-icons/tb";
 import { FaRegCompass, FaRegPaperPlane } from "react-icons/fa";
@@ -14,6 +10,8 @@ import { useSelector } from "react-redux";
 import ProfileIcon from "./ProfileIcon";
 
 import CreatePostModal from "../CreatePostModal";
+import "./NavBar.css";
+import "../../index.css";
 
 const NavBar = () => {
   const userLoggedIn = useSelector((state) => state.session.user);

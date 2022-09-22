@@ -60,7 +60,7 @@ function SinglePost({ post }) {
           <div className="right-half">
             <div className="right-half-inner">
               <div className="underline">
-                <div className="header-pc">
+                <div className="header-sp">
                   <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img
                       alt="post"
@@ -83,7 +83,7 @@ function SinglePost({ post }) {
                 </div>
               </div>
               <div className="caption-comments">
-                <div className="comment-display-pc">
+                <div className="comment-display-sp">
                   <div className="post-caption">{postFromState.caption}</div>
                   {postFromState.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>

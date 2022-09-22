@@ -13,22 +13,48 @@
 
 }
 
+.comment-display-sp{
+  height: 500px;
+}
+
+.caption-comments{
+  /* border: 2px solid blue; */
+  height: 500px;
+}
+
 
 .post-caption {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
+}
+
+.header-sp {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin: 12px;
 }
 
 
 .comment_line{
   display: flex;
-  border: 2px solid red;
+  /* border: 2px solid red; */
+  align-items: center;
+  gap: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 
 }
 .comment_content{
 
   max-width: 325px;
   overflow-wrap: break-word;
+}
+
+.right-half{
+  /* border: 2px solid yellow; */
+  max-height: max-content;
 }
 
 .right-half {

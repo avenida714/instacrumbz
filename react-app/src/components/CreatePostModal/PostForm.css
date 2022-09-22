@@ -2,3 +2,7 @@
     list-style-type: none;
     color: red;
 }
+
+.PostForm_textarea{
+    border: 1px solid black;
+}

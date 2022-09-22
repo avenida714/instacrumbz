@@ -49,7 +49,7 @@ function EditCommentForm({ post, comment1, commentId, onHide}) {
     if(editCom) {
         onHide()
         dispatch(getAllPosts())
-
+      
     }
  
 
@@ -105,12 +105,13 @@ function EditCommentForm({ post, comment1, commentId, onHide}) {
 
       <input
         type="text"
+        autoFocus
         className="comment-area"
         placeholder="Add a comment..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
-      <button className="post-comment">
+      <button className="post-comment"> <i className="fa-solid fa-pen-to-square"></i>
         Update
       </button>
     </form>

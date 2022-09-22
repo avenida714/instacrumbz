@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import React, { useState } from "react";
+import { Modal } from "../../context/Modal";
 import { TbSquarePlus } from "react-icons/tb";
-import EditCommentForm from './EditCommentForm';
+import EditCommentForm from "./EditCommentForm";
 
-
-function EditCommentModal({ post, comment1, commentId}) {
+function EditCommentModal({ post, comment1, commentId }) {
   const [showModal, setShowModal] = useState(false);
-
 
   return (
     <>
-       <i className="fa-solid fa-pen-to-square" onClick={() => setShowModal(true)}  />
-        {/* <button onClick={() => setShowModal(true)}></button> */}
-        {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-                <EditCommentForm post={post} comment1={comment1} commentId={commentId}  onHide={() => setShowModal(false)}/>
-            </Modal>
-        )}
+      <i
+        className="fa-solid fa-pen-to-square"
+        onClick={() => setShowModal(true)}
+      />
+      {/* <button onClick={() => setShowModal(true)}></button> */}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <EditCommentForm
+            post={post}
+            comment1={comment1}
+            commentId={commentId}
+            onHide={() => setShowModal(false)}
+          />
+        </Modal>
+      )}
     </>
   );
 }

@@ -26,7 +26,10 @@ const Following = ({ profile, isOpen, onClose }) => {
                 let followingName = following.name;
                 let followingPic = following.profile_img;
                 return (
-                  <div className="followingModalInnerContainer" key={following.id}>
+                  <div
+                    className="followingModalInnerContainer"
+                    key={following.id}
+                  >
                     <div
                       className="eachUserProfile"
                       onClick={() => {

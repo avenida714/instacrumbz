@@ -72,9 +72,8 @@ const PostCard = ({ post, currUser }) => {
 
   const likePost = async (post) => {
     console.log(post);
-    dispatch(getAllPosts(post));
+    dispatch(getAllPosts());
     dispatch(likeAPost(post));
-
     setIsLikedByUser(!isLikedByUser);
   };
 

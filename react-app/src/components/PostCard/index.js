@@ -19,6 +19,23 @@ const PostCard = ({ post, currUser }) => {
 
     let id = post.id
 
+
+    const commentObj = useSelector(state => state.comment)
+
+    // console.log("commentObj *****************", commentObj)
+
+    const allComments = Object.values(commentObj)
+
+        console.log("allComments *****************", allComments)
+    console.log("******************currUser.id", currUser.id)
+
+    const filter = allComments.filter(comment => comment.user_id === currUser.id)
+
+
+            console.log("filter *****************", filter)
+
+
+
     useEffect(() => {
         let errors = [];
         if (comment.length > 2000) errors.push('Comment should be less than 2000 characters!')
@@ -48,6 +65,11 @@ const PostCard = ({ post, currUser }) => {
     useEffect(() => {
         dispatch(getPostComment(post.id))
       }, [dispatch]);
+
+
+
+
+
 
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
@@ -79,7 +101,8 @@ const PostCard = ({ post, currUser }) => {
                         <div key={comment.id} className="caption-pc">
                         <div className="bold">{ comment.user.username }:</div>
                         <div>{ comment.comment }</div>
-                        <EditCommentForm  post={post} />
+                        {(filter) && (<EditCommentForm  post={post} />)}
+
 
                         </div>
                     ))

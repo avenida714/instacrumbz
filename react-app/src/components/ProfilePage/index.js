@@ -34,7 +34,6 @@ const UserProfilePage = () => {
       .catch(async (res) => {
         setFindAProfileStatus(res.status);
       });
-      
     }
 
   useEffect(() => {

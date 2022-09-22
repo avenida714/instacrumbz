@@ -162,8 +162,7 @@ const PostForm = ({ post, formType, onClick }) => {
         <input type="submit" value={formType} />
       </form>
       {(formType === "Update Post") && ( <button onClick={() => deletePost(post.id)}>
-                  <i className="fa-solid fa-trash-can"></i> Delete
-                </button>)}
+                  <i className="fa-solid fa-trash-can"></i> Delete</button> )}
     </div>
   ) 
 }

@@ -8,6 +8,7 @@ import './LiveFeedPage.css'
 import '../../index.css'
 import PostCard from '../PostCard';
 import FollowsList from '../FollowsList';
+import { getPostComment } from '../../store/comment';
 
 const LiveFeedPage  = () => {
   const history = useHistory()
@@ -35,6 +36,9 @@ const LiveFeedPage  = () => {
     dispatch(getAllPosts())
     .then(() => setIsLoaded(true))
   }, [dispatch]);
+
+
+
 
 
   return isLoaded && (

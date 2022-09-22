@@ -9,8 +9,11 @@ import { getOnePostById } from "../../store/posts";
 
 function EditCommentForm({ post }) {
 
+  console.log("**************** let's see the post ID", post.id)
+
   const history = useHistory();
   const dispatch = useDispatch();
+
 
   const currUser = useSelector((state) => state.session.user);
 
@@ -19,6 +22,7 @@ function EditCommentForm({ post }) {
   const [comment, setComment] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
 
 
@@ -31,20 +35,20 @@ function EditCommentForm({ post }) {
       return alert("Cannot Submit");
     }
 
-    let newComment = {
+    let editedComment = {
       comment: comment,
       user_id: currUser.id,
       post_id: id,
     };
 
-    dispatch(updateAComment(newComment));
+    dispatch(updateAComment(editedComment));
     setComment("");
     setValidationErrors([]);
     setHasSubmitted(false);
   };
 
   useEffect(() => {
-    dispatch(getOnePostById(post.id));
+    dispatch(getOnePostById(id));
   }, [dispatch]);
 
 
@@ -61,7 +65,31 @@ function EditCommentForm({ post }) {
 
 
   return (
-    <div>EditCommentForm</div>
+    <div className="leave-comment-pc" /* comment text area */>
+    <form className="comment-form" onSubmit={handleSubmit}>
+    <div>
+          <ul>
+            {hasSubmitted && validationErrors.map(error => (
+              <li  key={error}>
+                {error}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      <input
+        type="text"
+        className="comment-area"
+        placeholder="Add a comment..."
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      />
+      <button className="post-comment">
+        Edit
+      </button>
+    </form>
+
+  </div>
   )
 }
 

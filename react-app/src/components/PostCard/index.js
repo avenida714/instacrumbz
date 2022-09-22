@@ -4,7 +4,8 @@ import { TiHeartOutline } from "react-icons/ti";
 import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
-import { createComment } from "../../store/comment"
+import { createComment, getPostComment } from "../../store/comment"
+import EditCommentForm from "../Comments/EditCommentForm";
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post, currUser }) => {
@@ -44,6 +45,10 @@ const PostCard = ({ post, currUser }) => {
         history.push(path);
     };
 
+    useEffect(() => {
+        dispatch(getPostComment(post.id))
+      }, [dispatch]);
+
     return (
         <div className="outter-div-pc" /* outter main div container for single post */ >
             <div className="header-pc" >
@@ -74,6 +79,8 @@ const PostCard = ({ post, currUser }) => {
                         <div key={comment.id} className="caption-pc">
                         <div className="bold">{ comment.user.username }:</div>
                         <div>{ comment.comment }</div>
+                        <EditCommentForm  post={post} />
+
                         </div>
                     ))
                 }

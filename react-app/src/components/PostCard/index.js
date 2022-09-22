@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TiHeartOutline } from "react-icons/ti";
+import { TiHeartFullOutline, TiHeartOutline } from "react-icons/ti";
 import { useHistory } from "react-router-dom";
 import "./PostCard.css"
 import '../../index.css'
@@ -13,9 +13,11 @@ import EditCommentModal from "../Comments/EditCommentFormModal";
 const PostCard = ({ post, currUser }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
 
   let id = post.id;
 
@@ -28,9 +30,13 @@ const PostCard = ({ post, currUser }) => {
   }, [comment]);
 
   useEffect(() => {
-    console.log("POST LIKES");
-    console.log(post.likes);
-  }, [post ,post.likes]);
+    post.likes.forEach((userIdWhoLiked) => {
+      if (sessionUser.id === userIdWhoLiked) {
+        setIsLikedByUser(true);
+        return;
+      }
+    });
+  }, [post, post.likes]);
 
 
 
@@ -42,7 +48,7 @@ const PostCard = ({ post, currUser }) => {
     }, [ comment ]);
 
   const handleSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
 
       let newComment = {
@@ -59,10 +65,14 @@ const PostCard = ({ post, currUser }) => {
         setComment("");
     };
 
-    const usersProfilePage = () => {
-        let path = `/profile/${post.owner_id}`;
-        history.push(path);
-    };
+    dispatch(createComment(newComment));
+    setComment("");
+  };
+
+  const usersProfilePage = () => {
+    let path = `/profile/${post.owner_id}`;
+    history.push(path);
+  };
 
     useEffect(() => {
         dispatch(getPostComment(post.id))
@@ -89,10 +99,22 @@ const PostCard = ({ post, currUser }) => {
                 <img className="img" alt="post" src={ post?.image_url } />
             </div>
             <div className="likes padding">
-                <TiHeartOutline className="heart-pc" />
-                <div className="likes-count">
-                    {post?.likes || "0"} likes
-                </div>
+              {isLikedByUser ? (
+              <TiHeartFullOutline
+                className="heart-pc"
+                onClick={() => {
+                  likePost(post);
+                }}
+              />
+              ) : (
+                <TiHeartOutline
+                  className="heart-pc"
+                  onClick={() => {
+                    likePost(post);
+                  }}
+                />
+              )}
+                <div className="likes-count"> {post?.likes.length || "0"} likes </div>
             </div>
             <div className="caption-pc" /* caption container */ >
                 <div className="bold">{ post.user.username }</div>

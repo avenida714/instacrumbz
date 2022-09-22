@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import LogoutButton from "../auth/LogoutButton";
-
 import "./NavBar.css";
 import "../../index.css"
 
@@ -20,30 +18,7 @@ import CreatePostModal from "../CreatePostModal";
 const NavBar = () => {
 
 
-
   const userLoggedIn = useSelector(state => state.session.user);
-
-  const urlLocation = useLocation()
-  const pathName = urlLocation.pathname
-
-  // console.log('this is the pathname *************',pathName)
-
-  // const [homeButtonActive, setHomeButtonActive] = useState();
-  // const [plusButtonActive, setPlusButtonActive] = useState();
-  // const [compassButtonActive, setCompassButtonActive] = useState();
-  // const [heartButtonActive, setHeartButtonActive] = useState();
-
-
-
-
-  // useEffect(() => {
-  //   if urlLocation
-
-  //   return () => {
-  //     second
-  //   }
-  // }, [homeButtonActive, plusButtonActive, compassButtonActive, heartButtonActive])
-
 
 
   return (
@@ -70,9 +45,6 @@ const NavBar = () => {
           </NavLink> */}
           <CreatePostModal />
 
-          <NavLink to="/" exact={true} activeClassName="active" className="icon">
-            <TiHeartOutline />
-          </NavLink>
           <div className="center">
             <ProfileIcon userLoggedIn={ userLoggedIn }/>
           </div>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteAComment, updateAComment } from "../../store/comment";
 import { getOnePostById } from "../../store/posts";
 import { getAllPosts } from '../../store/posts';
-
+import "./EditCommentForm.css"
 
 
 function EditCommentForm({ post, comment1, commentId, onHide}) {
@@ -103,10 +103,9 @@ function EditCommentForm({ post, comment1, commentId, onHide}) {
           </ul>
         </div>
 
-      <input
+      <input  className="comment_input"
         type="text"
         autoFocus
-        className="comment-area"
         placeholder="Add a comment..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}

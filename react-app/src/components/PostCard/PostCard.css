@@ -27,7 +27,7 @@
     cursor: pointer;
 }
 
-.header-info {
+.header-info-pc {
     display: flex;
     flex-direction: column;
 }
@@ -49,6 +49,7 @@
     margin-left: 12px;
     display: flex;
     justify-content: flex-start;
+    align-items: baseline;
     gap: 10px;
 }
 

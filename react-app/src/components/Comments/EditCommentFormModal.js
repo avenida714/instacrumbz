@@ -14,7 +14,7 @@ function EditCommentModal({ post, comment1, commentId}) {
         {/* <button onClick={() => setShowModal(true)}></button> */}
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <EditCommentForm post={post} comment1={comment1} commentId={commentId}  onClick={() => setShowModal(false)}/>
+                <EditCommentForm post={post} comment1={comment1} commentId={commentId}  onHide={() => setShowModal(false)}/>
             </Modal>
         )}
     </>

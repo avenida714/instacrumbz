@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAComment } from "../../store/comment";
+import { deleteAComment, updateAComment } from "../../store/comment";
 import { getOnePostById } from "../../store/posts";
+import { getAllPosts } from '../../store/posts';
 
 
 
-
-function EditCommentForm({ post, comment1, commentId, onClick}) {
+function EditCommentForm({ post, comment1, commentId, onHide}) {
 
   console.log("**************** let's see the post ID", post.id)
 
@@ -22,7 +22,7 @@ function EditCommentForm({ post, comment1, commentId, onClick}) {
   const [comment, setComment] = useState(comment1);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  const [ isLoaded, setIsLoaded ] = useState(false);
 
 
 
@@ -47,9 +47,9 @@ function EditCommentForm({ post, comment1, commentId, onClick}) {
 
     const editCom = await dispatch(updateAComment(editedComment, commentId));
     if(editCom) {
-        onClick()
-        history.push("/profile/1")
-        history.push("/")
+        onHide()
+        dispatch(getAllPosts())
+
     }
  
 
@@ -58,10 +58,25 @@ function EditCommentForm({ post, comment1, commentId, onClick}) {
     setHasSubmitted(false);
   };
 
+
+  const deleteComment = async (id) => {
+    const del = await dispatch(deleteAComment(id));
+    if (del) alert("I have successfully eaten the comment for you!!!");
+    onHide()
+    dispatch(getAllPosts())
+ 
+  };
+
+
+
   useEffect(() => {
     dispatch(getOnePostById(id));
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getAllPosts())
+    .then(() => setIsLoaded(true))
+  }, [dispatch]);
 
   useEffect(() => {
     let errors = [];
@@ -96,10 +111,12 @@ function EditCommentForm({ post, comment1, commentId, onClick}) {
         onChange={(e) => setComment(e.target.value)}
       />
       <button className="post-comment">
-        Edit
+        Update
       </button>
     </form>
 
+    <button onClick={() => deleteComment(commentId)}>
+                  <i className="fa-solid fa-trash-can"></i> Delete</button>
   </div>
   )
 }

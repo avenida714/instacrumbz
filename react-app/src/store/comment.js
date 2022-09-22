@@ -73,12 +73,12 @@ export const createComment = (newCommentData) => async (dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(editCommentData)
     })
-    console.log("response*****************",response)
+    // console.log("response*****************",response)
 
     if (response.ok) {
         const edittedComment = await response.json()
         dispatch(actionUpdateComment(edittedComment))
-        console.log("edittedComment***************",edittedComment)
+        // console.log("edittedComment***************",edittedComment)
         return edittedComment
     }
     return response;
@@ -93,6 +93,7 @@ export const createComment = (newCommentData) => async (dispatch) => {
       headers: { 'Content-Type': 'application/json' },
 
     });
+    console.log("response*****************",response)
 
     if (response.ok) {
     //   const comment = await response.json();

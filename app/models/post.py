@@ -21,7 +21,7 @@ class Post(db.Model):
     #relationships
     user = db.relationship("User", back_populates="posts")
 
-    liked = db.relationship("User", secondary=likes, back_populates='liked_posts')
+    likes = db.relationship("User", secondary=likes, back_populates='liked_posts')
 
     comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
 
@@ -33,7 +33,7 @@ class Post(db.Model):
 
     #TO-DO: likes method
     def post_likes_count(self):
-        return len(self.liked)
+        return len(self.likes)
 
 
     def to_dict(self):
@@ -46,6 +46,6 @@ class Post(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             "user": self.user.to_dict(),
-            "likes": len(self.liked),
+            "likes": len(self.likes),
             "comments": [c.to_dict() for c in self.comments]
         }

@@ -5,73 +5,73 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo',
+        username='demo',
         email='demo@aa.io',
         name='Demo',
-        bio='Im Demo',
+        bio='I am the Demo User!',
         gender='Robot',
         profile_img='https://i.pinimg.com/originals/6a/b6/68/6ab668f8c2341f45c8f2d183bbcc8332.jpg',
         password='password'
         )
     marnie = User(
-        username='Marnie',
+        username='marnie123',
         email='marnie@aa.io',
         name='Marnie',
-        bio='Im Marnie',
+        bio='Marnie the Marine Biologist',
         gender='Female',
         profile_img='https://cdnb.artstation.com/p/assets/images/images/020/071/433/large/joshua-carreras-marge-simpson-posted-to-x.jpg?1566245506',
         password='password',
         followers=[demo]
         )
     bobbie = User(
-        username='Bobbie',
+        username='bobbie',
         email='bobbie@aa.io',
         name='Bobbie',
-        bio='Im Bobbie',
+        bio='Ricky Bobbie! Yeah!',
         gender='Male',
         profile_img='https://cdnb.artstation.com/p/assets/images/images/035/287/409/large/nathan-renoir-javier-bart-simpson-fanart-final.jpg?1614602553',
         password='password',
         followers=[demo, marnie]
         )
-    david = User(
-        username='David',
-        email='david@aa.io',
-        name='David Ting',
-        bio='Hi, Im David Ting',
+    fred = User(
+        username='fredflinstone',
+        email='fred@aa.io',
+        name='Fred Flintstone',
+        bio='The real Fred Flinstone',
         gender='Male',
         profile_img='https://assets.dragoart.com/images/378_501/how-to-draw-fred-flintstone_5e4c71b7472074.16871918_2326_3_4.jpg',
         password='password',
         followers=[demo, marnie, bobbie]
         )
-    alec = User(
-        username='Alec',
-        email='alec@aa.io',
-        name='Alec Venida',
-        bio='Hi, Im Alec Venida',
+    kangaskhan = User(
+        username='kangaskhan',
+        email='kangaskhan@aa.io',
+        name='Kangaskhan',
+        bio='Im a Pokemon!',
         gender='Male',
         profile_img='https://static.pokemonpets.com/images/monsters-images-800-800/115-Kangaskhan.webp',
         password='password',
-        followers=[marnie, bobbie, david]
+        followers=[marnie, bobbie, fred]
         )
-    ray = User(
-        username='Ray',
-        email='ray@aa.io',
-        name='Ray Henry',
-        bio='Hi, Im Ray Henry',
+    snorlax = User(
+        username='snoringlax',
+        email='snorlax@aa.io',
+        name='Snorlax',
+        bio='Always sleeping, always hungry...',
         gender='Male',
         profile_img='https://staticc.sportskeeda.com/editor/2022/06/25cd1-16557699256455.png',
         password='password',
-        followers=[marnie, bobbie, david, alec]
+        followers=[marnie, bobbie, fred, kangaskhan]
         )
-    rudy = User(
-        username='Rudy',
-        email='rudy@aa.io',
-        name='Rudy Nguyen',
-        bio='Hi, Im Rudy Nguyen',
+    dragonite = User(
+        username='dragonite',
+        email='dragonite@aa.io',
+        name='Dragonite',
+        bio='Cute and cuddly :)',
         gender='Male',
         profile_img='https://assets.pokemon.com/assets/cms2/img/pokedex/full/149.png',
         password='password',
-        followers=[marnie, bobbie, david, alec, ray]
+        followers=[marnie, bobbie, fred, kangaskhan, snorlax]
         )
 
 
@@ -84,16 +84,16 @@ def seed_users():
     db.session.add(bobbie) #3
     db.session.commit()
 
-    db.session.add(david) #4
+    db.session.add(fred) #4
     db.session.commit()
 
-    db.session.add(alec) #5
+    db.session.add(kangaskhan) #5
     db.session.commit()
 
-    db.session.add(ray) #6
+    db.session.add(snorlax) #6
     db.session.commit()
 
-    db.session.add(rudy) #7
+    db.session.add(dragonite) #7
     db.session.commit()
 
 

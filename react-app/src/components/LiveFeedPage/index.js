@@ -29,7 +29,7 @@ const LiveFeedPage  = () => {
     <PostCard key={i} post={ post } currUser={ currUser } />
   ));
 
-  // const displayFollows = User.follows.map();
+  // const displayFollows = User.follows.map(); //
 
   useEffect(() => {
     dispatch(getAllPosts())

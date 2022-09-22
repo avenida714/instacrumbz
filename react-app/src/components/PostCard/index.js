@@ -50,7 +50,7 @@ const PostCard = ({ post, currUser }) => {
                 <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img alt="post" className="img circle" src={ post.user.profile_img }/>
                 </div>
-                <div className="header-info">
+                <div className="header-info-pc">
                     <div>{ post.user.username }</div>
                     <div className="gray">{ post.location }</div>
                 </div>

@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { createAPost, deleteAPost, getOnePostById, updateAPost } from '../../store/posts';
 import "./PostForm.css"
 import { deleteAComment } from '../../store/comment';
+import { loadUserProfile } from '../../store/profile';
 
 
 
@@ -20,7 +21,8 @@ const PostForm = ({ post, formType, onClick }) => {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(true);
+  // const [showModal, setShowModal] = useState(true);
+
 
 
   const handleSubmit = async (e) => {
@@ -44,7 +46,10 @@ const PostForm = ({ post, formType, onClick }) => {
     if (formType === "Create Post") {
       const newPost = await dispatch(createAPost(post))
 
-      if (newPost) dispatch(getOnePostById(post.id))
+      if (newPost) {
+        dispatch(getOnePostById(post.id))
+        // dispatch(loadUserProfile(user.id))
+      }
       onClick()
       history.push(`/profile/${user.id}`);
 
@@ -81,7 +86,11 @@ const PostForm = ({ post, formType, onClick }) => {
   //     dispatch(deleteAPost(postFromState.id))
   // }, [dispatch]);
 
-
+  const deletePost = async (id) => {
+    const del = await dispatch(deleteAPost(id));
+    if (del) alert("Successfully deleted the post, see you later.");
+    history.push(`/profile/${user.id}`);
+  };
 
 
 
@@ -152,6 +161,8 @@ const PostForm = ({ post, formType, onClick }) => {
         </div>
         <input type="submit" value={formType} />
       </form>
+      {(formType === "Update Post") && ( <button onClick={() => deletePost(post.id)}>
+                  <i className="fa-solid fa-trash-can"></i> Delete</button> )}
     </div>
   ) 
 }

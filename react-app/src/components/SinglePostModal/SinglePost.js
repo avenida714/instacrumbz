@@ -38,12 +38,11 @@ function SinglePost({ post }) {
   const postFromState = useSelector((state) => state.posts[id]);
   const user = useSelector((state) => state.session.user);
 
-  const deletePost = async (id) => {
-    const del = await dispatch(deleteAPost(id));
-    if (del) alert("Successfully deleted the post, see you later.");
-    history.push(`/`);
-    history.push(`/profile/${user.id}`);
-  };
+//   const deletePost = async (id) => {
+//     const del = await dispatch(deleteAPost(id));
+//     if (del) alert("Successfully deleted the post, see you later.");
+//     history.push(`/profile/${user.id}`);
+//   };
 
   useEffect(() => {
     dispatch(getOnePostById(post.id));
@@ -103,9 +102,7 @@ function SinglePost({ post }) {
                     Post
                   </button>
                 </form>
-                <button onClick={() => deletePost(id)}>
-                  <i className="fa-solid fa-trash-can"></i> Delete
-                </button>
+                
               </div>
             </div>
           </div>

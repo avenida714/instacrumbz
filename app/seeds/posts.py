@@ -6,7 +6,7 @@ def seed_posts():
     post1 = Post(
         image_url="https://lovechicliving.co.uk/wp-content/uploads/2014/11/Dirty-dishes.jpg",
         caption="Peas and thank you!",
-        location="Grandma's",
+        location="USA",
         owner_id=1
     )
     post2 = Post(

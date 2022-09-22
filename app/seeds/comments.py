@@ -4,17 +4,17 @@ from app.models import db, Comment
 # Adds demo comments, you can add other posts here if you want
 def seed_comments():
     comment1 = Comment(
-        comment="Wow that looked so tasty",
+        comment="Wow that looked so tasty!",
         user_id=2,
         post_id=1
     )
     comment2 = Comment(
-        comment="Wish I could try that",
+        comment="Wish I could try that...",
         user_id=3,
         post_id=1
     )
     comment3 = Comment(
-        comment="Yummy",
+        comment="Yummy!",
         user_id=4,
         post_id=1
     )
@@ -34,7 +34,7 @@ def seed_comments():
         post_id=1
     )
     comment7 = Comment(
-        comment="Im jealous, that looked amazing",
+        comment="Im jealous, that looked amazing!!!",
         user_id=1,
         post_id=4
     )
@@ -54,7 +54,7 @@ def seed_comments():
         post_id=5
     )
     comment11 = Comment(
-        comment="Save me some next time",
+        comment="Save me some next time?",
         user_id=6,
         post_id=5
     )
@@ -69,7 +69,7 @@ def seed_comments():
         post_id=6
     )
     comment14 = Comment(
-        comment="Save me some next time",
+        comment="Save me some next time?",
         user_id=5,
         post_id=6
     )
@@ -84,7 +84,7 @@ def seed_comments():
         post_id=7
     )
     comment17 = Comment(
-        comment="Save me some next time",
+        comment="Save me some next time?",
         user_id=5,
         post_id=7
     )

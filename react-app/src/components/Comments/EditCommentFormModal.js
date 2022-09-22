@@ -3,7 +3,7 @@ import { Modal } from "../../context/Modal";
 import { TbSquarePlus } from "react-icons/tb";
 import EditCommentForm from "./EditCommentForm";
 
-function EditCommentModal({ post, comment1, commentId }) {
+function EditCommentModal({ post, comment1, commentId, type }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -19,6 +19,7 @@ function EditCommentModal({ post, comment1, commentId }) {
             post={post}
             comment1={comment1}
             commentId={commentId}
+            type={type}
             onHide={() => setShowModal(false)}
           />
         </Modal>

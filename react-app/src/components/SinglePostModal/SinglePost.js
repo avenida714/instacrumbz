@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { deleteAPost, getOnePostById, getPostsOtherUserId} from "../../store/posts";
+import {
+  deleteAPost,
+  getOnePostById,
+  getPostsOtherUserId,
+  likeAPost
+} from "../../store/posts";
 import EditFormModal from "../EditPostModal";
 import { createComment, deleteAComment } from "../../store/comment";
 import "./SinglePost.css";
 import EditCommentModal from "../Comments/EditCommentFormModal";
+import { TiHeartFullOutline, TiHeartOutline } from "react-icons/ti";
 
 function SinglePost({ post }) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
 
   const usersProfilePage = () => {
     let path = `/profile/${post.owner_id}`;
@@ -55,6 +63,21 @@ function SinglePost({ post }) {
   useEffect(() => {
     dispatch(getOnePostById(post.id));
   }, [dispatch]);
+
+
+  const likePost = (post) => {
+    console.log(post);
+    dispatch(likeAPost(post));
+    // dispatch(getAllPosts());
+    // await dispatch(getOnePostById(post.id));
+    setIsLikedByUser(!isLikedByUser);
+    const index = post.likes.indexOf(sessionUser.id);
+    if (!isLikedByUser) {
+      post.likes.push(sessionUser.id);
+    } else {
+      post.likes.splice(index, 1);
+    }
+  };
 
   if (loopMe) {
     return (
@@ -116,6 +139,27 @@ function SinglePost({ post }) {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+              <div className="likes padding">
+                {isLikedByUser ? (
+                  <TiHeartFullOutline
+                    className="heart-pc-fill"
+                    onClick={() => {
+                      likePost(post);
+                    }}
+                  />
+                ) : (
+                  <TiHeartOutline
+                    className="heart-pc"
+                    onClick={() => {
+                      likePost(post);
+                    }}
+                  />
+                )}
+                <div className="likes-count">
+                  {" "}
+                  {post?.likes.length || "0"} likes{" "}
                 </div>
               </div>
               <div className="leave-comment-pc" /* comment text area */>

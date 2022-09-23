@@ -21,8 +21,17 @@ const PostForm = ({ post, formType, onClick }) => {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [validationImage, setValidationImage] = useState(false);
   // const [showModal, setShowModal] = useState(true);
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await fetch(image_url);
+  //     if (response.ok) {
+  //       setValidationImage(true)
+  //     }
+
+  // })()}, [image_url])
 
 
   const handleSubmit = async (e) => {
@@ -41,27 +50,27 @@ const PostForm = ({ post, formType, onClick }) => {
       location,
     };
 
-    // console.log("*************post: ", post)
 
-    if (formType === "Create Post") {
-      const newPost = await dispatch(createAPost(post))
+  
+        if (formType === "Create Post") {
+          const newPost = await dispatch(createAPost(post))
 
-      if (newPost) {
-        dispatch(getOnePostById(newPost.id))
-        // dispatch(loadUserProfile(user.id))
-      }
-      onClick()
-      history.push(`/profile/${user.id}`);
+          if (newPost) {
+            dispatch(getOnePostById(newPost.id))
+            // dispatch(loadUserProfile(user.id))
+          }
+          onClick()
+          history.push(`/profile/${user.id}`);
 
-    } else {
-      const editdata = await dispatch(updateAPost(post))
+        } else {
+          const editdata = await dispatch(updateAPost(post))
 
-      // if (editdata) dispatch(getOnePostById(post.id))
-      onClick()
+          // if (editdata) dispatch(getOnePostById(post.id))
+          onClick()
 
-    }
-
-
+        }
+    
+    
     setImage_url('');
     setCaption('');
     setLocation('');
@@ -105,6 +114,9 @@ const PostForm = ({ post, formType, onClick }) => {
     if (!location.length) {
       errors.push("Location is required");
     }
+    if(!image_url?.includes("jpg") && !image_url?.includes("jpeg") && !image_url?.includes("png")){
+      errors.push("Please enter a valid file, jpg, jpeg, png only.")
+  }
 
     setValidationErrors(errors);
 

@@ -36,7 +36,6 @@ const LiveFeedPage = () => {
 
   useEffect(() => {
     dispatch(getAllPosts()).then(() => setIsLoaded(true));
-    dispatch(getAllPosts()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

@@ -24,14 +24,6 @@ const PostCard = ({ post, currUser }) => {
 
 
   useEffect(() => {
-    let errors = [];
-    if (comment.length > 2000)
-      errors.push("Comment should be less than 2000 characters!");
-    if (comment === "") errors.push("Please leave a comment!");
-    errors = setErrors(errors);
-  }, [comment]);
-
-  useEffect(() => {
     // console.log("POST LIKE CHANGED", post.id);
     // console.log(post.likes);
     post.likes.forEach((userIdWhoLiked) => {
@@ -44,9 +36,8 @@ const PostCard = ({ post, currUser }) => {
 
   useEffect(() => {
     let errors = [];
-    if (comment.length > 2000)
-      errors.push("Comment should be less than 2000 characters!");
-    if (comment === "") errors.push("Please leave a comment!");
+    if (comment.length > 2000) errors.push("Comment should be less than 2000 characters!");
+
     errors = setErrors(errors);
   }, [comment]);
 

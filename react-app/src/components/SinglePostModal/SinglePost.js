@@ -127,10 +127,10 @@ function SinglePost({ post }) {
                   <div className="post-caption-sp">{loopMe.caption}</div>
                   {loopMe.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
-                      <div className="user-icon-sp">
-                        <img
+                      <div className="user-icon-sp-comment">
+                        <img 
                           alt="post"
-                          className="img circle"
+                          className="img circle comment-img"
                           src={comment.user.profile_img}
                         />
                       </div>

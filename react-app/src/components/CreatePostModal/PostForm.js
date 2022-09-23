@@ -98,12 +98,15 @@ const PostForm = ({ post, formType, onClick }) => {
     if (!image_url.length) {
       errors.push("Image's url is required");
     }
-    if (!caption.length) {
-      errors.push("Caption is required");
+  
+    if (caption.length <= 0 || caption.length > 50) {
+      errors.push("Caption is required and between 1 to 50");
     }
-    if (!location.length) {
-      errors.push("Location is required");
+    
+    if (location.length <= 0 || location.length > 50) {
+      errors.push("Location is required and between 1 to 50");
     }
+
     if (
       !image_url?.includes("jpg") &&
       !image_url?.includes("jpeg") &&

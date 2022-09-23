@@ -67,14 +67,14 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
 
   useEffect(() => {
     let errors = [];
-    if (comment.length > 2000) {
-      errors.push(
-        "Don't bite off more than you can chew! Make your comment fewer than 2000 characters, please."
-      )
-    }
-    if (comment.length < 1) {
+    // if (comment.length > 255) {
+    //   errors.push(
+    //     "Don't bite off more than you can chew! Make your comment fewer than 255 characters, please."
+    //   )
+    // }
+    if (comment.length < 1 || comment.length > 255) {
         errors.push(
-          "Please Enter at least 1 character "
+          "Please Enter at least 1 to 255 characters "
         );
     }
 
@@ -87,7 +87,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
         <div>
           <ul>
             {hasSubmitted &&
-              validationErrors.map((error) => <li key={error}>{error}</li>)}
+              validationErrors.map((error) => <li className='comment_errorsList' key={error}>{error}</li>)}
           </ul>
         </div>
 

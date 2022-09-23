@@ -101,10 +101,10 @@ function SinglePost({ post }) {
             <div className="right-half-inner">
               <div className="underline">
                 <div className="header-sp">
-                  <div className="user-icon-pc" onClick={usersProfilePage}>
+                  <div className="user-icon-sp" onClick={usersProfilePage}>
                     <img
                       alt="post"
-                      className="img circle"
+                      className="post-user-icon-sp"
                       src={loopMe.user.profile_img}
                     />
                   </div>
@@ -124,10 +124,10 @@ function SinglePost({ post }) {
               </div>
               <div className="caption-comments">
                 <div className="comment-display-sp">
-                  <div className="post-caption">{loopMe.caption}</div>
+                  <div className="post-caption-sp">{loopMe.caption}</div>
                   {loopMe.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
-                      <div className="user-icon-pc" onClick={usersProfilePage}>
+                      <div className="user-icon-sp" >
                         <img
                           alt="post"
                           className="img circle"
@@ -151,7 +151,7 @@ function SinglePost({ post }) {
                   ))}
                 </div>
               </div>
-              <div className="likes padding">
+              <div className="likes padding sp-likes">
                 {isLikedByUser ? (
                   <TiHeartFullOutline
                     className="heart-pc-fill"
@@ -172,17 +172,17 @@ function SinglePost({ post }) {
                   {post?.likes.length || "0"} likes{" "}
                 </div>
               </div>
-              <div className="leave-comment-pc" /* comment text area */>
+              <div className="leave-comment-sp" /* comment text area */>
                 <form className="comment-form" onSubmit={handleSubmit}>
                   <input
                     type="text"
-                    className="comment-area"
+                    className="comment-area-sp"
                     placeholder="Add a comment..."
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                   />
-                  <button className="post-comment" disabled={isDisabled}>
-                    Post
+                  <button className="button-post-comment-sp" disabled={isDisabled}>
+                    Comment
                   </button>
                 </form>
               </div>

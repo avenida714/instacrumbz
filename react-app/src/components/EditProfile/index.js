@@ -103,7 +103,7 @@ const EditProfile = () => {
                 type="text"
                 placeholder="Name"
                 value={name}
-                onChange={updateName}
+                onChange={updateName} required
               />
             </label>
             <label>
@@ -130,7 +130,7 @@ const EditProfile = () => {
                 type="text"
                 placeholder="Profile Image URL"
                 value={profileImage}
-                onChange={updateProfileImage}
+                onChange={updateProfileImage} required
               />
             </label>
             <div className="editProfileButton">

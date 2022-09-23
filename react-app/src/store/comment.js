@@ -119,7 +119,9 @@ const commentsReducer = (state = initialState, action) => {
 
     case UPDATE_COMMENT: {
       newState = { ...state };
+      console.log("newState before", newState)
       newState[action.comment.id] = action.comment;
+      console.log("newState after", newState)
       return newState;
     }
 

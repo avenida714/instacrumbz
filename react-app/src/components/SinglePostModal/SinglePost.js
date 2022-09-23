@@ -38,23 +38,33 @@ function SinglePost({ post }) {
 
 
 
-  const type = () => dispatch(getPostsOtherUserId(currUser.id))
+  const type = () => dispatch(getOnePostById(id))
+  
+    const user = useSelector((state) => state.session.user);
+  
+  const postFromState = useSelector((state) => state.posts[id]);
+ 
+  const data = useSelector((state) => state.posts);
+  console.log("data", data)
   
 
-  const postFromState = useSelector((state) => state.posts[id]);
-  const user = useSelector((state) => state.session.user);
-
+  let loopMe
+    if(data) {
+        loopMe = postFromState
+    } else {
+        loopMe = data
+    }
 
   useEffect(() => {
     dispatch(getOnePostById(post.id));
   }, [dispatch]);
 
-  if (postFromState) {
+  if (loopMe) {
     return (
       <>
         <div className="outer-most-div-dont-style-me">
           <div className="left-half">
-            <img src={postFromState.image_url} alt="post" className="img" />
+            <img src={loopMe.image_url} alt="post" className="img" />
           </div>
 
           <div className="right-half">
@@ -67,11 +77,11 @@ function SinglePost({ post }) {
                     <img
                       alt="post"
                       className="img circle"
-                      src={postFromState.user.profile_img}
+                      src={loopMe.user.profile_img}
                     />
                   </div>
                   <div className="header-info">
-                    <div>{postFromState.user.username}</div>
+                    <div>{loopMe.user.username}</div>
                     <div className="gray">{postFromState.location}</div>
                   </div>
                   <div className="elipsis">
@@ -86,8 +96,8 @@ function SinglePost({ post }) {
               </div>
               <div className="caption-comments">
                 <div className="comment-display-sp">
-                  <div className="post-caption">{postFromState.caption}</div>
-                  {postFromState.comments.map((comment) => (
+                  <div className="post-caption">{loopMe.caption}</div>
+                  {loopMe.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
                       <div className="user-icon-pc" onClick={usersProfilePage}>
                         <img

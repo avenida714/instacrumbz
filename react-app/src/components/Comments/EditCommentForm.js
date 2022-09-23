@@ -40,6 +40,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
 
     const editCom = await dispatch(updateAComment(editedComment, commentId));
     if (editCom) {
+      dispatch(getOnePostById(post.id));
       onHide();
       type();
     }
@@ -60,16 +61,21 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
     dispatch(getOnePostById(id)).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getAllPosts()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllPosts()).then(() => setIsLoaded(true));
+  // }, [dispatch]);
 
   useEffect(() => {
     let errors = [];
     if (comment.length > 2000) {
       errors.push(
         "Don't bite off more than you can chew! Make your comment fewer than 2000 characters, please."
-      );
+      )
+    }
+    if (!comment.length < 1) {
+        errors.push(
+          "Please Enter at least 1 character "
+        );
     }
 
     setValidationErrors(errors);

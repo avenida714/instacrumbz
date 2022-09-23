@@ -54,7 +54,7 @@
     margin-top: 10px;
 }
 .email_div{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .signup_button{
@@ -107,5 +107,5 @@
 
 .signup_footer{
     position: fixed;
-    bottom: 8px;
+    bottom: 20px;
 }

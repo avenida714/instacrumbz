@@ -72,7 +72,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
         "Don't bite off more than you can chew! Make your comment fewer than 2000 characters, please."
       )
     }
-    if (!comment.length < 1) {
+    if (comment.length < 1) {
         errors.push(
           "Please Enter at least 1 character "
         );

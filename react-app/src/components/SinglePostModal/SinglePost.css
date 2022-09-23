@@ -21,17 +21,23 @@
 .image-container {
   display: flex;
   width: 100%;
+  /* border: 2px solid red; */
 }
 
 .left-half {
   width: 800px;
   height: 800px;
+  border-top: 35px solid rgb(15, 14, 14);
+  border-bottom: 35px solid rgb(15, 14, 14);
+
 
 }
 
 .comment-display-sp {
   height: 500px;
   overflow-y: auto;
+    /* border: 2px solid red; */
+
 
 }
 

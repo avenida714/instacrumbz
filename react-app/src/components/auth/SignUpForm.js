@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 import "./SignupForm.css"
 
 
 const SignUpForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -13,21 +14,25 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  const [isDisabled, setIsDisabled] = useState(false)
+  const [validationErrors, setValidationErrors] = useState([]);
+  const user = useSelector(state => state.session.user);
+
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (errors.length > 0) {
+    if (validationErrors.length > 0) {
       return alert("Cannot Submit");
     }
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, name, email, password));
+      const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data);
       }
     }
+    
   };
 
   const updateUsername = (e) => {
@@ -46,36 +51,46 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+
+  
+  // useEffect(() =>{
+
+  //   if(!email.length && !username.length && !password.length && !repeatPassword.length){
+      
+  //     setIsDisabled(false);
+  //   }else{
+  //     setIsDisabled(true)
+  //   }
+
+  // },[email,username, password, repeatPassword])
+
   useEffect(() => {
     let errs = [];
-    if (!username.length) {
-      errs.push("Username is required");
-    }
+  
     if (username.length > 30 || username.length <= 5) {
       errs.push("Username must between 6 to 30");
     }
     if (!email.includes("@")) {
       errs.push("Please provide a valid Email");
     }
-    if (!name.length) {
-      errs.push("Name is required");
-    }
-    if (name.length > 50 || name.length <= 4) {
-      errs.push("Name must between 4 to 50");
-    }
-    if (!password.length) {
-      errs.push("Password is required");
-    }
+  
+    // if (name.length > 50 || name.length <= 4) {
+    //   errs.push("Name must between 4 to 50");
+    // }
+  
     if (password.length <= 5) {
       errs.push("Password must at least 6 characters");
     }
+    if (password !== repeatPassword)
+    errs.push("Password must be matched");
 
-    setErrors(errs);
+    setValidationErrors(errs);
 
-  }, [name, email, username]);
+  }, [ email, username, password, repeatPassword]);
+
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to={`/profile/edit/${user.id}`} />;
   }
 
   return (
@@ -91,10 +106,11 @@ const SignUpForm = () => {
             name="email"
             placeholder="email"
             onChange={updateEmail}
+            required
             value={email}
           ></input>
         </div>
-        <div className="username_div">
+        {/* <div className="username_div">
           <label></label>
           <input className="signup_input"
             type="text"
@@ -103,7 +119,7 @@ const SignUpForm = () => {
             onChange={(e) => setName(e.target.value)}
             value={name}
           ></input>
-        </div>
+        </div> */}
         <div className="username_div">
           <label></label>
           <input className="signup_input"
@@ -111,6 +127,7 @@ const SignUpForm = () => {
             name="username"
             placeholder="username"
             onChange={updateUsername}
+            required
             value={username}
           ></input>
         </div>
@@ -121,6 +138,7 @@ const SignUpForm = () => {
             name="password"
             placeholder="password"
             onChange={updatePassword}
+            required
             value={password}
           ></input>
         </div>
@@ -137,12 +155,18 @@ const SignUpForm = () => {
         </div>
         <div className="word_div">Users of our services may have uploaded your contact details to Instagram</div>
         <div className="By register_word_div">By registering, you agree to our Terms of Service , Privacy Policy and Cookie Policy</div>
-        <button className="signup_button" type="submit">register</button>
+        <button className="signup_button" type="submit" >register</button>
+        <div className="errorssss">
+          {hasSubmitted && validationErrors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
         <div className="errorssss">
           {hasSubmitted && errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
+
       </form>
 
       <div className="register_signup">

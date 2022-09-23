@@ -138,8 +138,12 @@ textarea {
 
 .heart-pc-fill {
     color: rgb(231, 20, 20);
-
 }
+
+.heart-pc-fill:hover{
+    cursor: pointer;
+}
+
 .heart-pc:hover{
     cursor: pointer;
     color: rgba(231, 20, 20, 0.705);

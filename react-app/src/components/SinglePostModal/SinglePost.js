@@ -141,7 +141,7 @@ function SinglePost({ post }) {
                   ))}
                 </div>
               </div>
-              <div className="likes padding">
+              <div className="likes padding sp-likes">
                 {isLikedByUser ? (
                   <TiHeartFullOutline
                     className="heart-pc-fill"
@@ -162,7 +162,7 @@ function SinglePost({ post }) {
                   {post?.likes.length || "0"} likes{" "}
                 </div>
               </div>
-              <div className="leave-comment-pc" /* comment text area */>
+              <div className="leave-comment-sp" /* comment text area */>
                 <form className="comment-form" onSubmit={handleSubmit}>
                   <input
                     type="text"

@@ -27,8 +27,8 @@
 .left-half {
   width: 800px;
   height: 800px;
-  border-top: 35px solid rgb(15, 14, 14);
-  border-bottom: 35px solid rgb(15, 14, 14);
+  border-top: 30px solid rgb(15, 14, 14);
+  border-bottom: 30px solid rgb(15, 14, 14);
 
 
 }
@@ -45,6 +45,8 @@
   /* border: 2px solid blue; */
   height: 500px;
 }
+
+
 
 
 .post-user-icon-sp {
@@ -81,6 +83,18 @@
     border: none;
     height: 50px;
     background-color:aliceblue
+}
+
+.sp-likes {
+  /* border: 2px solid greenyellow; */
+  padding-top: 10px;
+  padding-top: 30px;
+}
+
+.leave-comment-sp {
+  margin-left: 12px;
+  margin-top: 5px;
+  width: auto;
 }
 
 .button-post-comment-sp {

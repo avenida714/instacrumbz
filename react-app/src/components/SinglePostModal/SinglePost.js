@@ -117,7 +117,7 @@ function SinglePost({ post }) {
                   <div className="post-caption">{loopMe.caption}</div>
                   {loopMe.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
-                      <div className="user-icon-pc" onClick={usersProfilePage}>
+                      <div className="user-icon-sp" >
                         <img
                           alt="post"
                           className="img circle"

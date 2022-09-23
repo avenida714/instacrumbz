@@ -23,6 +23,14 @@
   height: 500px;
 }
 
+.user-icon-sp {
+  /* border: 2px solid greenyellow; */
+  display: flex;
+  align-items: center;
+  height: 33px;
+  width: 33px;
+  border-radius: 1px black solid;
+}
 
 .post-caption {
   /* border: 2px solid green; */

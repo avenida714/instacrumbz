@@ -91,7 +91,7 @@ function SinglePost({ post }) {
             <div className="right-half-inner">
               <div className="underline">
                 <div className="header-sp">
-                  <div className="user-icon-pc" onClick={usersProfilePage}>
+                  <div className="user-icon-sp" onClick={usersProfilePage}>
                     <img
                       alt="post"
                       className="post-user-icon-sp"

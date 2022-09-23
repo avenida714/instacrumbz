@@ -1,13 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
-import "../ProfilePage/FollowingModal/FollowingModal.css"
+import "../ProfilePage/FollowingModal/FollowingModal.css";
 
 const FollowingPCModal = ({ following, isOpen, onClose }) => {
   const history = useHistory();
-//   const userFollowing = profile.following;
+  //   const userFollowing = profile.following;
   console.log("here-------", following);
-
 
   const clickFollowingProfile = (followingId) => {
     let path = `/profile/${followingId}`;

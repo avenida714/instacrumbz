@@ -10,12 +10,14 @@ import EditCommentModal from "../Comments/EditCommentFormModal";
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post, currUser }) => {
+
   const dispatch = useDispatch();
   const history = useHistory();
+
   const sessionUser = useSelector((state) => state.session.user);
+
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState("");
-  const [isDisabled, setIsDisabled] = useState(false);
   const [isLikedByUser, setIsLikedByUser] = useState(false);
 
   let id = post.id;
@@ -35,9 +37,9 @@ const PostCard = ({ post, currUser }) => {
 
   useEffect(() => {
     let errors = [];
-    if (comment.length > 2000) errors.push("Comment should be less than 2000 characters!");
-
-    errors = setErrors(errors);
+    if (comment.length > 500) errors.push("Comment should be less than 500 characters!");
+    if (!comment) errors.push("Atleast one character is needed!")
+    setErrors(errors);
   }, [comment]);
 
   const handleSubmit = (e) => {
@@ -48,8 +50,6 @@ const PostCard = ({ post, currUser }) => {
       user_id: currUser.id,
       post_id: id,
     };
-
-    console.log("newComment********", newComment);
 
     dispatch(createComment(newComment));
 
@@ -100,7 +100,7 @@ const PostCard = ({ post, currUser }) => {
       <div className="likes padding">
         {isLikedByUser ? (
           <TiHeartFullOutline
-            className="heart-pc"
+            className="heart-pc-fill"
             onClick={() => {
               likePost(post);
             }}
@@ -138,16 +138,23 @@ const PostCard = ({ post, currUser }) => {
       </div>
       <div className="leave-comment-pc" /* comment text area */>
         <form className="comment-form" onSubmit={handleSubmit}>
-          <input
+            {/* <ul className="errors-pc">
+                { errorsList }
+            </ul> */}
+            <input
             type="text"
+            value={comment}
             className="comment-area"
             placeholder="Add a comment..."
-            value={comment}
             onChange={(e) => setComment(e.target.value)}
-          />
-          <button className="post-comment" disabled={isDisabled}>
-            Post
-          </button>
+            />
+            <button
+            type="submit"
+            className="post-comment"
+            disabled={ errors.length > 0 }
+            >
+                Post
+            </button>
         </form>
       </div>
     </div>

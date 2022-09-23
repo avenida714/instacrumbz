@@ -42,7 +42,7 @@
     width: 210px;
     z-index: 1;
     right: 0px;
-    top: 16px;
+    top: 20px;
 }
 
 .dropdown:focus .dropdown-content {
@@ -53,6 +53,7 @@
     padding-left: 15px;
     border-bottom: lightgrey 1px solid;
     padding-bottom: 8px;
+    cursor: default;
 }
 
 .your-text-dropdown {

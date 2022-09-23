@@ -13,13 +13,16 @@ import UserProfilePage from "./components/ProfilePage";
 
 import LiveFeedPage from "./components/LiveFeedPage";
 import { CurrentUserPage } from "./components/UsersPostCard";
-import SinglePost from "./components/SinglePost";
+import SinglePost from "./components/SinglePostModal/SinglePost";
 import LoginFormModal from "./components/LoginFormModal";
 import EditProfile from "./components/EditProfile";
 // import CreatePostForm from './components/PostForm/CreatePostForm';
 // import EditPostForm from './components/PostForm/EditPostForm';
 import CreatePostForm from "./components/CreatePostModal/CreatePostForm";
 import EditPostForm from "./components/CreatePostModal/EditPostForm";
+
+
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,7 +70,7 @@ function App() {
           <CurrentUserPage />
         </ProtectedRoute> */}
 
-        <ProtectedRoute path="/post/:postId" exact={true}>
+        <ProtectedRoute exact path="/post/:postId" >
           <SinglePost />
         </ProtectedRoute>
 

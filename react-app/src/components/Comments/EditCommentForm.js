@@ -60,9 +60,9 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
     dispatch(getOnePostById(id)).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getAllPosts()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllPosts()).then(() => setIsLoaded(true));
+  // }, [dispatch]);
 
   useEffect(() => {
     let errors = [];

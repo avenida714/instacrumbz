@@ -25,6 +25,11 @@
     font-size: 23px;
 }
 
+.formType{
+    font-family:MyFont;
+    font-size: 50px;
+}
+
 .delete_Btn{
     width: 200px;
     height: 30px;

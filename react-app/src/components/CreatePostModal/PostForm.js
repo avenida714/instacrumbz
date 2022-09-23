@@ -125,6 +125,7 @@ const PostForm = ({ post, formType, onClick }) => {
 
   return (
     <div className='Container'>
+      <div className='formType'>{formType}</div>
       <form className="Form_container" onSubmit={handleSubmit}>
         <div>
           <ul className="Form_errors">

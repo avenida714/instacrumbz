@@ -13,7 +13,7 @@ import UserProfilePage from "./components/ProfilePage";
 
 import LiveFeedPage from "./components/LiveFeedPage";
 import { CurrentUserPage } from "./components/UsersPostCard";
-import SinglePost from "./components/SinglePostModal/SinglePost";
+import SinglePost from "./components/SinglePost";
 import LoginFormModal from "./components/LoginFormModal";
 import EditProfile from "./components/EditProfile";
 // import CreatePostForm from './components/PostForm/CreatePostForm';

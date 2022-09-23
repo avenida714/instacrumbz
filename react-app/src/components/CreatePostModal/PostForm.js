@@ -46,8 +46,11 @@ const PostForm = ({ post, formType, onClick }) => {
     if (formType === "Create Post") {
       const newPost = await dispatch(createAPost(post))
 
+      console.log("WHAT'S UP WITH THIS POST, IS THERE AN .ID? ****", post)
+
       if (newPost) {
-        dispatch(getOnePostById(post.id))
+        console.log("THIS IS THE FINAL STEP    NEW POST ********", newPost)
+        dispatch(getOnePostById(newPost.id))
         // dispatch(loadUserProfile(user.id))
       }
       onClick()
@@ -56,7 +59,7 @@ const PostForm = ({ post, formType, onClick }) => {
     } else {
       const editdata = await dispatch(updateAPost(post))
 
-      if (editdata) dispatch(getOnePostById(post.id))
+      // if (editdata) dispatch(getOnePostById(post.id))
       onClick()
 
     }

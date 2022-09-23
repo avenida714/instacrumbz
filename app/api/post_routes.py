@@ -74,6 +74,8 @@ def create_post():
         new_post = new_post.to_dict()
         new_post['post_owner'] = User.query.get(new_post['owner_id']).to_dict()
 
+        print("inside API Route ***************", new_post)
+
         return new_post
 
     else:

@@ -50,6 +50,7 @@ const actionLikePost = (post) => {
 
 //TO-DO: example thunk      V -> new post form data goes here from component
 export const createAPost = (newPostInfo) => async (dispatch) => {
+  console.log("newpostinfo -----****************", newPostInfo)
   const response = await fetch("/api/posts/new_post", {
     method: "POST",
     headers: {

@@ -5,7 +5,7 @@ import {
   deleteAPost,
   getOnePostById,
   getPostsOtherUserId,
-  likeAPost
+  likeAPost,
 } from "../../store/posts";
 import EditFormModal from "../EditPostModal";
 import { createComment, deleteAComment } from "../../store/comment";
@@ -127,7 +127,7 @@ function SinglePost({ post }) {
                   <div className="post-caption-sp">{loopMe.caption}</div>
                   {loopMe.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
-                      <div className="user-icon-sp" >
+                      <div className="user-icon-sp">
                         <img
                           alt="post"
                           className="img circle"
@@ -181,7 +181,10 @@ function SinglePost({ post }) {
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                   />
-                  <button className="button-post-comment-sp" disabled={isDisabled}>
+                  <button
+                    className="button-post-comment-sp"
+                    disabled={isDisabled}
+                  >
                     Comment
                   </button>
                 </form>

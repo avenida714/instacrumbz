@@ -29,8 +29,8 @@
     height: 30px;
     color: white;
     font-weight: bold;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .login_container {
@@ -42,7 +42,6 @@
 .login_second_container {
     border: 1px solid rgba(139, 139, 135, 0.6);
     padding: 50px 30px
-
 }
 
 .outter_container {
@@ -68,7 +67,7 @@
     border: 1px solid lightgray;
 }
 
-.Instacrumbz_logo{
+.Instacrumbz_logo {
     font-family: 'BillabongW00-Regular';
     font-size: 60px;
     margin-top: 0;
@@ -76,38 +75,39 @@
     text-align: center;
 }
 
-.phone_container{
+.phone_container {
     display: flex;
     width: 400px;
 }
 
-.login_error{
+.login_error {
     text-align: center;
     margin-bottom: 20px;
     color: red;
+    margin-top: 20px;
 }
 
-.login_link{
+.login_link {
     text-decoration: none;
     color: rgb(8, 130, 171);
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.login_footer{
+.login_footer {
     margin-top: 180px;
     font-size: 15px;
     text-align: center;
 }
 
-.center-buttons{
+.center-buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 
-.login-text{
+.login-text {
     width: 250px;
     font-family: "Helvetica", Arial, sans-serif;
     text-align: center;

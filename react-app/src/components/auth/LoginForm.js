@@ -59,11 +59,6 @@ const LoginForm = () => {
   return (
     <div>
       <form onSubmit={onLogin}>
-        <div className="login_error">
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
         <div className="outter_container">
           <div className="phone_container">
             <img className="Home_image" src={screen0} />
@@ -125,6 +120,13 @@ const LoginForm = () => {
               <div className="login-text">
                 Demo User #2 for Followers Functionality
               </div>
+
+              <div className="login_error">
+                {errors.map((error, ind) => (
+                  <div key={ind}>{error}</div>
+                ))}
+              </div>
+
               <div className="register login-text">
                 Don't have an account?
                 <NavLink className="login_link" to="/sign-up">

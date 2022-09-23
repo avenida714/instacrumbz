@@ -89,4 +89,8 @@
 
 .delete_Btn{
     height: 35px;
+    font-family: MyFont;
+    font-size: 30px;
+    background: lightcyan;
+    color: red
 }

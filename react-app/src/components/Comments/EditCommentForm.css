@@ -1,0 +1,7 @@
+.comment_errorsList{
+    list-style: none;
+    /* text-align: center; */
+    color: red;
+    margin-left: -40;
+    font-family: cursive;
+}

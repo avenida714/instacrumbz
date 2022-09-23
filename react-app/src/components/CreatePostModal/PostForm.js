@@ -46,17 +46,17 @@ const PostForm = ({ post, formType, onClick }) => {
     if (formType === "Create Post") {
       const newPost = await dispatch(createAPost(post))
 
-      if (newPost) {
-        dispatch(getOnePostById(post.id))
-        // dispatch(loadUserProfile(user.id))
-      }
+      // if (newPost) {
+      //   dispatch(getOnePostById(post.id))
+      //   // dispatch(loadUserProfile(user.id))
+      // }
       onClick()
       history.push(`/profile/${user.id}`);
 
     } else {
       const editdata = await dispatch(updateAPost(post))
 
-      if (editdata) dispatch(getOnePostById(post.id))
+      // if (editdata) dispatch(getOnePostById(post.id))
       onClick()
 
     }

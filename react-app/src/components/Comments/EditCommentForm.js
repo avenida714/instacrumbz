@@ -40,6 +40,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
 
     const editCom = await dispatch(updateAComment(editedComment, commentId));
     if (editCom) {
+      dispatch(getOnePostById(post.id));
       onHide();
       type()
     }

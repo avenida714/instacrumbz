@@ -23,18 +23,41 @@
   height: 500px;
 }
 
+
+.post-user-icon-sp {
+  /* border: 2px solid greenyellow; */
+  display: flex;
+  align-items: center;
+  height: 55px;
+  width: 55px;
+  /* border-radius: 1px black solid; */
+  border-radius: 50%;
+}
+
 .user-icon-sp {
   /* border: 2px solid greenyellow; */
   display: flex;
   align-items: center;
-  height: 33px;
-  width: 33px;
+  height: 44px;
+  width: 44px;
   border-radius: 1px black solid;
 }
 
 .post-caption {
   /* border: 2px solid green; */
   display: flex;
+}
+
+.comment-area-sp {
+
+    width: 400px;
+    border: none;
+    height: 50px;
+    background-color:aliceblue
+}
+
+.post-comment-sp {
+
 }
 
 .header-sp {

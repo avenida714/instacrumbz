@@ -94,7 +94,7 @@ function SinglePost({ post }) {
                   <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img
                       alt="post"
-                      className="img circle"
+                      className="post-user-icon-sp"
                       src={loopMe.user.profile_img}
                     />
                   </div>
@@ -166,12 +166,12 @@ function SinglePost({ post }) {
                 <form className="comment-form" onSubmit={handleSubmit}>
                   <input
                     type="text"
-                    className="comment-area"
+                    className="comment-area-sp"
                     placeholder="Add a comment..."
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                   />
-                  <button className="post-comment" disabled={isDisabled}>
+                  <button className="post-comment-sp" disabled={isDisabled}>
                     Post
                   </button>
                 </form>

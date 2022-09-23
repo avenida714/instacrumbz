@@ -6,6 +6,7 @@ import EditFormModal from "../EditPostModal";
 import { createComment, deleteAComment } from "../../store/comment";
 import "./SinglePost.css";
 import EditCommentModal from "../Comments/EditCommentFormModal";
+import { RiContactsBookLine } from "react-icons/ri";
 
 function SinglePost({ post }) {
   const history = useHistory();
@@ -36,15 +37,25 @@ function SinglePost({ post }) {
     setComment("");
   };
 
-  const type = () => dispatch(getPostsOtherUserId(currUser.id))
-  
 
   const postFromState = useSelector((state) => state.posts[id]);
-  const user = useSelector((state) => state.session.user);
 
+
+
+  const type = () => dispatch(getPostsOtherUserId(currUser.id))
+  
   useEffect(() => {
     dispatch(getOnePostById(post.id));
   }, [dispatch]);
+
+
+//   let mapme
+//   if(currUser.id === 1){
+//     mapme = postFromState
+//   } else{
+//     mapme = postNested
+//   }
+
 
   if (postFromState) {
     return (
@@ -80,6 +91,7 @@ function SinglePost({ post }) {
                 </div>
               </div>
               <div className="caption-comments">
+                
                 <div className="comment-display-pc">
                   <div>{postFromState.caption}</div>
                   {postFromState.comments.map((comment) => (

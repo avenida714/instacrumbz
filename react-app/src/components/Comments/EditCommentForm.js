@@ -7,7 +7,7 @@ import { getAllPosts } from "../../store/posts";
 import "./EditCommentForm.css";
 
 function EditCommentForm({ post, comment1, commentId, onHide, type }) {
-  console.log("**************** let's see the post ID", post.id);
+  // console.log("**************** let's see the post ID", post.id);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -52,17 +52,17 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
   const deleteComment = async (id) => {
     const del = await dispatch(deleteAComment(id));
     if (del) alert("I have successfully eaten the comment for you!!!");
-    onHide();
-    type()
+      onHide();
+      type()
   };
 
   useEffect(() => {
     dispatch(getOnePostById(id));
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getAllPosts()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllPosts()).then(() => setIsLoaded(true));
+  // }, [dispatch]);
 
   useEffect(() => {
     let errors = [];

@@ -69,9 +69,9 @@ const PostCard = ({ post, currUser }) => {
     history.push(path);
   };
 
-  useEffect(() => {
-    dispatch(getPostComment(post.id));
-  }, [dispatch]);
+//   useEffect(() => {
+//     dispatch(getPostComment(post.id));
+//   }, [dispatch]);
 
   const likePost = async (post) => {
     console.log(post);

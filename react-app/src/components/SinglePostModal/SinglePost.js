@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { deleteAPost, getOnePostById, getPostsOtherUserId } from "../../store/posts";
+import { deleteAPost, getOnePostById, getPostsOtherUserId} from "../../store/posts";
 import EditFormModal from "../EditPostModal";
 import { createComment, deleteAComment } from "../../store/comment";
 import "./SinglePost.css";
@@ -36,24 +36,21 @@ function SinglePost({ post }) {
     setComment("");
   };
 
+  const type = () => dispatch(getOnePostById(id));
 
+  const user = useSelector((state) => state.session.user);
 
-  const type = () => dispatch(getOnePostById(id))
-  
-    const user = useSelector((state) => state.session.user);
-  
   const postFromState = useSelector((state) => state.posts[id]);
- 
-  const data = useSelector((state) => state.posts);
-  console.log("data", data)
-  
 
-  let loopMe
-    if(data) {
-        loopMe = postFromState
-    } else {
-        loopMe = data
-    }
+  const data = useSelector((state) => state.posts);
+  console.log("data", data);
+
+  let loopMe;
+  if (data) {
+    loopMe = postFromState;
+  } else {
+    loopMe = data;
+  }
 
   useEffect(() => {
     dispatch(getOnePostById(post.id));
@@ -70,9 +67,7 @@ function SinglePost({ post }) {
           <div className="right-half">
             <div className="right-half-inner">
               <div className="underline">
-
                 <div className="header-sp">
-
                   <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img
                       alt="post"

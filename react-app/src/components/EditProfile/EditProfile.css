@@ -10,6 +10,12 @@
   border-radius: 20px;
 }
 
+.editprofileLabel{
+  font-size: 25px;
+  margin-left: 30%;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
 .editProfileFormContainer {
   display: flex;
   justify-content: center;

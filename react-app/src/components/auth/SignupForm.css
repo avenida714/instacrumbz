@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../NavBar/FontsFree-Net-Billabong.ttf)
+  }
+
+.singup_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    flex-direction: column;
+    
+}
+
+.signup_form_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid lightgray;
+    padding: 30px 50px;
+    background: white;
+    align-items: center;
+    max-width: 250px;
+}
+
+.wording{
+    font-family: MyFont;
+    font-size: 60px;
+    font-weight: bold;
+    
+}
+
+.errorssss{
+  color: red;
+}
+.signup_input{
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.repeat_password_div{
+    margin: 10px 0px;
+}
+.password_div{
+    margin-top: 10px;
+}
+
+.username_div{
+    margin-top: 10px;
+}
+
+.username_div{
+    margin-top: 10px;
+}
+.email_div{
+    margin-top: 30px;
+}
+
+.signup_button{
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color:lightskyblue;
+  cursor: pointer;
+  width: 250px;
+  margin: 20px 0px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.signup_to_see_wording{
+    text-align: center;
+    color: rgb(151, 148, 148);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.word_div{
+   overflow-wrap: break-word; 
+   text-align: center;
+   width: 230px;
+   color: rgb(151, 148, 148);
+   margin: 10px 0px;
+   font-size: 12px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.register_word_div{
+    overflow-wrap: break-word; 
+    text-align: center;
+    width: 230px;
+    color: rgb(151, 148, 148);
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.register_signup{
+    border: 1px solid lightgray ;
+    padding: 20px 75px;
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    
+}
+
+.signup_footer{
+    position: fixed;
+    bottom: 20px;
+}

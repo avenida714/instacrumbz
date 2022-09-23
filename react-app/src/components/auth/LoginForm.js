@@ -127,7 +127,7 @@ const LoginForm = () => {
               </div>
               <div className="register login-text">
                 Don't have an account?
-                <NavLink className="login_link login-text" to="/sign-up">
+                <NavLink className="login_link" to="/sign-up">
                   {" "}
                   Register{" "}
                 </NavLink>

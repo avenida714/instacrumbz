@@ -28,13 +28,11 @@
     font-size: 23px;
 }
 
-.delete_Btn {
-    width: 200px;
-    height: 30px;
-    border-radius: 20px;
-    cursor: pointer;
-}
 
+.formType{
+    font-family:MyFont;
+    font-size: 50px;
+}
 
 .PostForm_input {
     margin: 10px 5px;
@@ -93,4 +91,11 @@
 
 .delete_Btn {
     height: 35px;
+    font-family: MyFont;
+    font-size: 30px;
+    background: lightcyan;
+    color: red
+    width: 200px;
+    border-radius: 20px;
+    cursor: pointer;
 }

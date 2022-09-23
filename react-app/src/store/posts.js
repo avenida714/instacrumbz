@@ -67,7 +67,7 @@ export const createAPost = (newPostInfo) => async (dispatch) => {
 
 //TO-DO: Fetch One Post by Id
 export const getOnePostById = (postId) => async (dispatch) => {
-  console.log("postId *******************", postId, Number(postId))
+  console.log("postId *******************", postId, Number(postId));
 
   const response = await fetch(`/api/posts/${postId}`);
   if (response.ok) {
@@ -80,7 +80,6 @@ export const getOnePostById = (postId) => async (dispatch) => {
 
 //TO-DO:                      V -> id, content
 export const updateAPost = (data) => async (dispatch) => {
-
   const response = await fetch(`/api/posts/${data.id}`, {
     method: "PUT",
     headers: {

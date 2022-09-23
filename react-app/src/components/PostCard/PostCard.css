@@ -45,6 +45,12 @@
     margin-left: 12px;
 }
 
+.heart-pc-fill {
+    font-size: 30px;
+    /* margin-top: 12px; */
+    margin-left: 12px;
+}
+
 .caption-pc {
     margin-left: 12px;
     display: flex;
@@ -128,4 +134,13 @@ textarea {
 
 .gray {
     color: gray;
+}
+
+.heart-pc-fill {
+    color: rgb(231, 20, 20);
+
+}
+.heart-pc:hover{
+    cursor: pointer;
+    color: rgba(231, 20, 20, 0.705);
 }

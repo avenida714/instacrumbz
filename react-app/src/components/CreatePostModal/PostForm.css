@@ -7,28 +7,28 @@
     font-size: xx-large;
 }
 
-.Form_list_error{
+.Form_list_error {
     list-style-type: none;
     color: red;
 }
 
-.PostForm_textarea{
+.PostForm_textarea {
     border: 1px solid black;
 }
 
-.Container{
+.Container {
     border: 2px solid lightgrey;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height:500px;
+    height: 500px;
     width: 500px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 23px;
 }
 
-.delete_Btn{
+.delete_Btn {
     width: 200px;
     height: 30px;
     border-radius: 20px;
@@ -36,46 +36,47 @@
 }
 
 
-.PostForm_input{
+.PostForm_input {
     margin: 10px 5px;
     height: 30px;
     width: 280px;
 }
 
-.image_url{
+.image_url {
     margin-bottom: 10px;
 }
 
-.Container{
+.Container {
     display: flex;
 
 }
 
-.caption{
-   margin-bottom: 13px;
-   margin-left: 18px;
-   display: inline-block;
+.caption {
+    margin-bottom: 13px;
+    margin-left: 18px;
+    display: inline-block;
 }
 
-.PostForm_textarea{
-    word-wrap:break-word;
+.PostForm_textarea {
+    word-wrap: break-word;
     width: 280px;
     margin-left: 10px;
 
 }
 
-.label_Location{
+.label_Location {
     margin-left: 12px;
 }
-.location{
+
+.location {
     margin-left: 8px;
     height: 30px;
     width: 280px;
     margin-bottom: 10px;
 }
 
-.PostForm_button{
-     border: 1px solid black;
+.PostForm_button {
+    border: 1px solid black;
     background: lightcyan;
     color: #0095F6;
     font-size: 30px;
@@ -90,6 +91,6 @@
 
 }
 
-.delete_Btn{
+.delete_Btn {
     height: 35px;
 }

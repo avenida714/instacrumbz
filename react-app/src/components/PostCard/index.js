@@ -100,7 +100,7 @@ const PostCard = ({ post, currUser }) => {
       <div className="likes padding">
         {isLikedByUser ? (
           <TiHeartFullOutline
-            className="heart-pc"
+            className="heart-pc-fill"
             onClick={() => {
               likePost(post);
             }}

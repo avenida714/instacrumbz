@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
-import { deleteAPost, getOnePostById, getPostsOtherUserId } from "../../store/posts";
+import {
+  deleteAPost,
+  getOnePostById,
+  getPostsOtherUserId,
+  likeAPost
+} from "../../store/posts";
 import EditFormModal from "../EditPostModal";
 import { createComment, deleteAComment } from "../../store/comment";
 import "./SinglePost.css";
 import EditCommentModal from "../Comments/EditCommentFormModal";
+import { TiHeartFullOutline, TiHeartOutline } from "react-icons/ti";
 
 function SinglePost({ post }) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
 
   const usersProfilePage = () => {
     let path = `/profile/${post.owner_id}`;
@@ -36,28 +44,50 @@ function SinglePost({ post }) {
     setComment("");
   };
 
+  const type = () => dispatch(getOnePostById(id));
 
+  const user = useSelector((state) => state.session.user);
 
-  const type = () => dispatch(getOnePostById(id))
-  
-    const user = useSelector((state) => state.session.user);
-  
   const postFromState = useSelector((state) => state.posts[id]);
- 
-  const data = useSelector((state) => state.posts);
-  console.log("data", data)
-  
 
-  let loopMe
-    if(data) {
-        loopMe = postFromState
-    } else {
-        loopMe = data
-    }
+  const data = useSelector((state) => state.posts);
+  console.log("data", data);
+
+  let loopMe;
+  if (data) {
+    loopMe = postFromState;
+  } else {
+    loopMe = data;
+  }
 
   useEffect(() => {
     dispatch(getOnePostById(post.id));
   }, [dispatch]);
+
+  useEffect(() => {
+    // console.log("POST LIKE CHANGED", post.id);
+    // console.log(post.likes);
+    post.likes.forEach((userIdWhoLiked) => {
+      if (sessionUser.id === userIdWhoLiked) {
+        setIsLikedByUser(true);
+        return;
+      }
+    });
+  }, [post.likes]);
+
+  const likePost = (post) => {
+    console.log(post);
+    dispatch(likeAPost(post));
+    // dispatch(getAllPosts());
+    // await dispatch(getOnePostById(post.id));
+    setIsLikedByUser(!isLikedByUser);
+    const index = post.likes.indexOf(sessionUser.id);
+    if (!isLikedByUser) {
+      post.likes.push(sessionUser.id);
+    } else {
+      post.likes.splice(index, 1);
+    }
+  };
 
   if (loopMe) {
     return (
@@ -70,9 +100,7 @@ function SinglePost({ post }) {
           <div className="right-half">
             <div className="right-half-inner">
               <div className="underline">
-
                 <div className="header-sp">
-
                   <div className="user-icon-pc" onClick={usersProfilePage}>
                     <img
                       alt="post"
@@ -121,6 +149,27 @@ function SinglePost({ post }) {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+              <div className="likes padding">
+                {isLikedByUser ? (
+                  <TiHeartFullOutline
+                    className="heart-pc-fill"
+                    onClick={() => {
+                      likePost(post);
+                    }}
+                  />
+                ) : (
+                  <TiHeartOutline
+                    className="heart-pc"
+                    onClick={() => {
+                      likePost(post);
+                    }}
+                  />
+                )}
+                <div className="likes-count">
+                  {" "}
+                  {post?.likes.length || "0"} likes{" "}
                 </div>
               </div>
               <div className="leave-comment-pc" /* comment text area */>

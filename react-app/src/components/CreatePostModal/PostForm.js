@@ -1,23 +1,21 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { NavLink, Redirect, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createAPost, deleteAPost, getOnePostById, updateAPost } from '../../store/posts';
-import "./PostForm.css"
-import { deleteAComment } from '../../store/comment';
-import { loadUserProfile } from '../../store/profile';
-
-
+import React from "react";
+import { useState, useEffect } from "react";
+import { NavLink, Redirect, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import {createAPost, deleteAPost, getOnePostById, updateAPost} from "../../store/posts";
+import "./PostForm.css";
+import { deleteAComment } from "../../store/comment";
+import { loadUserProfile } from "../../store/profile";
 
 const PostForm = ({ post, formType, onClick }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector(state => state.session.user)
+  const user = useSelector((state) => state.session.user);
 
-  const [image_url, setImage_url] = useState(post.image_url || "")
-  const [caption, setCaption] = useState(post.caption || "")
-  const [location, setLocation] = useState(post.location || "")
+  const [image_url, setImage_url] = useState(post.image_url || "");
+  const [caption, setCaption] = useState(post.caption || "");
+  const [location, setLocation] = useState(post.location || "");
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,7 +31,6 @@ const PostForm = ({ post, formType, onClick }) => {
 
   // })()}, [image_url])
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
@@ -41,7 +38,7 @@ const PostForm = ({ post, formType, onClick }) => {
     if (validationErrors.length > 0) {
       return alert("Cannot Submit");
     }
-    if (!user) return alert("Please log in/sign up before become a host!")
+    if (!user) return alert("Please log in/sign up before become a host!");
 
     post = {
       ...post,
@@ -50,30 +47,25 @@ const PostForm = ({ post, formType, onClick }) => {
       location,
     };
 
-
-
     if (formType === "Create Post") {
-      const newPost = await dispatch(createAPost(post))
+      const newPost = await dispatch(createAPost(post));
 
       if (newPost) {
-        dispatch(getOnePostById(newPost.id))
+        dispatch(getOnePostById(newPost.id));
         // dispatch(loadUserProfile(user.id))
       }
-      onClick()
+      onClick();
       history.push(`/profile/${user.id}`);
-
     } else {
-      const editdata = await dispatch(updateAPost(post))
+      const editdata = await dispatch(updateAPost(post));
 
       // if (editdata) dispatch(getOnePostById(post.id))
-      onClick()
-
+      onClick();
     }
 
-
-    setImage_url('');
-    setCaption('');
-    setLocation('');
+    setImage_url("");
+    setCaption("");
+    setLocation("");
     setValidationErrors([]);
     setHasSubmitted(false);
   };
@@ -101,8 +93,6 @@ const PostForm = ({ post, formType, onClick }) => {
     history.push(`/profile/${user.id}`);
   };
 
-
-
   useEffect(() => {
     let errors = [];
     if (!image_url.length) {
@@ -114,14 +104,16 @@ const PostForm = ({ post, formType, onClick }) => {
     if (!location.length) {
       errors.push("Location is required");
     }
-    if (!image_url?.includes("jpg") && !image_url?.includes("jpeg") && !image_url?.includes("png")) {
-      errors.push("Please use jpg, jpeg or png")
+    if (
+      !image_url?.includes("jpg") &&
+      !image_url?.includes("jpeg") &&
+      !image_url?.includes("png")
+    ) {
+      errors.push("Please use jpg, jpeg or png");
     }
 
     setValidationErrors(errors);
-
-  }, [image_url, caption, location])
-
+  }, [image_url, caption, location]);
 
   return (
     <div className='Container'>
@@ -129,59 +121,65 @@ const PostForm = ({ post, formType, onClick }) => {
       <form className="Form_container" onSubmit={handleSubmit}>
         <div>
           <ul className="Form_errors">
-            {hasSubmitted && validationErrors.map(error => (
-              <li className='Form_list_error' key={error}>
-                {error}
-              </li>
-            ))}
+            {hasSubmitted &&
+              validationErrors.map((error) => (
+                <li className="Form_list_error" key={error}>
+                  {error}
+                </li>
+              ))}
           </ul>
         </div>
 
-        <div className='image_url'>
-          <label className='label_input'>
+        <div className="image_url">
+          <label className="label_input">
             Image_url:
-            <input className='PostForm_input'
+            <input
+              className="PostForm_input"
               type="text"
               autoFocus
               placeholder="Image_url... .jpg / .jpeg / .png"
               value={image_url}
-              onChange={e => setImage_url(e.target.value)}
+              onChange={(e) => setImage_url(e.target.value)}
             />
           </label>
         </div>
 
-        <div className='caption_div'>
-          <label className='caption'>
+        <div className="caption_div">
+          <label className="caption">
             Caption:
-            <textarea className='PostForm_textarea'
+            <textarea
+              className="PostForm_textarea"
               type="text"
               placeholder="Caption..."
               value={caption}
-              onChange={e => setCaption(e.target.value)}
+              onChange={(e) => setCaption(e.target.value)}
             />
           </label>
         </div>
 
         <div>
-          <label className='label_Location'>
+          <label className="label_Location">
             Location:
-            <input className='location'
+            <input
+              className="location"
               type="text"
               placeholder="Location..."
               value={location}
-              onChange={e => setLocation(e.target.value)}
+              onChange={(e) => setLocation(e.target.value)}
             />
           </label>
         </div>
-        <input className='PostForm_button' type="submit" value={formType} />
+        <input className="PostForm_button" type="submit" value={formType} />
       </form>
-      <div className='Button_div'>
-        {(formType === "Update Post") && (<button className='delete_Btn' onClick={() => deletePost(post.id)}>
-          <i className="fa-solid fa-trash-can"></i> Delete</button>)}
+      <div className="Button_div">
+        {formType === "Update Post" && (
+          <button className="delete_Btn" onClick={() => deletePost(post.id)}>
+            <i className="fa-solid fa-trash-can"></i> Delete
+          </button>
+        )}
       </div>
     </div>
-
-  )
-}
+  );
+};
 
 export default PostForm;

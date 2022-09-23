@@ -51,26 +51,26 @@ const PostForm = ({ post, formType, onClick }) => {
     };
 
 
-  
-        if (formType === "Create Post") {
-          const newPost = await dispatch(createAPost(post))
 
-          if (newPost) {
-            dispatch(getOnePostById(newPost.id))
-            // dispatch(loadUserProfile(user.id))
-          }
-          onClick()
-          history.push(`/profile/${user.id}`);
+    if (formType === "Create Post") {
+      const newPost = await dispatch(createAPost(post))
 
-        } else {
-          const editdata = await dispatch(updateAPost(post))
+      if (newPost) {
+        dispatch(getOnePostById(newPost.id))
+        // dispatch(loadUserProfile(user.id))
+      }
+      onClick()
+      history.push(`/profile/${user.id}`);
 
-          // if (editdata) dispatch(getOnePostById(post.id))
-          onClick()
+    } else {
+      const editdata = await dispatch(updateAPost(post))
 
-        }
-    
-    
+      // if (editdata) dispatch(getOnePostById(post.id))
+      onClick()
+
+    }
+
+
     setImage_url('');
     setCaption('');
     setLocation('');
@@ -114,9 +114,9 @@ const PostForm = ({ post, formType, onClick }) => {
     if (!location.length) {
       errors.push("Location is required");
     }
-    if(!image_url?.includes("jpg") && !image_url?.includes("jpeg") && !image_url?.includes("png")){
-      errors.push("Please enter a valid file, jpg, jpeg, png only.")
-  }
+    if (!image_url?.includes("jpg") && !image_url?.includes("jpeg") && !image_url?.includes("png")) {
+      errors.push("Please use jpg, jpeg or png")
+    }
 
     setValidationErrors(errors);
 
@@ -124,7 +124,7 @@ const PostForm = ({ post, formType, onClick }) => {
 
 
   return (
-    <div>
+    <div className='Container'>
       <form className="Form_container" onSubmit={handleSubmit}>
         <div>
           <ul className="Form_errors">
@@ -136,10 +136,10 @@ const PostForm = ({ post, formType, onClick }) => {
           </ul>
         </div>
 
-        <div className='Container'>
-          <label >
-            image_url:
-            <input
+        <div className='image_url'>
+          <label className='label_input'>
+            Image_url:
+            <input className='PostForm_input'
               type="text"
               autoFocus
               placeholder="image_url..."
@@ -149,9 +149,9 @@ const PostForm = ({ post, formType, onClick }) => {
           </label>
         </div>
 
-        <div>
-          <label>
-            caption:
+        <div className='caption_div'>
+          <label className='caption'>
+            Caption:
             <textarea className='PostForm_textarea'
               type="text"
               placeholder="caption..."
@@ -162,9 +162,9 @@ const PostForm = ({ post, formType, onClick }) => {
         </div>
 
         <div>
-          <label>
-            location:
-            <input
+          <label className='label_Location'>
+            Location:
+            <input className='location'
               type="text"
               placeholder="location..."
               value={location}
@@ -172,12 +172,15 @@ const PostForm = ({ post, formType, onClick }) => {
             />
           </label>
         </div>
-        <input type="submit" value={formType} />
+        <input className='PostForm_button' type="submit" value={formType} />
       </form>
-      {(formType === "Update Post") && ( <button onClick={() => deletePost(post.id)}>
-                  <i className="fa-solid fa-trash-can"></i> Delete</button> )}
+      <div className='Button_div'>
+        {(formType === "Update Post") && (<button className='delete_Btn' onClick={() => deletePost(post.id)}>
+          <i className="fa-solid fa-trash-can"></i> Delete</button>)}
+      </div>
     </div>
+
   )
 }
 
-        export default PostForm;
+export default PostForm;

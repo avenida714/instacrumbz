@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import "./PostCard.css";
 import "../../index.css";
 import { createComment, getPostComment } from "../../store/comment";
-import { getAllPosts, likeAPost } from "../../store/posts";
+import { getAllPosts, getOnePostById, likeAPost } from "../../store/posts";
 import EditCommentModal from "../Comments/EditCommentFormModal";
 
 //TO-DO: Rudy finish Post Card
@@ -20,8 +20,7 @@ const PostCard = ({ post, currUser }) => {
 
   let id = post.id;
 
-  const type = () => dispatch(getAllPosts())
-
+  const type = () => dispatch(getAllPosts());
 
   useEffect(() => {
     let errors = [];
@@ -75,12 +74,18 @@ const PostCard = ({ post, currUser }) => {
     dispatch(getPostComment(post.id));
   }, [dispatch]);
 
-  const likePost = async (post) => {
+  const likePost = (post) => {
     console.log(post);
-    dispatch(likeAPost(post)).then(() => {
-      dispatch(getAllPosts());
-      setIsLikedByUser(!isLikedByUser);
-    });
+    dispatch(likeAPost(post));
+    // dispatch(getAllPosts());
+    // await dispatch(getOnePostById(post.id));
+    setIsLikedByUser(!isLikedByUser);
+    const index = post.likes.indexOf(sessionUser.id);
+    if (!isLikedByUser) {
+      post.likes.push(sessionUser.id);
+    } else {
+      post.likes.splice(index, 1);
+    }
   };
 
   return (

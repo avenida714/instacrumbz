@@ -64,6 +64,16 @@ function SinglePost({ post }) {
     dispatch(getOnePostById(post.id));
   }, [dispatch]);
 
+  useEffect(() => {
+    // console.log("POST LIKE CHANGED", post.id);
+    // console.log(post.likes);
+    post.likes.forEach((userIdWhoLiked) => {
+      if (sessionUser.id === userIdWhoLiked) {
+        setIsLikedByUser(true);
+        return;
+      }
+    });
+  }, [post.likes]);
 
   const likePost = (post) => {
     console.log(post);

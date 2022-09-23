@@ -82,6 +82,11 @@ const EditProfile = () => {
     history.push(path);
   };
 
+  if (sessionUser.id !== userId) {
+    let path = `/`;
+    history.push(path);
+  }
+
   if (isLoaded) {
     return (
       <div className="editProfileContainer">
@@ -104,6 +109,7 @@ const EditProfile = () => {
                 placeholder="Name"
                 value={name}
                 onChange={updateName}
+                required
               />
             </label>
             <label>
@@ -131,6 +137,7 @@ const EditProfile = () => {
                 placeholder="Profile Image URL"
                 value={profileImage}
                 onChange={updateProfileImage}
+                required
               />
             </label>
             <div className="editProfileButton">

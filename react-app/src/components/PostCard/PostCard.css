@@ -78,7 +78,7 @@
 }
 
 .comment-form {
-    background-color: white;
+    background-color: transparent;
 }
 
 .comment-area {
@@ -96,10 +96,16 @@ textarea {
 .post-comment:disabled {
     opacity: .4;
     cursor: default;
+    border: none;
+    color: rgb(80, 200, 239);
+    background: none;
 }
 
 .post-comment:enabled {
     cursor: pointer;
+    color: rgb(0,140,255);
+    border: none;
+    background: transparent;
 }
 
 .bold {

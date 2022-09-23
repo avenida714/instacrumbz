@@ -125,6 +125,7 @@ const PostForm = ({ post, formType, onClick }) => {
 
   return (
     <div className='Container'>
+      <div className='new-post'>New Post</div>
       <form className="Form_container" onSubmit={handleSubmit}>
         <div>
           <ul className="Form_errors">
@@ -142,7 +143,7 @@ const PostForm = ({ post, formType, onClick }) => {
             <input className='PostForm_input'
               type="text"
               autoFocus
-              placeholder="image_url..."
+              placeholder="Image_url... .jpg / .jpeg / .png"
               value={image_url}
               onChange={e => setImage_url(e.target.value)}
             />
@@ -154,7 +155,7 @@ const PostForm = ({ post, formType, onClick }) => {
             Caption:
             <textarea className='PostForm_textarea'
               type="text"
-              placeholder="caption..."
+              placeholder="Caption..."
               value={caption}
               onChange={e => setCaption(e.target.value)}
             />
@@ -166,7 +167,7 @@ const PostForm = ({ post, formType, onClick }) => {
             Location:
             <input className='location'
               type="text"
-              placeholder="location..."
+              placeholder="Location..."
               value={location}
               onChange={e => setLocation(e.target.value)}
             />

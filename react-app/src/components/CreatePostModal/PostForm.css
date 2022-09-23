@@ -1,8 +1,11 @@
 @font-face {
     font-family: 'MyFont';
     src: local('MyFont'), url(../NavBar//FontsFree-Net-Billabong.ttf)
-  }
+}
 
+.new-post{
+    font-size: xx-large;
+}
 
 .Form_list_error{
     list-style-type: none;

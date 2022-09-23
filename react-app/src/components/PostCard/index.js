@@ -37,8 +37,8 @@ const PostCard = ({ post, currUser }) => {
 
   useEffect(() => {
     let errors = [];
-    if (comment.length > 500) errors.push("Comment should be less than 500 characters!");
-    if (!comment) errors.push("Atleast one character is needed!")
+    if (comment.length > 255) errors.push("Comment should be 1 to 255 characters!");
+    if (!comment) errors.push("At least one character is needed!")
     setErrors(errors);
   }, [comment]);
 

@@ -171,8 +171,8 @@ function SinglePost({ post }) {
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                   />
-                  <button className="post-comment-sp" disabled={isDisabled}>
-                    Post
+                  <button className="button-post-comment-sp" disabled={isDisabled}>
+                    Comment
                   </button>
                 </form>
               </div>

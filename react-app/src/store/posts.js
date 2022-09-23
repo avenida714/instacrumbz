@@ -103,7 +103,7 @@ export const getAllPosts = () => async (dispatch) => {
   const response = await fetch(`/api/posts/all`);
   if (response.ok) {
     const data = await response.json();
-    console.log("***********THIS IS THE DATA.POSTS *************", data.posts);
+    // console.log("***********THIS IS THE DATA.POSTS *************", data.posts);
     dispatch(actionLoadPosts(data.posts)); //revist
     return data;
   }

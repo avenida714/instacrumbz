@@ -114,7 +114,7 @@ function SinglePost({ post }) {
               </div>
               <div className="caption-comments">
                 <div className="comment-display-sp">
-                  <div className="post-caption">{loopMe.caption}</div>
+                  <div className="post-caption-sp">{loopMe.caption}</div>
                   {loopMe.comments.map((comment) => (
                     <div className="comment_line" key={comment.id}>
                       <div className="user-icon-sp" >

@@ -8,11 +8,11 @@
   justify-content: flex-start;
 }
 
-.post-caption-sp{
+.post-caption-sp {
   font-family: MyFont;
   font-size: 20px;
   margin-top: 20px;
-  text-align:center;
+  text-align: center;
   margin-bottom: 20px;
   /* border-bottom: 1px solid lightgray; */
 
@@ -36,7 +36,7 @@
 .comment-display-sp {
   height: 500px;
   overflow-y: auto;
-    /* border: 2px solid red; */
+  /* border: 2px solid red; */
 
 
 }
@@ -59,6 +59,7 @@
   border-radius: 50%;
 
 }
+
 .post-user-icon-sp:hover {
   pointer-events: none;
 }
@@ -79,10 +80,10 @@
 
 .comment-area-sp {
 
-    width: 400px;
-    border: none;
-    height: 50px;
-    background-color:aliceblue
+  width: 400px;
+  border: none;
+  height: 50px;
+  background-color: aliceblue
 }
 
 .sp-likes {

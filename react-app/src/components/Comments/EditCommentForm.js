@@ -41,7 +41,8 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
     const editCom = await dispatch(updateAComment(editedComment, commentId));
     if (editCom) {
       onHide();
-      type()
+      // type()
+      dispatch(getOnePostById(id))
     }
 
     setComment("");
@@ -58,6 +59,8 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
 
   useEffect(() => {
     dispatch(getOnePostById(id)).then(() => setIsLoaded(true));
+
+    console.log(id)
   }, [dispatch]);
 
   // useEffect(() => {

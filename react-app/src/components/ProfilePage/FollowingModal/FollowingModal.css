@@ -4,7 +4,7 @@
   align-items: center;
   height: 400px;
   width: 500px;
-  overflow-y:auto
+  overflow-y: auto
 }
 
 .followingModalInnerContainer {
@@ -33,6 +33,6 @@
   cursor: pointer;
 }
 
-.followingName  {
+.followingName {
   margin-left: 20px;
 }

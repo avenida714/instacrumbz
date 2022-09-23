@@ -3,21 +3,22 @@
   justify-content: flex-start;
 }
 
-.image-container{
+.image-container {
   display: flex;
   width: 100%;
 }
+
 .left-half {
   width: 800px;
   height: 800px;
 
 }
 
-.comment-display-sp{
+.comment-display-sp {
   height: 500px;
 }
 
-.caption-comments{
+.caption-comments {
   /* border: 2px solid blue; */
   height: 500px;
 }
@@ -37,7 +38,7 @@
 }
 
 
-.comment_line{
+.comment_line {
   display: flex;
   /* border: 2px solid red; */
   align-items: center;
@@ -45,13 +46,14 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.comment_content{
+
+.comment_content {
 
   max-width: 325px;
   overflow-wrap: break-word;
 }
 
-.right-half{
+.right-half {
   /* border: 2px solid yellow; */
   max-height: max-content;
 }
@@ -82,7 +84,7 @@
   padding-left: 0px;
 }
 
-.header-pc{
+.header-pc {
   /* border: 3px solid yellow; */
 }
 

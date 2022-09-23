@@ -4,7 +4,7 @@
     border-radius: 8px;
     border: 1px lightgray solid;
     font-family: "Helvetica", Arial, sans-serif;
-    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 .header-pc {
@@ -53,7 +53,7 @@
     gap: 10px;
 }
 
-.comments-header-pc{
+.comments-header-pc {
     color: gray;
     margin-left: 12px;
     margin-top: 8px;
@@ -87,7 +87,7 @@
     background-color: white;
 }
 
-textarea{
+textarea {
     background: transparent;
     border: none;
     outline: none;
@@ -106,7 +106,7 @@ textarea{
     font-weight: 900;
 }
 
-.likes{
+.likes {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -116,7 +116,7 @@ textarea{
     font-size: large;
 }
 
-.padding{
+.padding {
     margin-bottom: 10px;
 }
 

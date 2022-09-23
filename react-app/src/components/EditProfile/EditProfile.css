@@ -1,23 +1,24 @@
 .editProfileContainer {
   display: flex;
   justify-content: center;
-  width: 40% ;
+  width: 40%;
   min-width: 70%;
   margin: auto;
   margin-top: 10%;
-  padding:40px;
+  padding: 40px;
   /* border: 2px double rgb(216, 203, 203); */
   border-radius: 20px;
 }
 
-.editProfileFormContainer{
+.editProfileFormContainer {
   display: flex;
   justify-content: center;
-  width: 50%;;
+  width: 50%;
+  ;
   margin: auto;
   margin-top: 10%;
   margin-bottom: 10%;
-  padding:40px;
+  padding: 40px;
   border: 2px double rgb(216, 203, 203);
   border-radius: 20px;
 }
@@ -47,7 +48,7 @@
   border-radius: 50%;
 }
 
-.profileEdit > label > input {
+.profileEdit>label>input {
   font-size: 16px;
   padding-left: 10px;
   font-family: 'Montserrat', sans-serif;
@@ -56,7 +57,7 @@
   border-radius: 20px;
 }
 
-.profileEdit > label {
+.profileEdit>label {
   font-family: 'Roboto', sans-serif;
   display: flex;
   padding: 5px;
@@ -64,7 +65,7 @@
 
 .profileEdit span {
   font-size: 15px;
-  margin-right: 12px ;
+  margin-right: 12px;
   width: 20%;
 }
 
@@ -73,13 +74,13 @@
   justify-content: center;
 }
 
-.editProfileButton > button {
+.editProfileButton>button {
   border-radius: 2%;
   font-family: 'Roboto';
   width: 100px;
   background-color: white;
   border-color: rgb(216, 203, 203);
-  border-style: solid ;
+  border-style: solid;
   border-width: 1px;
   margin: 10px;
   width: 120px;

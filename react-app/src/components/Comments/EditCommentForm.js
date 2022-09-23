@@ -41,7 +41,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
     const editCom = await dispatch(updateAComment(editedComment, commentId));
     if (editCom) {
       onHide();
-      type()
+      type();
     }
 
     setComment("");
@@ -53,7 +53,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
     const del = await dispatch(deleteAComment(id));
     if (del) alert("I have successfully eaten the comment for you!!!");
     onHide();
-    type()
+    type();
   };
 
   useEffect(() => {

@@ -48,4 +48,3 @@ def editProfile(userId):
     return userprofile.to_dict()
   else:
     return {'message': 'Unauthorized user', "statusCode": 403}
-

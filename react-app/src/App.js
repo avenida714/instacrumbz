@@ -74,6 +74,10 @@ function App() {
         <Route exact path="/posts" component={CreatePostForm} />
 
         <Route exact path="/posts/:postId/edit" component={EditPostForm} />
+
+        <Route path="/login" exact={true}>
+          <LoginForm />
+        </Route>
       </Switch>
     </BrowserRouter>
   ) : (

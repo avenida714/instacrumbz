@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../NavBar//FontsFree-Net-Billabong.ttf)
+  }
+
+
 .Form_list_error{
     list-style-type: none;
     color: red;
@@ -5,4 +11,82 @@
 
 .PostForm_textarea{
     border: 1px solid black;
+}
+
+.Container{
+    border: 2px solid lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:500px;
+    width: 500px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 23px;
+}
+
+.delete_Btn{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+.PostForm_input{
+    margin: 10px 5px;
+    height: 30px;
+    width: 280px;
+}
+
+.image_url{
+    margin-bottom: 10px;
+}
+
+.Container{
+    display: flex;
+
+}
+
+.caption{
+   margin-bottom: 13px;
+   margin-left: 18px;
+   display: inline-block;
+}
+
+.PostForm_textarea{
+    word-wrap:break-word;
+    width: 280px;
+    margin-left: 10px;
+
+}
+
+.label_Location{
+    margin-left: 12px;
+}
+.location{
+    margin-left: 8px;
+    height: 30px;
+    width: 280px;
+    margin-bottom: 10px;
+}
+
+.PostForm_button{
+     border: 1px solid black;
+    background: lightcyan;
+    color: #0095F6;
+    font-size: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 200px;
+    font-family: MyFont;
+    border-radius: 20px;
+    margin-top: 30px;
+    height: 35px;
+    margin-left: 98;
+
+}
+
+.delete_Btn{
+    height: 35px;
 }

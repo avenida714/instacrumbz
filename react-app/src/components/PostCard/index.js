@@ -123,7 +123,9 @@ const PostCard = ({ post, currUser }) => {
       <div className="comment-display-pc">
         {post.comments.map((comment) => (
           <div key={comment.id} className="caption-pc">
-            <div className="bold">{comment.user.username}:</div>
+            <div className="bold cursor" onClick={() => {
+              history.push(`/profile/${comment.user.id}`)
+            }}>{comment.user.username}:</div>
             <div>{comment.comment}</div>
             {comment.user.id === currUser.id && (
               <EditCommentModal

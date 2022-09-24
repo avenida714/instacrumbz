@@ -148,3 +148,7 @@ textarea {
     cursor: pointer;
     color: rgba(231, 20, 20, 0.705);
 }
+
+.cursor{
+    cursor: pointer;
+}

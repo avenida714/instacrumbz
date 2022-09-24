@@ -28,7 +28,7 @@ function SinglePost({ post }) {
 
   const [comment, setComment] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-
+  const [errors, setErrors] = useState("");
   let id = post.id;
 
   const handleSubmit = (e) => {
@@ -74,6 +74,15 @@ function SinglePost({ post }) {
       }
     });
   }, [post.likes]);
+
+
+  useEffect(() => {
+    let errors = [];
+    if (comment.length > 255) errors.push("Comment should be 1 to 255 characters!");
+    if (!comment) errors.push("At least one character is needed!")
+    setErrors(errors);
+  }, [comment]);
+
 
   const likePost = (post) => {
     console.log(post);
@@ -182,8 +191,8 @@ function SinglePost({ post }) {
                     onChange={(e) => setComment(e.target.value)}
                   />
                   <button
-                    className="button-post-comment-sp"
-                    disabled={isDisabled}
+                    className={errors.length ? 'grey_out' : "button-post-comment-sp"}
+                    disabled={ errors.length > 0 }
                   >
                     Comment
                   </button>

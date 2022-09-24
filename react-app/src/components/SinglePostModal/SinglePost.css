@@ -195,3 +195,18 @@
 .elipsis {
   margin-left: 240px;
 }
+
+
+.grey_out{
+  border: 1px solid black;
+  background: rgb(248, 242, 242);
+  color: #0095F6;
+  font-size: 30px;
+  font-weight: 500;
+  width: 200px;
+  font-family: MyFont;
+  border-radius: 20px;
+  margin-top: 30px;
+  height: 35px;
+  margin-left: 98;
+}

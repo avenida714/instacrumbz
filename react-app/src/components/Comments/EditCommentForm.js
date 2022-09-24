@@ -73,9 +73,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
     //   )
     // }
     if (comment.length < 1 || comment.length > 255) {
-        errors.push(
-          "Please Enter at least 1 to 255 characters "
-        );
+      errors.push("Please Enter at least 1 to 255 characters ");
     }
 
     setValidationErrors(errors);
@@ -87,7 +85,11 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
         <div>
           <ul>
             {hasSubmitted &&
-              validationErrors.map((error) => <li className='comment_errorsList' key={error}>{error}</li>)}
+              validationErrors.map((error) => (
+                <li className="comment_errorsList" key={error}>
+                  {error}
+                </li>
+              ))}
           </ul>
         </div>
 

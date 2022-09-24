@@ -73,7 +73,36 @@ def seed_users():
         password='password',
         followers=[marnie, bobbie, fred, kangaskhan, snorlax]
         )
-
+    maggie = User(
+        username='maggie321',
+        email='maggie321@aa.io',
+        name='Maggie',
+        bio="I'm Baby",
+        gender='Female',
+        profile_img='https://images.ctfassets.net/1nzw6mpfcddc/1AtTtUhO9h5eTH6iwBDvj8/f50694c249a8409a0a024095a170ee8f/MaggieSimpson1.gif',
+        password='password',
+        followers=[demo, marnie, bobbie]
+        )
+    lisa = User(
+        username='monalisa',
+        email='lisa1987@aa.io',
+        name='Lisa',
+        bio="I play the saxaphone!",
+        gender='Female',
+        profile_img='https://i.discogs.com/OPJi6KYITGiuDluSA5S_zgw4-3Leb1z5HFeqS6uV_3o/rs:fit/g:sm/q:90/h:400/w:400/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTU4MTMz/Ny0xMzM1NzE4Mjcz/LnBuZw.jpeg',
+        password='password',
+        followers=[demo, marnie, bobbie, maggie]
+        )
+    pikachu = User(
+        username='pikachu',
+        email='pikapika@aa.io',
+        name='Pikachu',
+        bio='Pika Pika',
+        gender='Male',
+        profile_img="https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/8/89/Pikachu.jpg",
+        password='password',
+        followers=[kangaskhan, snorlax]
+        )
 
     db.session.add(demo) #1
     db.session.commit()
@@ -94,6 +123,15 @@ def seed_users():
     db.session.commit()
 
     db.session.add(dragonite) #7
+    db.session.commit()
+
+    db.session.add(maggie) #8
+    db.session.commit()
+
+    db.session.add(lisa) #9
+    db.session.commit()
+
+    db.session.add(pikachu) #10
     db.session.commit()
 
 

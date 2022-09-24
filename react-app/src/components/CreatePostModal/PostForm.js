@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {createAPost, deleteAPost, getOnePostById, updateAPost} from "../../store/posts";
+import {
+  createAPost,
+  deleteAPost,
+  getOnePostById,
+  updateAPost,
+} from "../../store/posts";
 import "./PostForm.css";
 import { deleteAComment } from "../../store/comment";
 import { loadUserProfile } from "../../store/profile";
@@ -98,11 +103,11 @@ const PostForm = ({ post, formType, onClick }) => {
     if (!image_url.length) {
       errors.push("Image's url is required");
     }
-  
+
     if (caption.length <= 0 || caption.length > 50) {
       errors.push("Caption is required and between 1 to 50");
     }
-    
+
     if (location.length <= 0 || location.length > 50) {
       errors.push("Location is required and between 1 to 50");
     }
@@ -119,9 +124,8 @@ const PostForm = ({ post, formType, onClick }) => {
   }, [image_url, caption, location]);
 
   return (
-    <div className='Container'>
-
-      <div className='formType'>{formType}</div>
+    <div className="Container">
+      <div className="formType">{formType}</div>
 
       <form className="Form_container" onSubmit={handleSubmit}>
         <div>

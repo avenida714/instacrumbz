@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route,  Switch, useHistory,  Redirect,} from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -20,9 +26,6 @@ import EditProfile from "./components/EditProfile";
 // import EditPostForm from './components/PostForm/EditPostForm';
 import CreatePostForm from "./components/CreatePostModal/CreatePostForm";
 import EditPostForm from "./components/CreatePostModal/EditPostForm";
-
-
-
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,7 +73,7 @@ function App() {
           <CurrentUserPage />
         </ProtectedRoute> */}
 
-        <ProtectedRoute exact path="/post/:postId" >
+        <ProtectedRoute exact path="/post/:postId">
           <SinglePost />
         </ProtectedRoute>
 
@@ -81,11 +84,10 @@ function App() {
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        
+
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-
       </Switch>
     </BrowserRouter>
   ) : (

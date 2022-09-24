@@ -18,6 +18,8 @@ const EditProfile = () => {
     }
     return state.profile;
   });
+  console.log("PROFILE");
+  console.log(profile);
 
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
@@ -25,6 +27,8 @@ const EditProfile = () => {
   const [profileImage, setProfileImage] = useState(profile.profile_img);
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  console.log(name);
+  console.log(bio);
 
   const updateName = (e) => setName(e.target.value);
   const updateBio = (e) => setBio(e.target.value);
@@ -34,19 +38,24 @@ const EditProfile = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(loadUserProfile(userId));
+    dispatch(loadUserProfile(userId)).then(() => {
+      console.log("ISLOADED");
+      console.log(profile);
+      setIsLoaded(true);
+    });
   }, [dispatch]);
 
-  useEffect(() => {
-    if (profile.id) {
-      console.log("HERE");
-      setIsLoaded(true);
-      setName(profile.name);
-      setBio(profile.bio);
-      setGender(profile.gender);
-      setProfileImage(profile.profile_img);
-    }
-  }, [profile]);
+  // useEffect(() => {
+  //   if (profile.name && profile.bio) {
+  //     console.log("HERE");
+  //     console.log(profile);
+  //     setIsLoaded(true);
+  //     setName(profile.name);
+  //     setBio(profile.bio);
+  //     setGender(profile.gender);
+  //     setProfileImage(profile.profile_img);
+  //   }
+  // }, [profile]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

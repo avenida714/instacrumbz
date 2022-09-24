@@ -79,33 +79,38 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const signUp = (username, email, password) => async (dispatch) => {
-  const response = await fetch("/api/auth/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
-  });
+export const signUp =
+  (email, name, username, profile_img, password) => async (dispatch) => {
+    console.log("store/session");
+    console.log(profile_img);
+    const response = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        name,
+        username,
+        profile_img,
+        password,
+      }),
+    });
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data));
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      console.log("data.errors", data.errors)
-      return data.errors;
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setUser(data));
+      return null;
+    } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+        console.log("data.errors", data.errors);
+        return data.errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
     }
-  } else {
-    return ["An error occurred. Please try again."];
-  }
-};
+  };
 
 export const userFollow = (userId) => async (dispatch) => {
   const res = await fetch(`/api/followers/profile_follows/${userId}`, {

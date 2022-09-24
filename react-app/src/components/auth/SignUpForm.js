@@ -23,7 +23,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (validationErrors.length > 0) {
+    if (errors.length > 0) {
       return alert("Cannot Submit");
     }
     if (password === repeatPassword) {
@@ -92,7 +92,7 @@ const SignUpForm = () => {
     if (password !== repeatPassword) errs.push("Password and Confirm password does not match");
 
 
-    setValidationErrors(errs);
+    setErrors(errs);
   }, [email, username, password, repeatPassword]);
 
   if (user) {
@@ -188,10 +188,10 @@ const SignUpForm = () => {
         <button className="signup_button" type="submit">
           register
         </button>
-        <div className="errorssss">
+        {/* <div className="errorssss">
           {hasSubmitted &&
             validationErrors.map((error, ind) => <div key={ind}>{error}</div>)}
-        </div>
+        </div> */}
         <div className="errorssss">
           {hasSubmitted &&
             errors.map((error, ind) => <div key={ind}>{error}</div>)}

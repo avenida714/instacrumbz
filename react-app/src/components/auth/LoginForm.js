@@ -74,7 +74,7 @@ const LoginForm = () => {
                   className="login_input"
                   name="email"
                   type="text"
-                  placeholder="username or email address"
+                  placeholder="email address"
                   value={email}
                   onChange={updateEmail}
                 />

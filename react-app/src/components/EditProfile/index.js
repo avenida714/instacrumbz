@@ -28,6 +28,7 @@ const EditProfile = () => {
   const [profileImage, setProfileImage] = useState(profile.profile_img);
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   console.log(name);
   console.log(bio);
 
@@ -58,9 +59,27 @@ const EditProfile = () => {
   //     setProfileImage(profile.profile_img);
   //   }
   // }, [profile]);
+  
+  useEffect(() => {
+    let errors = [];
+
+    if (
+      !profileImage?.includes("jpg") &&
+      !profileImage?.includes("jpeg") &&
+      !profileImage?.includes("png")
+    ) {
+      errors.push("Please provide validate url form jpg, jpeg or png");
+    }
+
+    setErrors(errors);
+  }, [profileImage]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
+    if (errors.length > 0) {
+      return alert("Cannot Submit");
+    }
     setErrors([]);
     let data = {
       name: name,
@@ -112,8 +131,8 @@ const EditProfile = () => {
             <form className="profileEdit" onSubmit={handleSubmit}>
               <ul>
                 <div className="editprofileLabel">Edit Profile:</div>
-                {errors.map((error, idx) => (
-                  <li key={idx}>{error}</li>
+                {hasSubmitted && errors.map((error, idx) => (
+                  <li className="editProfile_li" key={idx}>{error}</li>
                 ))}
               </ul>
               <label>

@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50)) #nullable=False removed for now
     bio = db.Column(db.String(500))
     gender = db.Column(db.String(50))
-    profile_img = db.Column(db.String(255))
+    profile_img = db.Column(db.String(255), default='https://afa.org.sg/wp-content/uploads/2014/05/icon-user-default-copy.png')
 
 
     #relationships

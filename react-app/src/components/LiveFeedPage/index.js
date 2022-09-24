@@ -23,7 +23,14 @@ const LiveFeedPage = () => {
 
   posts.reverse();
 
-  const currUser = useSelector((state) => state.session.user);
+  const currUser = useSelector((state) => {
+    if (state.profile.profile) {
+      return state.profile.profile[0];
+    }
+    return state.session.user;
+  });
+  console.log("CURRUSER");
+  console.log(currUser);
   const commentObj = useSelector((state) => state.comment);
   let allComments;
   if (commentObj) allComments = Object.values(commentObj);

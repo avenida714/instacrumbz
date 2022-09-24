@@ -15,6 +15,7 @@ function ProfileIcon({ userLoggedIn }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
+  console.log("-------", userLoggedIn)
 
   const openMenu = () => {
     if (showMenu) return;

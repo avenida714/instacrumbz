@@ -27,10 +27,10 @@ const SignUpForm = () => {
       return alert("Cannot Submit");
     }
     if (password === repeatPassword) {
-      console.log("SignUpForm");
-      console.log(profileImage);
+      // console.log("SignUpForm");
+      // console.log(profileImage);
       const data = await dispatch(
-        signUp(email, name, username, profileImage, password)
+        signUp(username, name, email, password)
       );
       if (data) {
         setErrors(data);
@@ -57,9 +57,9 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  const updateProfileImage = (e) => {
-    setProfileImage(e.target.value);
-  };
+  // const updateProfileImage = (e) => {
+  //   setProfileImage(e.target.value);
+  // };
 
   // useEffect(() =>{
 
@@ -76,20 +76,21 @@ const SignUpForm = () => {
     let errs = [];
 
     if (username.length > 30 || username.length <= 5) {
-      errs.push("Username must between 6 to 30");
+      errs.push("Username : Username must between 6 to 30");
     }
     if (!email.includes("@")) {
-      errs.push("Please provide a valid Email");
+      errs.push("Email: Please provide a valid Email");
     }
 
-    if (name.length > 50 || name.length <= 4) {
-      errs.push("Name must between 4 to 50");
+    if (name.length > 16 || name.length <= 1) {
+      errs.push("Name: Name must between 1 to 50");
     }
 
     if (password.length <= 5) {
-      errs.push("Password must at least 6 characters");
+      errs.push("Password length must be greater than 5");
     }
-    if (password !== repeatPassword) errs.push("Password must be matched");
+    if (password !== repeatPassword) errs.push("Password and Confirm password does not match");
+
 
     setValidationErrors(errs);
   }, [email, username, password, repeatPassword]);
@@ -140,7 +141,7 @@ const SignUpForm = () => {
             value={username}
           ></input>
         </div>
-        <div className="username_div">
+        {/* <div className="username_div">
           <label></label>
           <input
             className="signup_input"
@@ -151,7 +152,7 @@ const SignUpForm = () => {
             required
             value={profileImage}
           ></input>
-        </div>
+        </div> */}
         <div className="password_div">
           <label></label>
           <input

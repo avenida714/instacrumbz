@@ -3,6 +3,7 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const FOLLOW_USER = "session/FOLLOW_USER";
 const UNFOLLOW_USER = "session/UNFOLLOW_USER";
+const LOAD_USER = "session/LOAD_USER";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -20,6 +21,11 @@ const followUser = (user) => ({
 
 const unfollowUser = (user) => ({
   type: UNFOLLOW_USER,
+  user,
+});
+
+const loadUser = (user) => ({
+  type: LOAD_USER,
   user,
 });
 
@@ -79,38 +85,35 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const signUp =
-  (email, name, username, profile_img, password) => async (dispatch) => {
-    console.log("store/session");
-    console.log(profile_img);
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        name,
-        username,
-        profile_img,
-        password,
-      }),
-    });
+export const signUp = (username, name, email, password) => async (dispatch) => {
+  console.log("store/session");
+  const response = await fetch("/api/auth/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      name,
+      email,
+      password,
+    }),
+  });
 
-    if (response.ok) {
-      const data = await response.json();
-      dispatch(setUser(data));
-      return null;
-    } else if (response.status < 500) {
-      const data = await response.json();
-      if (data.errors) {
-        console.log("data.errors", data.errors);
-        return data.errors;
-      }
-    } else {
-      return ["An error occurred. Please try again."];
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      console.log("data.errors", data.errors);
+      return data.errors;
     }
-  };
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
 
 export const userFollow = (userId) => async (dispatch) => {
   const res = await fetch(`/api/followers/profile_follows/${userId}`, {
@@ -136,6 +139,17 @@ export const userUnfollow = (userId) => async (dispatch) => {
   }
 };
 
+export const loadUserRequest = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(loadUser(user));
+  }
+};
+
 export default function reducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
@@ -152,6 +166,8 @@ export default function reducer(state = initialState, action) {
       );
       newState.user.followers.splice(index, 1);
       return { ...newState };
+    case LOAD_USER:
+      return { user: action.user };
     default:
       return state;
   }

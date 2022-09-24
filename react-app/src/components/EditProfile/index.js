@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { editUserProfile, loadUserProfile } from "../../store/profile";
+import { loadUserRequest } from "../../store/session";
 import "./EditProfile.css";
 
 const EditProfile = () => {
@@ -41,6 +42,7 @@ const EditProfile = () => {
     dispatch(loadUserProfile(userId)).then(() => {
       console.log("ISLOADED");
       console.log(profile);
+      console.log(sessionUser);
       setIsLoaded(true);
     });
   }, [dispatch]);
@@ -67,8 +69,9 @@ const EditProfile = () => {
       profile_img: profileImage,
     };
 
-    return dispatch(editUserProfile(userId, data))
+    return dispatch(editUserProfile(userId, data)) // updates state.profile.profile
       .then(async (res) => {
+        dispatch(loadUserRequest(userId)); // update state.session.user
         setSubmitSuccess(true);
         let path = `/profile/${userId}/`;
         history.push(path);

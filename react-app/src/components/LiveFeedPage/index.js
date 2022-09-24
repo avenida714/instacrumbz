@@ -24,9 +24,15 @@ const LiveFeedPage = () => {
   posts.reverse();
 
   const currUser = useSelector((state) => {
-    if (state.profile.profile) {
-      return state.profile.profile[0];
-    }
+    // console.log("STATE CURRUSER");
+    // console.log(state.profile.profile && state.profile.profile[0].id);
+    // console.log(state.session.user.id);
+    // if (
+    //   state.profile.profile &&
+    //   state.profile.profile[0].id === state.session.user.id
+    // ) {
+    //   return state.profile.profile[0];
+    // }
     return state.session.user;
   });
   console.log("CURRUSER");

@@ -19,9 +19,9 @@
 .editProfileFormContainer {
   display: flex;
   justify-content: center;
-  width: 50%;
-  ;
   margin: auto;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 10%;
   margin-bottom: 10%;
   padding: 40px;
@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 4%;
+  margin-top: 9%;
 }
 
 .profilePreviewName {
@@ -52,6 +52,10 @@
   margin-left: 25px;
   margin-right: 15px;
   border-radius: 50%;
+}
+
+.profileEdit {
+  min-width: 100%;
 }
 
 .profileEdit>label>input {
@@ -90,8 +94,17 @@
   border-width: 1px;
   margin: 10px;
   width: 120px;
+
 }
 
+.editProfileButton > button:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.editProfileButton > button:active {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
 .editProfile_li{
   list-style-type: none;
   color: red;

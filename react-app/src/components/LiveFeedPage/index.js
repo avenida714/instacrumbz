@@ -9,6 +9,7 @@ import "../../index.css";
 import PostCard from "../PostCard";
 import FollowsList from "../FollowsList";
 import { getPostComment } from "../../store/comment";
+import { loadUserRequest } from "../../store/session";
 
 const LiveFeedPage = () => {
   const history = useHistory();
@@ -48,7 +49,10 @@ const LiveFeedPage = () => {
   // const displayFollows = User.follows.map(); //
 
   useEffect(() => {
-    dispatch(getAllPosts()).then(() => setIsLoaded(true));
+    dispatch(getAllPosts()).then(() => {
+      dispatch(loadUserRequest(currUser.id)); // update state.session.user
+      setIsLoaded(true);
+    });
   }, [dispatch]);
 
   return (

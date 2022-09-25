@@ -123,6 +123,8 @@ export const userFollow = (userId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(followUser(data));
+    console.log("USERFOLLOW");
+    console.log(data);
     return data;
   }
 };
@@ -135,6 +137,8 @@ export const userUnfollow = (userId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(unfollowUser(data));
+    console.log("USERUNFOLLOW");
+    console.log(data);
     return data;
   }
 };
@@ -146,6 +150,8 @@ export const loadUserRequest = (userId) => async (dispatch) => {
   });
   if (res.ok) {
     const user = await res.json();
+    console.log("LOADUSER");
+    console.log(user);
     dispatch(loadUser(user));
   }
 };

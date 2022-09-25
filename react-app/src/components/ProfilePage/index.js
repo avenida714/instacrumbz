@@ -125,7 +125,7 @@ const UserProfilePage = () => {
                   );
                 })
               ) : (
-                <div>Profile not found</div>
+                <div className="profileNotFound">Profile not found!</div>
               )}
             </div>
 

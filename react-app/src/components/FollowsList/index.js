@@ -46,6 +46,7 @@ const FollowsList = ({ currUser }) => {
     fetchData();
   }, []);
 
+
   const displayDevs = developers.map((dev, i) => (
     <div key={i} className="user-follow-header">
       <div className="user-img-fp">

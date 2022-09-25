@@ -3,10 +3,11 @@ const LOAD_USERPROFILE = "userprofile/LOAD_USERPROFILE";
 const EDIT_USERPROFILE = "userprofile/EDIT_USERPROFILE";
 
 //Action Creators:
-const loadProfile = (userId) => {
+const loadProfile = (post, profile) => {
   return {
     type: LOAD_USERPROFILE,
-    userId,
+    post,
+    profile
   };
 };
 
@@ -19,10 +20,12 @@ const editProfile = (userId) => {
 
 //Thunks:
 export const loadUserProfile = (userId) => async (dispatch) => {
+  console.log('!!!!!!!!!!!!!!', userId)
   const res = await fetch(`/api/profile/${userId}`);
   if (res.ok) {
     const profile = await res.json();
-    dispatch(loadProfile(profile));
+    console.log("profile******", profile)
+    dispatch(loadProfile(profile.post, profile.profile));
   }
 };
 
@@ -47,7 +50,12 @@ const userProfileReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case LOAD_USERPROFILE:
-      newState = action.userId;
+      console.log("********** before newState action", action)
+      newState = { ...state}
+
+      newState.post = action.post;
+      newState.profile = action.profile;
+      console.log("********** newState", newState)
       return { ...newState };
     case EDIT_USERPROFILE:
       console.log(action);

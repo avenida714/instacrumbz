@@ -47,7 +47,7 @@ const EditProfile = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (profile.name && profile.bio) {
+    if (profile.name) {
       console.log("HERE");
       console.log(profile);
       setName(profile.name);

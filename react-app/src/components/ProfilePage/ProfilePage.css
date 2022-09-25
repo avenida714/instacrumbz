@@ -166,3 +166,10 @@
   filter: brightness(.7);
   transition: .25s;
 }
+
+.profileNotFound {
+  font-family: 'Roboto',sans-serif;
+  font-size: 40px;
+  padding-top: 200px;
+  font-weight: 500;
+}

@@ -82,18 +82,23 @@ const SignUpForm = () => {
       errs.push("Email: Please provide a valid Email");
     }
 
-    if (name.length > 16 || name.length <= 1) {
-      errs.push("Name: Name must between 1 to 50");
+    if (name.length > 16 || name.length < 1) {
+      errs.push("Name: Name must between 1 to 16");
+    }
+
+    if (name.includes(".")) {
+      errs.push("Name: Name can't be period");
     }
 
     if (password.length <= 5) {
       errs.push("Password length must be greater than 5");
     }
-    if (password !== repeatPassword) errs.push("Password and Confirm password does not match");
+    if (password !== repeatPassword) 
+      errs.push("Password and Confirm password does not match");
 
 
     setErrors(errs);
-  }, [email, username, password, repeatPassword]);
+  }, [email, username, name, password, repeatPassword]);
 
   if (user) {
     return <Redirect to={`/`} />;
@@ -126,6 +131,7 @@ const SignUpForm = () => {
             name="name"
             onChange={updateName}
             value={name}
+            required
             placeholder="name"
           ></input>
         </div>

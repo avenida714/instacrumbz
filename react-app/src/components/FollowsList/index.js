@@ -68,10 +68,10 @@ const FollowsList = ({ currUser }) => {
     </div>
   ));
 
-  let array = currUser.following.map((each) => each.id);
-  array.push(currUser.id);
+  let followingList = currUser.following.map((each) => each.id);
+  followingList.push(currUser.id);
 
-  let notFollowing = users.filter((user) => !array.includes(user.id));
+  let notFollowing = users.filter((user) => !followingList.includes(user.id));
 
   const displayUsersToFollow = notFollowing.map((user, i) => (
     <NavLink key={i} to={`/profile/${user.id}`} className="user-follow-header">

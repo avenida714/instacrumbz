@@ -10,7 +10,6 @@ import EditCommentModal from "../Comments/EditCommentFormModal";
 
 //TO-DO: Rudy finish Post Card
 const PostCard = ({ post, currUser }) => {
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,8 +36,9 @@ const PostCard = ({ post, currUser }) => {
 
   useEffect(() => {
     let errors = [];
-    if (comment.length > 255) errors.push("Comment should be 1 to 255 characters!");
-    if (!comment) errors.push("At least one character is needed!")
+    if (comment.length > 255)
+      errors.push("Comment should be 1 to 255 characters!");
+    if (!comment) errors.push("At least one character is needed!");
     setErrors(errors);
   }, [comment]);
 
@@ -123,9 +123,14 @@ const PostCard = ({ post, currUser }) => {
       <div className="comment-display-pc">
         {post.comments.map((comment) => (
           <div key={comment.id} className="caption-pc">
-            <div className="bold cursor" onClick={() => {
-              history.push(`/profile/${comment.user.id}`)
-            }}>{comment.user.username}:</div>
+            <div
+              className="bold cursor"
+              onClick={() => {
+                history.push(`/profile/${comment.user.id}`);
+              }}
+            >
+              {comment.user.username}:
+            </div>
             <div>{comment.comment}</div>
             {comment.user.id === currUser.id && (
               <EditCommentModal
@@ -140,23 +145,23 @@ const PostCard = ({ post, currUser }) => {
       </div>
       <div className="leave-comment-pc" /* comment text area */>
         <form className="comment-form" onSubmit={handleSubmit}>
-            {/* <ul className="errors-pc">
+          {/* <ul className="errors-pc">
                 { errorsList }
             </ul> */}
-            <input
+          <input
             type="text"
             value={comment}
             className="comment-area"
             placeholder="Add a comment..."
             onChange={(e) => setComment(e.target.value)}
-            />
-            <button
+          />
+          <button
             type="submit"
             className="post-comment"
-            disabled={ errors.length > 0 }
-            >
-                Post
-            </button>
+            disabled={errors.length > 0}
+          >
+            Post
+          </button>
         </form>
       </div>
     </div>

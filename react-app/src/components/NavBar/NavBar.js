@@ -9,7 +9,7 @@ import compass from "./svgexport-20.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileIcon from "./ProfileIcon";
 import { loadUserProfile } from "../../store/profile";
-
+import {loadUserRequest} from '../../store/session'
 import CreatePostModal from "../CreatePostModal";
 import "./NavBar.css";
 import "../../index.css";
@@ -32,7 +32,7 @@ const NavBar = () => {
   console.log(userLoggedIn);
 
   useEffect(() => {
-    dispatch(loadUserProfile(userLoggedIn.id));
+    dispatch(loadUserRequest(userLoggedIn.id));
   }, [dispatch]);
 
   return (

@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
+import { loadUserRequest } from "../../store/session";
 import "../ProfilePage/FollowingModal/FollowingModal.css";
 
 const FollowingPCModal = ({ following, isOpen, onClose }) => {
+  const dispatch = useDispatch()
   const history = useHistory();
   //   const userFollowing = profile.following;
   console.log("here-------", following);
+  const userLoggedIn = useSelector(state => state.session.user);
 
   const clickFollowingProfile = (followingId) => {
     let path = `/profile/${followingId}`;
     history.push(path);
   };
+
+  useEffect(() => {
+    dispatch(loadUserRequest(userLoggedIn.id));
+  }, [dispatch]);
 
   return (
     <>
@@ -21,7 +29,7 @@ const FollowingPCModal = ({ following, isOpen, onClose }) => {
             <div>
               <h1>Following</h1>
             </div>
-            {following && following.length ? (
+            {userLoggedIn.following && userLoggedIn.following.length ? (
               following.map((each) => {
                 let followingName = each.name;
                 let followingPic = each.profile_img;

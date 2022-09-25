@@ -84,18 +84,29 @@ npm start
 
 ### Create and Register a New User
 
+<img width="1791" alt="Screen Shot 2022-09-24 at 5 20 17 PM" src="https://user-images.githubusercontent.com/14317966/192123222-604c23f0-8248-4fd4-ad34-795ea306453c.png">
+
 ### Login Valid User or User Demo Login Page
+
+<img width="1792" alt="Screen Shot 2022-09-24 at 5 20 06 PM" src="https://user-images.githubusercontent.com/14317966/192123242-8955c1fa-1edb-4089-ae94-43e65660948a.png">
 
 ### All Photos Feed
 
+<img width="1792" alt="Screen Shot 2022-09-24 at 5 05 09 PM" src="https://user-images.githubusercontent.com/14317966/192123255-a78a370a-f7bc-4264-a8a1-c3c9e92aedf9.png">
+
 ### Create a New Post
 
-### Leave and Remove Likes
+<img width="1792" alt="Screen Shot 2022-09-24 at 5 05 42 PM" src="https://user-images.githubusercontent.com/14317966/192123260-c029247d-edb1-4c68-98d7-b22e369629d0.png">
 
-### Create New Comment for a post
+### Edit a Post / Delete a Post
 
-### Edit a Comment
+<img width="1790" alt="Screen Shot 2022-09-24 at 5 33 29 PM" src="https://user-images.githubusercontent.com/14317966/192123538-57b176a1-f18a-460c-8920-020793a21032.png">
 
-### Delete an Existing Comment from post
+### Leave and Remove Likes / Create New Comment
 
-### Users Following & Photo Feed
+<img width="474" alt="Screen Shot 2022-09-24 at 5 28 33 PM" src="https://user-images.githubusercontent.com/14317966/192123281-a91325d0-6ad9-4fcf-aaab-dbabe7214cee.png">
+
+### Edit a Comment / Delete a Comment 
+
+<img width="771" alt="Screen Shot 2022-09-24 at 5 30 47 PM" src="https://user-images.githubusercontent.com/14317966/192123332-62353930-5a56-4c5e-a969-d3de5812daa5.png">
+

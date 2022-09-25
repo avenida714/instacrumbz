@@ -20,11 +20,11 @@ const editProfile = (userId) => {
 
 //Thunks:
 export const loadUserProfile = (userId) => async (dispatch) => {
-  console.log('!!!!!!!!!!!!!!', userId)
+
   const res = await fetch(`/api/profile/${userId}`);
   if (res.ok) {
     const profile = await res.json();
-    console.log("profile******", profile)
+
     dispatch(loadProfile(profile.post, profile.profile));
   }
 };
@@ -50,12 +50,11 @@ const userProfileReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case LOAD_USERPROFILE:
-      console.log("********** before newState action", action)
+   
       newState = { ...state}
-
       newState.post = action.post;
       newState.profile = action.profile;
-      console.log("********** newState", newState)
+   
       return { ...newState };
     case EDIT_USERPROFILE:
       console.log(action);

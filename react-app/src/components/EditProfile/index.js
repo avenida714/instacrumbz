@@ -29,8 +29,8 @@ const EditProfile = () => {
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  console.log(name);
-  console.log(bio);
+  // console.log(name);
+  // console.log(bio);
 
   const updateName = (e) => setName(e.target.value);
   const updateBio = (e) => setBio(e.target.value);
@@ -43,23 +43,22 @@ const EditProfile = () => {
     dispatch(loadUserProfile(userId)).then(() => {
       console.log("ISLOADED");
       console.log(profile);
-      console.log(sessionUser);
-      setIsLoaded(true);
     });
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (profile.name && profile.bio) {
-  //     console.log("HERE");
-  //     console.log(profile);
-  //     setIsLoaded(true);
-  //     setName(profile.name);
-  //     setBio(profile.bio);
-  //     setGender(profile.gender);
-  //     setProfileImage(profile.profile_img);
-  //   }
-  // }, [profile]);
-  
+  useEffect(() => {
+    if (profile.name && profile.bio) {
+      console.log("HERE");
+      console.log(profile);
+      setName(profile.name);
+      setBio(profile.bio);
+      setGender(profile.gender);
+      setProfileImage(profile.profile_img);
+
+      setIsLoaded(true);
+    }
+  }, [profile]);
+
   useEffect(() => {
     let errors = [];
 
@@ -131,9 +130,12 @@ const EditProfile = () => {
             <form className="profileEdit" onSubmit={handleSubmit}>
               <ul>
                 <div className="editprofileLabel">Edit Profile:</div>
-                {hasSubmitted && errors.map((error, idx) => (
-                  <li className="editProfile_li" key={idx}>{error}</li>
-                ))}
+                {hasSubmitted &&
+                  errors.map((error, idx) => (
+                    <li className="editProfile_li" key={idx}>
+                      {error}
+                    </li>
+                  ))}
               </ul>
               <label>
                 <span>Name:</span>

@@ -108,7 +108,7 @@ function EditCommentForm({ post, comment1, commentId, onHide, type }) {
         </button>
       </form>
 
-      <button onClick={() => deleteComment(commentId)}>
+      <button className="delete_button_edit_comment" onClick={() => deleteComment(commentId)}>
         <i className="fa-solid fa-trash-can"></i> Delete
       </button>
     </div>

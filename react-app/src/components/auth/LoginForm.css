@@ -1,5 +1,7 @@
-@import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
-
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../NavBar/FontsFree-Net-Billabong.ttf)
+  }
 
 .splash_image {
     width: 250px;
@@ -72,7 +74,7 @@
 }
 
 .Instacrumbz_logo {
-    font-family: 'BillabongW00-Regular';
+    font-family: MyFont;
     font-size: 60px;
     margin-top: 0;
     margin-bottom: 30px;

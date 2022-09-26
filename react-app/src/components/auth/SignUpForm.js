@@ -93,7 +93,7 @@ const SignUpForm = () => {
     if (password.length <= 5) {
       errs.push("Password length must be greater than 5");
     }
-    if (password !== repeatPassword) 
+    if (password !== repeatPassword)
       errs.push("Password and Confirm password does not match");
 
 
@@ -210,9 +210,9 @@ const SignUpForm = () => {
           login
         </NavLink>
       </div>
-      <div className="signup_footer">
+      {/* <div className="signup_footer">
         © 2022 Instacrumbz from Alec, Rudy, Ray, David
-      </div>
+      </div> */}
     </div>
   );
 };
